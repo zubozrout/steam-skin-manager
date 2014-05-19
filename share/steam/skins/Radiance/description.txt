@@ -1,0 +1,1 @@
+<i>This skin matches Ubuntu default theme with the same name and tries to provide user with similar experience. Your Steam client will use natively-looking objects like checkboxes, buttons or scrollbars and will use standard Radiance colours.</i>

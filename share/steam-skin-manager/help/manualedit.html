@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Steam Skin Manager Help - manual changes</title>
+</head>
+<body style="font-family:Ubuntu Light; font-weight:300;">
+<h3>Editing registry.vdf file manually</h3>
+<p>registry.vdf file contains Steam client settings. Some can only be changed here.</p>
+
+<h3>Basics</h3>
+<pre>
+"HKCU"
+ {
+  "Software"
+   {
+    "Valve"
+      {
+       "Steam"
+         {
+          "SkinV4"	"MY_SKIN"
+          "Language"	"MY_LANGUAGE"
+</pre>
+<p>e.g. to change interface language, replace "MY_LANGUAGE" with something like "english".<br>You can also change your skin here, but you must first put it into ~./steam/Steam/skins/MY_SKIN directory.</p>
+
+<p><a href="./help.html">Go home</a></p>
+</body>
+</html>

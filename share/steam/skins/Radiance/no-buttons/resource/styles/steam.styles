@@ -1,0 +1,3772 @@
+steam.styles
+{
+  colors
+  {
+	// colors section can include colors in "R G B A" form, or references to already defined colors;
+	// it can also include just general settings controls can pull from for extra customization
+
+	ubuntugrey="223 215 207 255"
+	lightgrey="83 81 73 255"
+	darkgrey="45 45 45 255"
+	ubuntuorangeselect="240 119 70 255"
+	black="0 0 0 255"
+	white=lightgrey
+	extrawhite="255 255 255 255"
+	none="0 0 0 0"
+	buttontop="254 254 254 255"
+	buttonbottom="238 238 238 255"
+	buttonborder="149 149 149 255"
+	buttoninactive="242 241 240 255"
+	buttonactive="228 228 228 255"
+
+	panel_bg_top="252 251 250 255"
+	panel_bg_bottom="227 220 213 255"
+	panel_line="194 183 170 255"
+
+	selected_top="247 133 86 255"
+	selected_bottom="229 104 53 255"
+	selected_line="254 148 106 255"
+	selected_darkline="205 90 40 255"
+
+	// required aliases
+	almostblack = ubuntugrey
+	grey = ubuntugrey
+	textcolor = white
+	navlabel = white
+	TitleBar = ubuntugrey
+	clientbg = ubuntugrey
+	darkclientbg = ubuntugrey
+	dialogbg = ubuntugrey
+	PropertySheetBG = ubuntugrey
+	BigPicturePixels = ubuntugrey
+	BackgroundStart = ubuntugrey
+	focus = ubuntugrey
+	focus2 = ubuntugrey
+	focus3 = ubuntugrey
+	backgroundstartsubtle = ubuntugrey
+	backgroundstartopaque = none
+
+	// cool we can define font-families here as well
+	basefont="Ubuntu"
+	basefont="Ubuntu" [$OSX]
+
+	// new control colors
+	buttonface="83 81 73 255"
+	buttonface2="83 81 73 255"
+	buttonface3="83 81 73 255"
+	buttonfacedisabled="83 81 73 255"
+	buttonfacehover="83 81 73 255"
+	buttonfaceactive="83 81 73 255"
+	buttonfacefocus="83 81 73 255"
+	buttonfaceactivefocus="83 81 73 255"
+
+	buttonborderpage="83 81 73 255"
+	buttonborderdisabled="83 81 73 255"
+	buttonborderdisabled2="83 81 73 255"
+	buttonborderactive="83 81 73 255"
+	buttonborderfocus="83 81 73 255"
+
+
+	text=black
+	text2=darkgrey
+	textdisabled="175 167 159 255"
+	texthover="extrawhite"
+	textselected="extrawhite"
+	textentryselected="extrawhite" // color of any selected text
+	textselectedBG="ubuntuorangeselect" // background color of any selected text 
+	textglowhover="20 20 20 20"
+	textglowselected="20 20 20 20"
+	textglowhoverSm="20 20 20 20"
+	textglowselectedSm="20 20 20 20"
+
+	label=darkgrey
+	label2=darkgrey
+	labeldisabled="100 100 100 255"
+	labelfocus="120 120 120 255"
+
+	ubuntugreytitlefocus="75 74 69 255"
+
+	highlight="27 160 225 255"
+	highlight1="255 255 255 255"	// installing hover color
+	highlight2="27 160 225 255" 	// installing color 
+	highlight3="27 160 225 255"    	// red for errors, blocked, etc.
+	highlight5="55 55 55 255"		// blue 
+	highlight5c="27 160 225 255" 	// blue 
+	highlight5a="27 160 225 255" 	// lighter version of highlight5
+	highlight5b="27 160 225 255" 	// as highlight5 but darker, for non-focused window borders
+	highlight6="176 224 26 255" 	// as highlight6 but darker, for non-focused window borders
+
+	DarkClientBGTransparent="60 59 55 160"
+	DarkDialogBGTransparent="60 59 55 160"
+
+	GameDetailsBlueTransparent="60 59 55 160"
+	GameDetailsGreenTransparent="60 59 55 160"
+	GameDetailsRedTransparent="60 59 55 160"
+
+	GameDetailsBlue="89 134 179 255"
+	GameDetailsGreen="126 166 75 255"
+	GameDetailsRed="173 69 71 255"
+
+	DialogBorder="255 255 255 255" // border color around any dialog
+
+	Divider="0 0 0 25"
+	DarkImageBorder="47 48 43 255"
+	DarkImageOverlay="0 0 0 80"
+
+	// colors pulled from steamscheme.res
+	DragDrop.DragFrame					"255 255 255 192"
+	DragDrop.DropFrame					"150 255 150 255"
+
+	Frame.ClientInsetX					10
+	Frame.ClientInsetY					35
+	Frame.FocusTransitionEffectTime			"0"     // time it takes for a window to fade in/out on ubuntuorangeselect/out of ubuntuorangeselect
+	Frame.TransitionEffectTime				"0.25"      // time it takes for a window to fade in/out on open/close
+	Frame.OnDragAlphaDelayTime				"0.15"      // time it takes after clicking the title bar of a window before the alpha multiplier kicks in
+	Frame.OnDragAlphaMultiplier				"1.0"     // multiplier applied to alpha while dragging a frame
+	Frame.AutoSnapRange					"6"
+	Frame.UsesAlphaBlending				1
+	FrameSystemButton.Icon				""
+	FrameSystemButton.DisabledIcon			""
+
+	Notifications.PanelPosition				"TopRight"   // Can be "BottomRight", "BottomLeft", "TopRight", "TopLeft"
+	Notifications.SlideDirection			"Vertical"    // Can be "Vertical", "Horizontal", "None" and controls slide effect
+	Notifications.FadeInTime				"0.45"    // Controls the time it takes to slide/fade into view
+	Notifications.FadeOutTime				"0.45"    // Controls the time it takes to slide/fade out of view
+	Notifications.DisplayTime				"6.0"     // Controls the length of time at steady state after fade in and before fade out
+	Notifications.StackSize				"3"     // Controls how many panels we will stack before background queuing
+
+	ListPanel.textColor					text
+	ListPanel.BgColor					none  
+	ListPanel.SelectedtextColor				textentryselected
+	ListPanel.SelectedBgColor				textselectedBG
+	ListPanel.SelectedOutOfFocusBgColor			ubuntugrey
+	ListPanel.DisabledtextColor				textdisabled
+	ListPanel.DisabledSelectedtextColor			ubuntugrey
+	ListPanel.EmptyListInfotextColor			label
+	ListPanel.PerPixelScrolling				1
+	ListPanel.PostSectionLeading			10
+
+	// Default tooltip delay pops fast, but lets the mouse pass through without popping
+	// Anchor=Cursor makes it stick to initial pop location like windows implementation.
+	// Anchor can also be 'Float' to move with the mouse, or 'Parent' to stick just outside
+	// the parent panel (useful for icon sized items)
+	Tooltip.Delay=75
+	Tooltip.Anchor=Cursor
+
+
+	WizardPanel.HeaderBGColor				ubuntugrey
+
+	Menu.textInset					"6"
+
+	PropertySheet.TransitionEffectTime			"0"     // time to change from one tab to another
+	PropertySheet.TabGap				1
+	PropertySheet.FlashTabColor				"255 114 76 255"
+
+	Richtext.InsetX					8
+	Richtext.InsetY					7
+
+	ScrollBar.Wide					5
+
+	SectionedListPanel.CollapserWidth			16
+
+	HTML.SearchInsetY					5
+	HTML.SearchInsetX					10
+	HTML.SearchWide					348
+	HTML.SearchTall					38
+	HTML.SearchAnimationTime				0.25
+	html.secureurl					"126 166 75 255"
+	html.insecureurl					"173 69 72 255"
+
+	MessageBox.ButtonHeight				24
+
+	textEntry.IMEBGColor				"225 225 225 255"
+	textEntry.IMEFGColor				"black"
+
+
+	// Friends List colors
+	Friends.InGameColor					"140 179 89 255"
+	Friends.OnlineColor					"134 181 217 255"
+	Friends.OfflineColor				"label"
+	Friends.PanelDefault				"label"
+	Friends.PanelOver				"text"
+	Friends.PanelSelected				"ubuntugrey"
+	Friends.SectionHeader				"label"
+	Friends.NoAvatarOver				"text"
+	Friends.IgnoredColor				"highlight3"
+
+	ChatDialog.URLColor				"text"
+	ChatOwntextColor				"label"
+	ChatGradientTop					"ubuntugrey"
+	ChatGradientBottom 				"ubuntugrey"
+
+	AchievementPopup.TitleColor			"text"
+	AchievementPopup.DescriptionColor		"180 180 180 255"
+  }
+  
+  styles
+  {
+	downarrow
+	{
+		image="graphics/icon_down_default"    
+	}
+
+	downarrow:hover
+	{
+		image="graphics/icon_down_hover"
+		render_bg {
+
+		//background
+		0="fill( x0 + 5, y0 + 4, x1 - 2, y1 - 4, buttonfaceactive )"
+		//lines around
+		1="fill(x0 + 4, y0 + 5, x0 + 5, y1 - 5, buttonfaceactive )"  //left
+		2="fill(x1 - 2, y0 + 5, x1 - 1, y1 - 5, buttonfaceactive )"  //right
+		}
+	}
+
+	uparrow
+	{
+		image="graphics/icon_up_default"    
+	}
+
+	rightarrow
+	{
+		image="graphics/icon_right_default"   
+	}
+
+
+	rightarrow:hover
+	{
+		image="graphics/icon_right_hover"    
+	}
+
+	Button
+	{     
+		font-family=basefont
+		font-size=15
+		textcolor="darkgrey"
+		bgcolor=none
+		render_bg
+		{
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	"Page Button"
+	{
+		textcolor="darkgrey"
+		render_bg
+		{
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	Button:hover
+	{   
+		textcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	"Page Button:hover"
+	{   
+		textcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	Button:focus
+	{
+		textcolor="darkgrey"
+		render_bg
+		{
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttonactive, buttonbottom )"			
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	"Page Button:focus"
+	{
+		textcolor="darkgrey"
+		render_bg
+		{     
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttonactive, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	Button:active // this is the left-mouse-currently-pressed state
+	{
+		textcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttonactive, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	"Page Button:active"
+	{
+		textcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttonactive, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	Button:selected
+	{
+		textcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttonactive, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	"Page Button:selected"
+	{
+		textcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttonactive, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	Button:disabled
+	{
+		textcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttoninactive )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}   
+
+	"Page Button:disabled"
+	{     
+		textcolor="darkgrey"
+		render_bg
+		{
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttoninactive )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	CFriendsListSectionAffordance
+	{     
+		inset="0 0 0 0"
+		font-size=14
+		font-weight=400
+		textcolor="label"
+	}
+
+	CFriendsListSectionHeader
+	{
+		bgcolor=none
+		font-family=basefont
+		font-size=14
+		font-size=13 [$OSX]
+		font-weight=400
+		textcolor="lightgrey"
+		inset="0 2 0 0"
+		render_bg
+		{
+		}
+	}
+
+	CFriendPanel
+	{
+		inset="0 2 0 0"
+		bgcolor=none
+		font-family=basefont
+		font-size=14
+		font-size=13 [$OSX]
+		font-weight=400
+		textcolor="label"
+	}
+
+	CheckButton
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="white"
+		image="graphics/chkUnselStd"
+	}
+
+	CheckButton:selected
+	{
+		image="graphics/chkSelStd"    
+	}
+
+	CheckButton:selected:hover
+	{
+		image="graphics/chkSelFocus"
+	}
+
+	CheckButton:focus
+	{
+		textcolor="white"
+		bgcolor=none
+		image="graphics/chkUnselFocus"  
+	}
+
+	CheckButton:selected:focus
+	{
+		textcolor="white"
+		render_bg {}
+		bgcolor=none
+		image="graphics/chkSelFocus"
+	}
+
+	CheckButton:disabled
+	{
+		textcolor="white"
+		bgcolor=none
+		image="graphics/chkUnselDis"
+	}
+
+	CheckButton:selected:disabled
+	{
+		textcolor="white"
+		bgcolor=none
+		//!! bug - this needs to look disabled
+		image="graphics/chkSelDis"
+	}
+
+	CheckButtonList
+	{
+		inset="1 1 1 1"
+		textcolor="white"
+		bgcolor=none
+		render_bg
+		{     
+		// background fill
+		1="fill( x0 + 1, y0 + 80, x1 - 1, y1 - 1, ubuntugrey )"
+		2="gradient( x0 + 1, y0 + 1, x1 - 1, y0 + 30, buttontop, buttonbottom )"
+
+		// lines around
+		3="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		4="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		5="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		6="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+		}
+	} 
+
+	CheckButtonList:scrollbar
+	{
+		inset="1 1 1 1"
+		textcolor="white"
+		bgcolor=none
+		render
+		{
+		//gradient to obscure content at top of scrolling region 
+		0="gradient( x0+1, y0, x1+1, y0 + 6, ubuntugrey, none  )"
+
+		//gradient to obscure content at bottom of scrolling region 
+		1="gradient( x0, y1 - 9, x1+1, y1-1, none, black )"
+		}        
+		render_bg
+		{     
+		// background fill
+		1="fill( x0 + 1, y0 + 80, x1 - 1, y1 - 1, ubuntugrey )"
+		2="gradient( x0 + 1, y0 + 1, x1 - 1, y0 + 30, buttontop, buttonbottom )"
+
+		// lines around
+		3="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		4="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		5="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		6="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+		}
+	} 
+
+	"Page CheckButtonList"
+	{
+		inset="1 1 1 1"
+		textcolor="white"
+		bgcolor=none
+		render_bg
+		{     
+		// background fill
+		1="fill( x0 + 1, y0 + 80, x1 - 1, y1 - 1, ubuntugrey )"
+		2="gradient( x0 + 1, y0 + 1, x1 - 1, y0 + 30, buttontop, buttonbottom )"
+
+		// lines around
+		3="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		4="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		5="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		6="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+		}
+	}
+
+	"Page CheckButtonList:scrollbar"
+	{
+		inset="1 1 1 1"
+		textcolor="white"
+		bgcolor=none
+		render
+		{
+		//gradient to obscure content at top of scrolling region 
+		0="gradient( x0+1, y0, x1+1, y0 + 6, ubuntugrey, none  )"
+
+		//gradient to obscure content at bottom of scrolling region 
+		1="gradient( x0, y1 - 9, x1+1, y1-1, none, black )"
+		}   
+		render_bg
+		{     
+		// background fill
+		1="fill( x0 + 1, y0 + 80, x1 - 1, y1 - 1, ubuntugrey )"
+		2="gradient( x0 + 1, y0 + 1, x1 - 1, y0 + 30, buttontop, buttonbottom )"
+
+		// lines around
+		3="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		4="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		5="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		6="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+		}
+	}
+
+	"CheckbuttonList Checkbutton"
+	{
+		textcolor="white"
+	}
+
+	ComboBox
+	{
+		inset="3 0 0 0"
+		textcolor="darkgrey"
+		font-family=basefont
+		font-size=15
+		selectedtextcolor="textentryselected"
+		selectedbgcolor="textselectedBG"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	ComboBox:hover
+	{
+		selectedbgcolor="none"
+		selectedtextcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	ComboBox:focus
+	{
+		selectedbgcolor="none"
+		selectedtextcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	ComboBox:focus:hover
+	{
+		selectedbgcolor="none"
+		selectedtextcolor="darkgrey"
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	"Page ComboBox"
+	{
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderpage )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderpage )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderpage )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderpage )"  // right
+		}
+	}
+
+	"Page ComboBox:focus"
+	{
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+	"Page ComboBox:hover"
+	{
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+		}
+	}
+
+	"Page ComboBox:focus:hover"
+	{
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttontop, buttonbottom )"
+
+		// lines around
+		1="fill( x0 + 1, y0, x1 - 1, y0 + 2, ubuntuorangeselect )"  // top
+		2="fill( x0 + 1, y1 - 2, x1 - 1, y1, ubuntuorangeselect )"  // bottom
+		3="fill( x0, y0 + 1, x0 + 2, y1 - 1, ubuntuorangeselect )"  // left
+		4="fill( x1 - 2, y0 + 1, x1, y1 - 1, ubuntuorangeselect )"  // right
+		}
+	}
+
+
+	ComboBoxButton
+	{      
+		bgcolor=none
+		padding-left=2
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttonactive )"
+		}
+	}
+
+	ComboBoxButton:hover
+	{
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttonactive )"
+		}
+	}
+
+	ComboBoxButton:focus
+	{
+		bgcolor=none
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttonactive )"
+		}
+	}
+
+	ComboBoxButton:focus:hover
+	{
+		bgcolor=none
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttonborderactive  )"
+		}
+	}
+
+
+	"Page ComboBoxButton"
+	{
+		bgcolor=none
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttoninactive )"
+		}
+	}
+
+	"Page ComboBoxButton:hover"
+	{
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttoninactive )"
+		}
+	}
+
+	"Page ComboBoxButton:focus"
+	{
+		bgcolor=none
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttonactive  )"
+		}
+	}
+
+	"Page ComboBoxButton:focus:hover"
+	{
+		bgcolor=none
+		image="graphics/list_arrow"
+		// just draw a single line to divide it from the text
+		render_bg 
+		{
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 4, buttonactive )"
+		}
+	}
+
+	Divider
+	{
+		bgcolor="none"
+		render
+		{
+		0="gradient_horizontal( x0, y1 - 1, x1 + 1, y1, divider, ubuntugrey )"     
+		}
+	}
+
+	Frame
+	{
+		bgcolor="ubuntugrey"
+		render
+		{
+		}
+	} 
+
+	Frame:FrameFocus
+	{
+		bgcolor="ubuntugrey"
+		render
+		{
+		}
+	}
+
+	FrameMinimizeButton
+	{
+		padding=1
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/minimize_unfocused )"
+		}
+	}
+
+	FrameMinimizeButton:FrameFocus
+	{
+		padding=1
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_min )"
+		}
+	}
+
+	FrameMinimizeButton:hover
+	{  
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/minimize_unfocused_prelight )"
+		}
+	}
+
+	FrameMinimizeButton:FrameFocus:hover
+	{  
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_min_hover )"
+		}
+	}
+
+	FrameMinimizeButton:active
+	{  
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_min_hover )"
+		}
+	}
+
+	FrameMaximizeButton
+	{
+		padding=1
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/maximize_unfocused )"
+		}
+	}
+
+	FrameMaximizeButton:FrameFocus
+	{
+		padding=1
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_max )"
+		}
+	}
+
+	FrameMaximizeButton:hover
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/maximize_unfocused_prelight )"
+		}
+	}
+
+	FrameMaximizeButton:FrameFocus:hover
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_max_hover )"
+		}
+	}
+
+	FrameMaximizeButton:active
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_max_hover )"
+		}
+	}
+
+	FrameRestoreButton
+	{
+		padding=1
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/restore_unfocused )"
+		}
+	}
+
+	FrameRestoreButton:FrameFocus
+	{
+		padding=1
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_restore )"
+		}
+	}
+
+	FrameRestoreButton:hover
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/restore_unfocused_prelight )"
+		}
+	}
+
+	FrameRestoreButton:FrameFocus:hover
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_restore_hover )"
+		}
+	}
+
+	FrameRestoreButton:active
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_restore_hover )"
+		}
+	}
+
+	FrameCloseButton
+	{
+		padding=1
+		render_bg {
+		0="image( x0, y0, x1, y1, graphics/close_unfocused )"
+		}
+	}
+
+	FrameCloseButton:FrameFocus
+	{
+		padding=1
+		render_bg {
+		0="image( x0, y0, x1, y1, graphics/win_close )"
+		}
+	}
+
+	FrameCloseButton:hover
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/close_unfocused_prelight )"
+		}
+	}
+	FrameCloseButton:FrameFocus:hover
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_close_hover )"
+		}
+	}
+
+	FrameCloseButton:active
+	{
+		render_bg {
+		1="image( x0, y0, x1, y1, graphics/win_close_hover )"
+		}
+	}
+
+	FrameTitle
+	{
+		font-family=basefont
+		inset="55 0 0 1"
+		font-size=16
+		font-weight=700
+		textcolor="textdisabled"
+		bgcolor="none"
+		render_bg
+		{
+		1="fill( x0, y0, x1, y1, ubuntugrey )"
+		}
+	}
+
+	FrameTitle:framefocus
+	{
+		textcolor="white"
+		render_bg
+		{
+		1="fill( x0, y0, x1, y1, ubuntugrey )"
+		}
+	}
+
+
+	"CFriendsDialog SectionedListPanelInterior"
+	{
+		bgcolor=none
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		shadowtextcolor="textdisabled"	// the color of disabled line items		
+		render
+		{
+		}
+		render_bg 
+		{	
+		// background gradient
+		1="fill( x0, y0, x1, y1, extrawhite )" 
+		2="gradient( x0, y0, x1, y0 + 10, dialogbg, none )"  
+		}
+	}
+
+	GraphPanel
+	{
+		textcolor=highlight5
+		bgcolor=none
+		inset="0 -3 0 0"
+		render_bg 
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}
+	}
+
+	HTML
+	{
+		bgcolor="none"
+		inset="2 2 2 2" 
+	}
+
+	label
+	{
+		textcolor="white"
+		selectedtextcolor="lightgrey"
+		bgcolor="none"
+		font-family="basefont"
+		font-size=14
+	}
+
+	ListPanel
+	{
+		bgcolor=none
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="text2"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		shadowtextcolor="textdisabled"	// the color of disabled line items
+		inset="0 -1 1 1"
+		render
+		{		}       
+		render_bg 
+		{
+		// background gradient        
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, ubuntugrey, black )"
+		1="gradient( x0 + 1, y0 + 1, x1 - 1, y0 + 31, ubuntugrey, none )"
+
+		// lines around
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}
+	}
+
+	"Page ListPanel"
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="text2"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		inset="0 -1 1 1"
+		bgcolor=none
+		render_bg
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y0 + 80, ubuntugrey, ubuntugrey )"
+		1="fill( x0 + 1, y0 + 80, x1 - 1, y1 - 1, ubuntugrey )"
+		2="gradient( x0 + 1, y0 + 1, x1 - 1, y0 + 30, ubuntugrey, none )"
+
+		// lines around
+		3="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		4="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		5="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		6="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		7="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		8="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		9="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		10="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		}
+	}
+
+	"CGamesListPanel"
+	{
+		font-family=basefont
+		bgcolor="none"
+		font-size=15
+		font-weight=400
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		shadowtextcolor="textdisabled"
+		inset="0 -1 1 1"
+		render_bg {
+
+		// background gradient        
+		0="gradient( x0+1, y0+1, x1-1, y0 + 432, ubuntugrey, black )"
+		1="fill( x0+1, y0+ 432, x1-1, y1 - 1, black )"
+		2="gradient( x0+1, y0+1, x1-1, y0 + 31, ubuntugrey, none )"
+
+
+		// lines around
+		3="fill( x0, y0, x0 + 1, y1 - 2, buttonborderdisabled )"  //left
+		4="fill( x1 - 1, y0, x1, y1 - 2, buttonborderdisabled)"  //right
+		5="fill( x0 + 2, y0 - 1, x1 - 2, y0, buttonborderdisabled )"  //top
+		6="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  //btm
+
+		// single pixel fills in the corners
+		7="fill( x0 + 2, y0 + 1, x0 + 3, y0 + 2, buttonborderdisabled )"
+		8="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		9="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		10="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}
+	}
+
+	"GameItem_Uninstalled"
+	{
+		textcolor="labeldisabled"
+		selectedtextcolor="label"
+	}
+	"GameItem_Uninstalled:hover"
+	{
+		textcolor="label"
+		selectedtextcolor="label"
+	}
+
+	"GameItem_Installed"
+	{
+		textcolor="lightgrey"
+		selectedtextcolor="white"
+	}
+
+	"GameItem_Installed:hover"
+	{
+		textcolor="white"
+		selectedtextcolor="white"
+	}
+
+	"GameItem_Shortcut"
+	{
+		textcolor="lightgrey"
+		selectedtextcolor="white"
+	}
+
+	"GameItem_Shortcut:hover"
+	{
+		textcolor="white"
+		selectedtextcolor="white"
+	}
+
+	"GameItem_Mod"
+	{
+		textcolor="lightgrey"
+		selectedtextcolor="white"
+	}
+
+	"GameItem_Mod:hover"
+	{
+		textcolor="white"
+		selectedtextcolor="white"
+	}
+
+	"GameItem_Updating"
+	{
+		textcolor="highlight2"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Updating:hover"
+	{
+		textcolor="highlight1"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Updating:selected"
+	{
+		textcolor="highlight1"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Decrypting"
+	{
+		textcolor="highlight2"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Decrypting:hover"
+	{
+		textcolor="highlight1"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Decrypting:selected"
+	{
+		textcolor="highlight1"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Syncing"
+	{
+		textcolor="highlight2"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Syncing:hover"
+	{
+		textcolor="highlight1"
+		selectedtextcolor="highlight1"
+	}
+
+	"GameItem_Syncing:selected"
+	{
+		textcolor="highlight1"
+		selectedtextcolor="highlight1"
+	}
+
+
+	"GameColumn_Bigtext"
+	{
+		font-family=basefont
+		font-size=17
+		font-weight=700
+		textcolor="lightgrey"
+	}
+
+	ListPanelCheckBox
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="label"
+		inset="0 5 0 0"
+	}   
+
+	ListPanelCheckBox:selected
+	{
+	}
+
+	ListPanelCheckBox:focus
+	{
+		textcolor="lightgrey"
+		bgcolor=none
+	}
+
+	ListPanelCheckBox:selected:focus
+	{
+		textcolor="lightgrey"
+		render_bg {}
+		bgcolor=none
+	}
+
+	ListPanelCheckBox:disabled
+	{
+		textcolor="textdisabled"
+		bgcolor=none
+	}
+
+	ListPanelCheckBox:disabled:select
+	{
+		textcolor="textdisabled"
+		bgcolor=none
+	}
+
+	"ListPanelColumnheader ListPanelCheckBox"
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="label"
+		inset="4 0 0 0"  
+	}
+
+
+	"ListPanelColumnHeader ListPanelCheckBox:selected"
+	{
+		inset="4 0 0 0"
+	}
+
+	"ListPanelColumnheader ListPanelCheckBox:focus"
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="texthover"
+		inset="4 0 0 0"  
+	}
+
+	"ListPanelColumnheader ListPanelCheckBox:selected:focus"
+	{
+		textcolor="texthover"
+		render_bg {}
+		bgcolor=none
+		inset="4 0 0 0"  
+	}
+
+	ListPanelColumnheader
+	{
+		font-family=basefont
+		font-size=14
+		font-size=13 [$OSX]
+		font-weight=400
+		textcolor="label"
+		font-style="uppercase"
+		bgcolor="none"
+		inset="1 3 0 0"
+
+		render_bg    
+		{
+		// fill
+		0="fill (x0, y0 + 3, x1, y1 + 1, buttonborderdisabled )" // bg fill
+		1="fill (x0 + 1, y0 + 2, x1, y0 + 3, buttonborderdisabled)" // bg fill2
+		}   
+	}
+
+	ListPanelColumnHeader:hover
+	{
+		textcolor="texthover"
+	}
+
+	"Csteamrootdialog ListPanelColumnheader"
+	{
+		font-family=basefont
+		font-size=15
+		font-size=13 [$OSX]
+		font-weight=400
+		textcolor="label"
+		font-style="uppercase"
+		bgcolor="none"
+		inset="0 0 0 0"
+		inset="0 1 0 0" [$OSX]
+		padding-top=1
+
+		render_bg    
+		{
+		// fill
+		0="fill (x0, y0 + 1, x1, y1, buttonborderdisabled )" // bg fill
+
+		// lines around
+		2="fill ( x1 - 1, y0 + 3, x1, y1-1, buttonborderdisabled )" // right
+		}   
+	}
+
+	"Csteamrootdialog ListPanelColumnHeader:hover"
+	{
+		textcolor="texthover"
+	}
+
+	"Csteamrootdialog ListPanelSectionCollapser"
+	{
+		inset = "0 1 0 1"
+		bgcolor=none
+		render_bg
+		{
+		1="fill( x0 , y0, x1, y1 - 1, buttonface2  )"
+		}    
+	}
+
+	"CGamesPage_Mini ListPanelSectionCollapser"
+	{
+		inset = "0 1 0 1"
+		bgcolor=none
+		render_bg
+		{
+		1="fill( x0 , y0, x1, y1 - 1, buttonface2  )"
+		}    
+	}
+
+	ListPanelColumnSelectButton // the games list column chooser  
+	{
+		inset="-3 3 0 0"
+		render
+		{
+		// background fill
+		1="fill( x0, y0 + 1, x1 - 1, y1, buttonborderdisabled )"  
+
+		// lines around
+		2="fill( x0 - 4, y0 - 1, x1 + 1, y0 + 1, buttonborderdisabled )"  //top
+		3="fill( x0, y1 - 1, x1, y1, buttonborderdisabled )"       //btm
+		4="fill( x1-1, y0 + 1, x1, y1, buttonborderdisabled )" //right
+		5="image( x0 + 3, y0 + 3, x1, y1, graphics/icon_collapse )"
+		}   
+		render_bg {}
+	}
+
+	ListPanelColumnSelectButton:hover
+	{
+		inset="-3 3 0 0"
+		render
+		{
+		// lines around
+		1="fill( x0, y0 + 1, x1 - 1, y1, buttonborderdisabled)"
+		2="fill( x0 - 4, y0 - 1, x1 + 1, y0 + 1, buttonborderdisabled )"  //top
+		3="fill( x0, y1 - 1, x1, y1, buttonborderdisabled )"       //btm
+		4="fill( x1-1, y0 + 1, x1, y1, buttonborderdisabled )" //right
+		5="image( x0 + 3, y0 + 3, x1, y1, graphics/icon_collapse_over )"
+		}   
+		render_bg {}
+	}
+
+	ListPanelColumnSelectButton:selected
+	{
+		inset="-3 3 0 0"
+		render
+		{
+		// lines around
+		1="fill( x0, y0 + 1, x1 - 1, y1, buttonborderdisabled)"
+		2="fill( x0 - 4, y0 - 1, x1 + 1, y0 + 1, buttonborderdisabled )"  //top
+		3="fill( x0, y1 - 1, x1, y1, buttonborderdisabled )"       //btm
+		4="fill( x1-1, y0 + 1, x1, y1, buttonborderdisabled )" //right
+		5="image( x0 + 3, y0 + 3, x1, y1, graphics/icon_collapse_over )"
+		}   
+		render_bg {}
+	}
+
+	"CGamesListPanel ListPanelColumnSelectButton"   
+	{
+		inset="-3 3 0 0"
+		render
+		{
+		5="image( x0 + 3, y0 + 3, x1, y1, graphics/icon_collapse )"
+		}   
+		render_bg {
+		1="fill( x0 + 1, y0, x1 - 1, y1, buttonborderdisabled )"
+		}
+		}
+		"CGamesListPanel ListPanelColumnSelectButton:hover"   
+		{
+		inset="-3 3 0 0"
+		render
+		{
+		5="image( x0 + 3, y0 + 3, x1, y1, graphics/icon_collapse_over )"
+		}   
+	}
+
+	"CGamesListPanel ListPanelColumnSelectButton:selected"   
+	{
+		inset="-3 3 0 0"
+		render
+		{
+		5="image( x0 + 3, y0 + 3, x1, y1, graphics/icon_collapse_over )"
+		}   
+	}
+
+	ListPanelDragger
+	{
+		bgcolor="none"
+		render 
+		{
+		//fill makes dragger visible
+		0="fill( x0, y0 + 2, x0 + 1, y1 - 3, ubuntugrey )" // left
+		1="fill (x0, y0, x0+1, y0+3, buttonborderdisabled )" //dot
+		}
+	}
+
+	ListPanelInterior
+	{     
+		inset="3 1 0 0"
+		font-size=15
+		textcolor="text2"
+		bgcolor="none" 
+		render
+		{
+		//gradient to obscure content at top of scrolling region 
+		1="gradient( x0+1, y0+0, x1-1, y0 + 3, ubuntugrey, none  )"
+
+		//gradient to obscure content at bottom of scrolling region 
+		2="gradient( x0, y1 - 12, x1, y1-0, none, black )"
+		}
+
+		render_bg {}
+	} 
+
+	ListPanelInterior:scrollbar
+	{     
+		bgcolor=none
+		textcolor="text2"
+		render
+		{
+		//gradient to obscure content at top of scrolling region 
+		1="gradient( x0+1, y0-1, x1+1, y0 + 6, ubuntugrey, none  )"
+
+		//gradient to obscure content at bottom of scrolling region 
+		2="gradient( x0+1, y1 - 9, x1+1, y1-1, none, black )"
+		}
+		render_bg {}
+	} 
+
+	"CSteamRootDialog ListPanel"
+	{
+		padding-left=2
+		padding-right=2
+	}
+
+	"Csteamrootdialog ListPanelInterior"
+	{     
+		inset="3 0 3 0"
+		bgcolor=none
+		render_bg {}
+	}
+
+	"Csteamrootdialog ListPanelInterior:scrollbar"
+	{     
+		bgcolor=none
+		render
+		{
+		//gradient to obscure content at top of scrolling region 
+		0="gradient( x0+1, y0-1, x1+1, y0 + 6, ubuntugrey, none  )"
+
+		//gradient to obscure content at bottom of scrolling region 
+		1="gradient( x0+1, y1 - 9, x1+1, y1-1, none, black )"
+		}   
+		render_bg {}
+	}
+
+	"Page ListPanelInterior"
+	{
+		inset="3 1 -1 0"
+		font-size=15
+		bgcolor=none
+		render_bg {}
+	}
+
+	"Page ListPanelInterior:scrollbar"
+	{
+		bgcolor=none
+		render
+		{
+		//gradient to obscure content at top of scrolling region 
+		1="gradient( x0+1, y0, x1+2, y0 + 6, ubuntugrey, none  )"
+
+		//gradient to obscure content at bottom of scrolling region 
+		2="gradient( x0+2, y1 - 9, x1+2, y1-1, none, black )"
+		}
+		render_bg {}
+	}
+
+	ListPanelSectionHeader
+	{
+		inset="2 0 0 0"
+		textcolor=label
+		font-style="uppercase"
+		render_bg
+		{
+		0="gradient_horizontal( x0 - 1, y0, x0 + 250, y1 - 1, buttonface2, none  )"
+		}    
+	} 
+
+	ListPanelSectionHeader:hover
+	{     
+		textcolor=texthover
+	} 
+
+	"ListPanel Richtext"
+	{
+		textcolor="lightgrey"
+		font-family=basefont
+		font-size=15
+		bgcolor=none
+		render_bg {} 
+	}
+
+
+	"ListPanel Richtext url" 
+	{
+		font-size=15
+		textcolor="lightgrey"
+		font-style=underline
+	}
+
+	"ListPanel RichtextInterior"
+	{
+		bgcolor=ubuntugrey
+		render_bg {} 
+		bgcolor=none
+	}
+
+	ListPanelSectionCollapser [!$OSX]
+	{
+		bgcolor=none
+		render_bg {}
+		image="graphics/icon_collapse" 
+		inset="-4 0 0 0"
+		padding-top=-2
+		padding-bottom=-2
+	}
+
+	ListPanelSectionCollapser [$OSX]
+	{
+		bgcolor=none
+		render_bg {}   
+		image="graphics/icon_collapse_osx" 
+		inset="-4 0 0 0"
+		padding-top=-2
+		padding-bottom=-2
+	}
+
+	ListPanelSectionCollapser:hover [!$OSX]
+	{
+		image="graphics/icon_collapse_over" 
+	}
+
+	ListPanelSectionCollapser:hover [$OSX]
+	{
+		image="graphics/icon_collapse_over_osx" 
+	}
+
+	ListPanelSectionCollapser:selected [!$OSX]
+	{
+		image="graphics/icon_expand" 
+	}
+
+	ListPanelSectionCollapser:selected [$OSX]
+	{
+		image="graphics/icon_expand_osx" 
+	}
+
+	ListPanelSectionCollapser:selected:hover [!$OSX]
+	{
+		image="graphics/icon_expand_over" 
+	}
+
+	ListPanelSectionCollapser:selected:hover [$OSX]
+	{
+		image="graphics/icon_expand_over_osx" 
+	}
+
+	MainNav
+	{	
+		textcolor="label"
+		selectedtextcolor="lightgrey"
+		bgcolor="none"
+		font-family=basefont
+		font-size=21
+		font-weight=900
+		font-style="uppercase"
+	}
+
+	Menu
+	{
+		bgcolor="panel_bg_bottom"
+		textcolor="white"
+		render_bg
+		{
+		0="fill( x0, y1 - 1, x1, y1, panel_line )" // bottom
+		1="fill( x1 - 1, y0, x1, y1, panel_line )" // right
+		3="fill( x0, y0, x0 + 1, y1, panel_line )" // left
+		}
+		inset="0 4 0 4"
+		render {}
+	}
+
+
+	MenuBar
+	{
+		bgcolor=ubuntugrey
+		padding-right=1
+		padding-left=4
+		padding-top=0
+		padding-bottom=0
+	}
+
+	"Page MenuBar"
+	{
+		bgcolor=none
+		padding-top=2
+		padding-bottom=2
+	}
+
+
+	"MenuBar MenuButton" 
+	{
+		textcolor="white"
+	}
+
+	"MenuBar MenuButton:frameFocus" 
+	{
+		textcolor="white"
+	}
+
+	"MenuBar MenuButton:frameFocus:hover" 
+	{
+		textcolor="white"
+		bgcolor=none
+	}
+
+	"MenuBar MenuButton:frameFocus:selected" 
+	{
+		textcolor="white"
+		render_bg
+		{
+		0="fill( x0 + 6, y0, x1 - 8, y1, panel_bg_top )"  // fill the bg
+		1="gradient( x0 + 6, y0 + 6, x1 - 8, y1, panel_bg_top, panel_bg_bottom )"  // gradient top
+
+		2="image( x1 - 9, y0, x1 - 8, y1, graphics/panel_right )" // right
+		3="image( x0, y0, x0 + 1, y1, graphics/panel_left )" // left
+
+		4="fill( x0 + 6, y0, x1 - 8, y0 + 1, panel_line )"  // top
+		}
+
+		render {}
+	}
+
+	MenuButton
+	{
+		font-family=basefont
+		font-size=16
+		font-weight=400
+		padding-bottom=1
+		textcolor="white"
+		bgcolor="none"
+		render_bg {}
+	}  
+
+	MenuButton:hover
+	{
+		textcolor="white"
+	}
+
+
+	MenuButton:selected
+	{
+		textcolor="white"
+	}
+
+	MenuItem
+	{
+		font-family=basefont
+		textcolor="lightgrey"
+		font-size=16
+		font-weight=400
+		inset="20 0 20 0"
+		bgcolor="none"
+		render_bg {}
+	}
+
+	MenuItem:selected
+	{
+		textcolor="extrawhite"
+		bgcolor="selected_darkline"
+		render_bg {
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, selected_top, selected_bottom )"
+		1="fill( x0 + 1, y0 + 1, x1 - 1, y0 + 2, selected_line )" // top - lighter line
+		}
+	}
+
+	MenuItem:hover
+	{
+		textcolor="extrawhite"
+		bgcolor="selected_darkline"
+		render_bg {
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, selected_top, selected_bottom )"
+		1="fill( x0 + 1, y0 + 1, x1 - 1, y0 + 2, selected_line )" // top - lighter line
+		}
+	}
+
+	MenuItem:disabled
+	{
+		textcolor="labeldisabled"
+		shadowtextcolor=none
+	}
+
+	MenuItem:disabled:hover
+	{
+		textcolor="labeldisabled"
+		shadowtextcolor=none
+	}
+
+	MenuSeparator
+	{
+		inset="2 0 6 0"
+		textcolor="Divider"
+		bgcolor=none
+	}
+
+	Notification
+	{
+		font-family=basefont
+		font-size=15
+		font-weight=400
+		bgcolor=none
+		render_bg
+		{
+		0="gradient( x0+1, y0, x1-1, y0+80, ubuntugrey, ubuntugrey )"
+
+		0="gradient_horizontal( x0 + 1, y1 - 1, x1 -1, y1, ubuntugrey, highlight5 )"    // bottom
+		1="gradient( x1 - 1, y0 + 1, x1, y1 - 1, ubuntugrey, highlight5 )" // right
+		2="fill( x0 + 1, y0, x1 - 1, y0 + 1, ubuntugrey )"  // top
+		3="fill( x0, y0 + 1, x0 + 1, y1 - 1, ubuntugrey )" // left
+
+		// single pixel fills in the corners
+		4="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, ubuntugrey )"
+		5="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, ubuntugrey )"
+		6="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, ubuntugrey )"
+		7="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, highlight5a )"
+		}
+
+		render {}
+		corner_rounding=1
+	}
+
+	Page
+	{
+		bgcolor="none"
+		render_bg
+		{
+		// background gradient
+		0="gradient( x0, y0 + 18, x1, y1, ubuntugrey, ubuntugrey )"
+		}
+	}
+
+	"CSteamRootDialog Page"
+	{
+		bgcolor="none"
+		render_bg {}
+	}
+
+	"Page RadioButtonList"
+	{
+		bgcolor="ubuntugrey"
+	}
+
+	PageTab
+	{
+		font-style="lowercase"
+		font-size=15
+		font-weight=400
+		textcolor="white"
+		bgcolor="none"
+		padding=2
+		render_bg{
+		1="gradient( x0 - 2, y0, x0 - 1, y1, none, buttonborder )"  // left
+		}
+	}
+
+	PageTab:selected
+	{
+		render_bg
+		{
+		1="fill( x0 + 2, y0, x1 - 1, y0 + 1, buttonborder )"  // top
+		3="fill( x0, y0 + 2, x0 + 1, y1, buttonborder )"  // left
+		5="fill( x1, y0 + 2, x1 + 1, y1, buttonborder )"  // right
+
+		//borders
+		7="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )" // left-top
+		8="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborder )" // right-top
+		}
+	}
+
+	PageTab:hover
+	{
+	}
+
+	PageTab:selected:hover
+	{
+	}
+
+	PageTab:focus
+	{
+	}
+
+	"PageDragFrame PageTab"
+	{
+		font-size=14
+		font-style=""
+	}
+
+	TabCloseButton
+	{
+		render_bg {}
+		image="graphics/tiny_x_default"
+	}
+
+	TabCloseButton:hover
+	{
+		image="graphics/tiny_x_hover"
+	}
+
+	Panel
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="lightgrey"
+		bgcolor="none"
+	}
+
+	ProgressBar
+	{
+		textcolor="highlight5c"
+		bgcolor="none"
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborder )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborder )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborder )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}   
+	}
+
+	"Page ProgressBar"
+	{
+		textcolor="highlight5c"
+		bgcolor="none"
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderpage )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderpage )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderpage )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderpage )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderpage )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderpage )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderpage )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderpage )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}   
+	}
+
+	PropertyPage
+	{
+		bgcolor="ubuntugrey"
+	}
+
+	"CFriendsDialog PropertySheet"
+	{
+		bgcolor="none"
+	}
+
+	RadioButton
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="label"
+		render_bg {}
+		image="graphics/RadUnselStd"
+		bgcolor=none
+	}     
+
+	RadioButton:selected
+	{
+		render_bg {}
+		image="graphics/radSelStd"  
+	}
+
+	RadioButton:selected:hover
+	{
+		textcolor="texthover"  
+		bgcolor=none
+		image="graphics/radSelFocus"
+	}
+
+	RadioButton:focus
+	{
+		textcolor="texthover"
+		bgcolor=none
+		image="graphics/radSelFocus"
+	}
+
+	RadioButton:selected:focus
+	{
+		textcolor="texthover"  
+		bgcolor=none
+		image="graphics/radSelFocus"
+	}
+
+	RadioButtonList
+	{
+		bgcolor="ubuntugrey"
+		inset="-2 0 0 0"
+
+		render_bg
+		{
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, ubuntugrey, ubuntugrey  )"
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborder )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborder )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborder )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}     
+	}
+
+	Richtext
+	{
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		inset="0 -1 0 0"
+		render_bg
+		{
+		-1="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, ubuntugrey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}     
+	}
+
+	RichtextInterior 
+	{
+		bgcolor=none
+	}
+
+	// style of links in a rich text control
+
+	"Richtext url"
+	{
+		font-size=14
+		textcolor="label"
+		selectedtextcolor="label"
+		font-style=underline
+	}
+
+	"Richtext url:hover"
+	{
+		textcolor="texthover"
+	}
+
+
+	"CFriendPanel Richtext URL" 
+	{
+		textcolor="lightgrey"
+		font-style=underline
+		font-size=14
+	}
+
+	// style of bold text in a rich text control
+	"Richtext bold"
+	{
+		font-size=15
+		font-weight=1000
+	}
+
+	"Richtext emphasis"
+	{
+		font-size=15
+		font-style=italic
+	}
+
+	ScrollBar
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+    
+	ScrollBarButton.up
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.up:hover
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.up:active
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.up:disabled
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.down
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.down:hover
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.down:active
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+
+	ScrollBarButton.down:disabled
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.left
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.left:hover
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.right
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarButton.right:hover
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarHandle  //vertical scrollbar thumb
+	{
+		bgcolor=none
+		image=""
+		render_bg 
+		{
+			0="fill( x0, y0, x0 + 5, y1, lightgrey )"
+		}
+	}
+
+	ScrollBarHandle:FrameFocus  //vertical scrollbar thumb
+	{
+		bgcolor=none
+		image=""
+		render_bg 
+		{
+			0="fill( x0, y0, x0 + 5, y1, ubuntuorangeselect )"
+		}
+	}
+
+	"ScrollBarHandle:hover"
+	{
+		inset="0 0 0 0"
+		bgcolor=none
+		image=""
+		render_bg 
+		{
+			0="fill( x0, y0, x0 + 5, y1, ubuntuorangeselect )"
+		}
+	}
+
+	"ScrollBarHandle:active"
+	{
+		bgcolor=none
+		image=""
+		render_bg 
+		{
+			0="fill( x0, y0, x0 + 5, y1, ubuntuorangeselect )"
+		}
+	}
+
+
+
+	"SliderHoriz"  //horizontal scrollbar thumb
+	{
+		bgcolor=none
+		image=""
+		render {
+		1="fill( x0, y0, x1, y0 + 5, lightgrey )"	
+		}
+	}
+
+	"SliderHoriz:FrameFocus"  //horizontal scrollbar thumb
+	{
+		bgcolor=none
+		image=""
+		render {
+		1="fill( x0, y0, x1, y0 + 5, ubuntuorangeselect )"	
+		}
+	}
+
+	"SliderHoriz:hover"
+	{
+		bgcolor=none
+		image=""
+		render {
+		1="fill( x0, y0, x1, y0 + 5, ubuntuorangeselect )"	
+		}
+	}
+
+	"SliderHoriz:active"
+	{
+		bgcolor=none
+		image=""
+		render {
+		1="fill( x0, y0, x1, y0 + 5, ubuntuorangeselect )"	
+		}
+	}
+
+	ScrollBarSlider // gutter
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarSliderHoriz // gutter
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+
+	"GamesPage_Details ListPanel ScrollBarSlider" // gutter in games list detail view 
+	{
+		bgcolor=none
+		inset="0 0 0 0"
+		image=""
+		render_bg
+		{
+		}
+	}
+
+	ScrollBarSlider:disabled 
+	{
+		inset="0 0 0 0"
+		bgcolor="none"
+		render_bg {}
+	}
+
+	"ScrollBar SliderHoriz" // gutter
+	{
+		inset="0 0 0 0"
+		bgcolor="none"
+	}
+
+	"HTML ScrollBar"
+	{
+		inset="0 0 0 0"
+		bgcolor="none"
+		render_bg { 
+			0="fill(x0,y0,x1 - 1,y1 - 1, none)"
+		}
+	}
+	"HTML ScrollBar.Horizontal"
+	{
+		inset="0 0 0 0"
+		bgcolor="none"
+		render_bg { 
+			0="fill(x0,y0,x1+25,y1, none)"
+		}
+	}
+	
+	"HTML ScrollBarSlider.Horizontal" 
+	{
+		inset="0 0 0 0"
+		bgcolor=none
+		render_bg {
+			//background fill
+			0="fill( x0 + 6, y0 + 5, x0 + 200, y1 - 2, none)"
+			//lines around
+			1="fill( x0 + 5, y0 + 6, x0 + 6, y1 - 3, none )"  // top
+		}
+
+	}
+
+	"HTML SliderHoriz"
+	{
+		inset="0 0 0 0"
+		bgcolor=none
+		render_bg
+		{
+		}
+	}
+
+	SectionedListPanel
+	{
+		bgcolor="ubuntugrey"
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		bgcolor="none"
+		render_bg 
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		// background gradient
+		0="gradient( x0 + 1, y0 + 1, x1, y0 + 1, ubuntugrey, ubuntugrey)"
+		}
+		inset="1 -1 1 1"  
+	}
+
+	"CFriendsDialog SectionedListPanel"
+	{
+		bgcolor="none"
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		render_bg 
+		{
+		// background fill
+		0="gradient( x0 + 1, y0, x1 - 1, y0 + 140, ubuntugrey, black )"
+		1="fill( x0 + 1, y0 + 140, x1 - 1, y1-1, black )"
+
+		//lines around, special due to tabs at top
+		2="gradient( x1 - 1, y0 -1, x1, y1 -1, ubuntugrey, buttonborderdisabled )"  // right
+		3="gradient( x0, y0, x0 + 1, y1 - 2, ubuntugrey, buttonborderdisabled )"  // left
+		//single pixel fills
+		4="fill( x0, y1-1, x0 + 1, y1, ubuntugrey )"
+		5="fill( x1-1, y1-1, x1, y1, ubuntugrey )"
+		}    
+	}
+
+	SectionedlistpanelCollapser
+	{
+		render_bg {}
+		bgcolor=none
+		image="graphics/icon_collapse"
+		inset="2 1 0 0"
+	} 
+
+	SectionedListPanelCollapser:hover
+	{
+		image="graphics/icon_collapse_over"
+	}
+
+	SectionedListPanelCollapser:selected
+	{
+		image="graphics/icon_expand"
+	}
+
+	SectionedListPanelCollapser:selected:hover
+	{
+		image="graphics/icon_expand_over"
+	}
+
+	Slider
+	{
+		font-family=basefont
+		font-size=10
+		font-weight=400
+		textcolor="label"
+		font-style=uppercase
+	}
+
+	Slider:focus
+	{
+		textcolor="lightgrey"  
+	}
+
+	Statuslabel
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="labelfocus"
+		font-style=uppercase
+
+	}
+
+	Statuslabel:hover
+	{
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="white"
+		font-style=uppercase
+	}   
+
+
+	textEntry
+	{
+		font-family=basefont
+		font-size=14
+		textcolor="lightgrey"
+		font-weight=400
+		bgcolor="none"
+		selectedtextcolor="white"
+		selectedbgcolor="textselectedBG"
+		shadowtextcolor="lightgrey"  // this is the cursor color
+
+		inset-left=4
+		inset-top=0
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborder )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborder )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborder )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}     
+	}
+
+	"Page textEntry"
+	{
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderpage )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderpage )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderpage )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderpage )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderpage )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderpage )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderpage )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderpage )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}     
+	}
+
+	textEntry:focus
+	{     
+		textcolor="texthover"
+		bgcolor=none
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}     
+	}
+
+	"Page textEntry:focus"
+	{     
+		textcolor="texthover"
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}     
+	}
+
+
+	textEntry:disabled
+	{     
+		textcolor="textdisabled"
+		bgcolor="buttonfacedisabled"
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}     
+	}
+
+	// The 'empty' style is used for 'hint text' in text entry fields.
+	// If the text box does not have ubuntuorangeselect and does not have content, a
+	// hint text property will be shown with this style. This is comment
+	// to pre-fill to box with something like 'Search' that goes away when active
+	textEntry:empty
+	{
+		font-style=italic
+		textcolor=white
+	}
+
+	textEntryLarge
+	{
+		font-family=basefont
+		font-size=24
+		textcolor="lightgrey"
+		font-weight=400
+		bgcolor="none"
+		selectedtextcolor="textentryselected"
+		selectedbgcolor="textselectedBG"
+		shadowtextcolor="lightgrey"  // this is the cursor color
+
+		inset-left=4
+		inset-top=5
+		inset-bottom=5
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborder )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborder )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborder )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}     
+	}
+
+	textEntryLarge:focus
+	{     
+		textcolor="texthover"
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}     
+	}
+
+	textEntryLarge:disabled
+	{     
+		textcolor="textdisabled"
+		bgcolor="buttonfacedisabled"
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}     
+	}
+
+	textEntryURL
+	{
+		font-family=basefont
+		font-size=14
+		textcolor="lightgrey"
+		font-weight=400
+		bgcolor="none"
+		selectedtextcolor="textentryselected"
+		selectedbgcolor="textselectedBG"
+		shadowtextcolor="lightgrey"	// this is the cursor color
+		inset-left=0
+		inset-top=-1
+		render { }			
+	}
+
+	textEntryURL:Hover
+	{
+		textcolor="texthover"
+		render
+		{
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonfacedisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonfacedisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonfacedisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonfacedisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonfacedisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonfacedisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonfacedisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonfacedisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}			
+	}
+
+	ToggleButton
+	{
+		inset="1 0 0 0"
+		inset="1 3 0 0" [$OSX]
+		font-family=basefont
+		font-size=13
+		font-weight=400
+		textcolor="lightgrey"
+		bgcolor=none
+		render_bg
+		{
+
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, grey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborder )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborder )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborder )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	ToggleButton:focus
+	{     
+		textcolor="texthover"
+		bgcolor="buttonfacefocus"
+		render_bg
+		{
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, lightgrey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	ToggleButton:hover
+	{
+		textcolor="texthover"
+		bgcolor="buttonfacehover"
+		render_bg
+		{     
+
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, lightgrey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	ToggleButton:selected
+	{
+		textcolor="texthover"
+		bgcolor="none"
+		render_bg
+		{
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, lightgrey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborder )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborder )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborder )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	"Page ToggleButton"
+	{
+		font-family=basefont
+		font-size=13
+		font-weight=400
+		textcolor="lightgrey"
+		bgcolor=none
+		render_bg
+		{
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, grey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderpage )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderpage )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderpage )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderpage )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderpage )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderpage )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderpage )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderpage )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	"Page ToggleButton:hover"
+	{
+		textcolor="texthover"
+		bgcolor="none"
+		render_bg
+		{
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, lightgrey )"
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	"Page ToggleButton:focus"
+	{
+		textcolor="texthover"
+		bgcolor="none"
+		render_bg
+		{
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, lightgrey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	"Page ToggleButton:selected"
+	{
+		textcolor="texthover"
+		bgcolor="none"
+		render_bg
+		{
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, lightgrey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderfocus )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderfocus )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderfocus )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderfocus )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderfocus )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderfocus )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderfocus )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderfocus )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	// the background and frame of a tooltip
+	TooltipWindow
+	{
+		bgcolor="ubuntugrey"
+	}
+
+	// body text inside a tooltip
+	"TooltipWindow label"
+	{
+		padding-left=4
+		textcolor="lightgrey"
+	}
+
+	// headline text inside a tooltip
+	tooltip_headline
+	{
+		textcolor="textselected"
+		padding-left=4
+		padding-top=1
+		padding-bottom=0
+		font-weight=1000   		
+	}
+
+	TreeNode
+	{
+		bgcolor=none
+		render_bg {}
+	}
+
+	TreeNodeImage
+	{
+		bgcolor=none
+	}
+
+	TreeViewSubPanel
+	{
+		bgcolor=none
+
+	}
+
+	TreeNodetext
+	{
+		font-family=basefont
+		font-size=13
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"
+		selectedbgcolor="textselectedBG"
+		bgcolor=none
+		render {}
+		render_bg {}
+	}
+
+	TreeView
+	{
+		render_bg
+		{
+		-1="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, none )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}     
+	}
+
+	URLlabel
+	{
+		textcolor="label"
+		bgcolor="none"
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		font-style=underline
+	}
+
+	URLlabel:Hover
+	{
+		textcolor="texthover"
+		font-size=14
+	}
+
+	URLlabelSimple
+	{
+		textcolor="labelfocus"
+		bgcolor="none"
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		font-style=regular
+	}
+
+	URLlabelSimple [$OSX]
+	{
+		textcolor="labelfocus"
+		bgcolor="none"
+		font-family=basefont
+		font-size=13
+		font-weight=400
+		font-style=regular
+	}
+
+	URLlabelSimple:Hover
+	{
+		font-style=underline
+		textcolor="white"
+	}  
+
+
+	// Steam-specific styles
+	CConsoleHistory
+	{
+		font-family="Ubuntu Mono"
+		font-size=14
+		textcolor="label"
+		selectedtextcolor="textselected"
+	}
+
+	GameColumnHeaderFavorites
+	{
+		image="steam/cached/fav_remove"
+	}
+
+	CGamesListFavoritesToggle
+	{
+		image="steam/cached/fav_addTo"
+	}
+
+	CGamesListFavoritesToggle:hover
+	{
+		image="steam/cached/fav_addTo_ovr"
+	}
+
+	CGamesListFavoritesToggle:selected
+	{
+		image="steam/cached/fav_remove"
+	}
+
+	CGamesListFavoritesToggle:selected:hover
+	{
+		image="steam/cached/fav_remove_ovr"
+	}
+
+	WrapPanel
+	{
+		inset="0 0 0 0"
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+		bgcolor=none
+		render_bg {
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+
+		// background gradient
+		8="gradient( x0 + 1, y0 + 1, x1, y0 + 240, ubuntugrey, ubuntugrey )"
+		9="fill( x0, y0 + 240, x1, y1, ubuntugrey )"
+		}
+		inset="1 -1 1 1"  
+	}
+
+	BackButton
+	{
+		bgcolor=none
+		inset="-5 -1 0 0"
+		render_bg={}
+		image="graphics/icon_button_back"
+	}
+
+	BackButton:hover
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_back_over"
+	}
+
+	BackButton:active
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_back_down"
+	}
+
+	BackButton:disabled
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_back_disabled"
+	}
+
+	FullscreenButton
+	{
+		bgcolor=none
+		inset="-5 -1 0 0"
+		render_bg={}
+		image="graphics/icon_button_fullscreen"
+	}
+
+
+	FullscreenButton:hover
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_fullscreen_over"
+	}
+
+	FullscreenButton:active
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_fullscreen_down"
+	}
+
+	FullscreenButton:disabled
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_fullscreen_disabled"
+	}
+
+	ForwardButton
+	{
+		bgcolor=none
+		inset="-5 -1 0 0"
+		render_bg={}
+		image="graphics/icon_button_forward"
+	}
+
+	ForwardButton:hover
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_forward_over"
+	}
+
+	ForwardButton:active
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_forward_down"
+	}
+
+	ForwardButton:disabled
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_forward_disabled"
+	}
+
+	HomeButton
+	{
+		bgcolor=none
+		inset="-5 0 0 0"
+		render_bg={}
+		image="graphics/icon_button_home"
+	}
+
+	HomeButton:hover
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_home_over"
+	}
+
+	HomeButton:active
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_home_down"
+	}
+
+	HomeButton:disabled
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_home_disabled"
+	}
+
+	ReloadButton
+	{
+		bgcolor=none
+		inset="-5 0 0 0"
+		render_bg={}
+		image="graphics/icon_button_reload"
+	}
+
+	ReloadButton:hover
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_reload_over"
+	}
+
+	ReloadButton:active
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_reload_down"
+	}
+
+	ReloadButton:disabled
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_reload_disabled"
+	}
+
+	StopButton
+	{
+		bgcolor=none
+		inset="-5 0 0 0"
+		render_bg={}
+		image="graphics/icon_button_stop"
+	}
+
+	StopButton:hover
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_stop_over"
+	}
+
+	StopButton:active
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_stop_down"
+	}
+
+	StopButton:disabled
+	{
+		bgcolor=none
+		render_bg={}
+		image="graphics/icon_button_stop_disabled"
+	}
+
+	gamedetails-headerlabel
+	{
+		font-size="17"
+		font-style="normal"
+		font-family=basefont
+		font-weight=700
+		textcolor="lightgrey"
+		font-style="uppercase;"
+	}
+
+	gamedetails-headerlabel-red
+	{
+		font-size="17"
+		font-style="normal"
+		font-family=basefont
+		font-weight=700
+		textcolor="GameDetailsRed"
+		font-style="uppercase;"
+	}
+
+	"html-findbar"
+	{
+		font-family=basefont
+		font-size=14
+		textcolor="text2"
+		font-weight=400
+		bgcolor="ubuntugrey"
+		selectedtextcolor="textentryselected"
+		selectedbgcolor="textselectedBG"
+		shadowtextcolor="lightgrey"	// this is the cursor color
+
+		render
+		{
+		// lines around
+		0="fill( x0 + 1, y0 + 2, x0 + 2, y1 + 1, buttonborder )"
+		1="gradient_horizontal( x0 + 2, y0 + 1, x1 - 1, y0 + 2, buttonborder, none )" 
+		2="gradient_horizontal( x0 + 2, y1 + 1, x1 - 1, y1 +2, buttonborder, none )"
+		}     	
+	}
+
+	gamedetails-headerlabel-green
+	{
+		font-size="17"
+		font-style="normal"
+		textcolor="GameDetailsGreen"
+		font-family=basefont
+		font-weight=700
+		font-style="uppercase;"
+	}
+
+	gamedetails-headerlabel-blue
+	{
+		font-size="17"
+		font-style="normal"
+		textcolor="GameDetailsBlue"
+		font-family=basefont
+		font-weight=700
+		font-style="uppercase;"
+	}
+
+	// styles for text used in Richtext controls in various places
+
+	console_text_error
+	{
+		textcolor="highlight3"
+		font-size=14
+		font-family="Ubuntu Mono" [$OSX]
+		font-size=16 [$OSX]
+		selectedtextcolor="textselected"
+		selectedbgcolor="ubuntuorangeselect"
+	}
+
+	console_text
+	{
+		font-family="Ubuntu Mono"
+		font-size=9
+		font-family="Ubuntu Mono" [$OSX]
+		font-size=14 [$OSX]
+		textcolor="lightgrey"
+		selectedtextcolor="textselected"	
+		selectedbgcolor="ubuntuorangeselect"
+	}
+
+	friends_chat_text
+	{
+		textcolor="lightgrey"
+		selectedtextcolor="textentryselected"	
+		SelectedBgColor="ubuntuorangeselect"
+		font-size=14
+	}
+
+	friends_chat_text_self
+	{
+		textcolor="ChatOwntextColor"
+		selectedtextcolor="textentryselected"	
+		selectedbgcolor="ubuntuorangeselect"
+		font-size=14
+	}
+
+	friends_chat_event
+	{
+		textcolor="lightgrey"
+		font-size=14
+		selectedtextcolor="textentryselected"
+		selectedbgcolor="ubuntuorangeselect"
+	}
+
+	friends_chat_bright_event
+	{
+		textcolor="lightgrey"
+		selectedtextcolor="textentryselected"
+		font-size=14
+		font-weight=1000
+	}
+
+	friends_chat_url
+	{
+		textcolor="lightgrey"
+		SelectedBgColor="ubuntuorangeselect"
+		font-style=underline
+		font-size=14
+		selectedtextcolor="textentryselected"
+		selectedbgcolor="ubuntuorangeselect"
+	}
+
+	friends_chat_name_ingame
+	{
+		textcolor="Friends.InGameColor"
+		selectedtextcolor="textentryselected"	
+		selectedbgcolor="ubuntuorangeselect"
+		font-size=14
+	}
+
+	friends_chat_self
+	{
+		textcolor="Friends.OnlineColor"
+		selectedtextcolor="textentryselected"	
+		selectedbgcolor="ubuntuorangeselect"
+		font-size=14
+	}
+
+	friends_chat_name
+	{
+		textcolor="Friends.OnlineColor"
+		selectedtextcolor="textentryselected"	
+		selectedbgcolor="ubuntuorangeselect"
+		font-size=14
+	}
+
+	friends_chat_accountid
+	{
+		selectedtextcolor="textentryselected"	
+		selectedbgcolor="ubuntuorangeselect"
+		textcolor="lightgrey"
+		font-size=14
+	}
+
+	friends_chat_securitylink
+	{
+		textcolor="lightgrey"
+		bgcolor="none"
+		font-family=basefont
+		font-size=14
+		font-weight=400
+		font-style=underline
+		selectedtextcolor="textselected"	
+		selectedbgcolor="ubuntuorangeselect"
+	}
+
+	Chat_MenuButton_withChrome
+	{
+		font-family=basefont
+		font-style="uppercase"
+		font-size="13"
+		font-weight=400
+		textcolor="lightgrey"
+		bgcolor="none"
+		render_bg 
+		{     
+		// background fill
+		0="gradient( x0 + 1, y0 + 1, x1 - 1, y1 - 1, buttonface, ubuntugrey )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborder )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborder )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborder )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborder )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborder )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborder )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborder )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborder )"
+		9="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonface2 )"
+		10="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonface2 )"
+		11="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonface2 )"
+		12="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonface2 )"
+		13="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonface2 )"
+		14="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonface2 )"
+		15="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonface2 )"
+		16="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonface2 )"
+		}
+	}
+
+	Chat_MenuButton_withChrome::disabled
+	{
+		textcolor="labeldisabled"
+		render_bg
+		{     
+		// background fill
+		0="fill( x0 + 1, y0 + 1, x1 - 1, y1 - 1, none )"
+
+		// lines around
+		1="fill( x0 + 2, y0, x1 - 2, y0 + 1, buttonborderdisabled )"  // top
+		2="fill( x0 + 2, y1 - 1, x1 - 2, y1, buttonborderdisabled )"  // bottom
+		3="fill( x0, y0 + 2, x0 + 1, y1 - 2, buttonborderdisabled )"  // left
+		4="fill( x1 - 1, y0 + 2, x1, y1 - 2, buttonborderdisabled )"  // right
+
+		// single pixel fills in the corners
+		5="fill( x0 + 1, y0 + 1, x0 + 2, y0 + 2, buttonborderdisabled )"
+		6="fill( x1 - 2, y0 + 1, x1 - 1, y0 + 2, buttonborderdisabled )"
+		7="fill( x0 + 1, y1 - 2, x0 + 2, y1 - 1, buttonborderdisabled )"
+		8="fill( x1 - 2, y1 - 2, x1 - 1, y1 - 1, buttonborderdisabled )"
+		11="fill( x0, y0 + 1, x0 + 1, y0 + 2, buttonborderdisabled2 )"
+		12="fill( x1 - 1, y0 + 1, x1, y0 + 2, buttonborderdisabled2 )"
+		13="fill( x0, y1 - 2, x0 + 1, y1 - 1, buttonborderdisabled2 )"
+		14="fill( x1 - 1, y1 - 2, x1, y1 - 1, buttonborderdisabled2 )"
+		15="fill( x0 + 1, y0, x0 + 2, y0 + 1, buttonborderdisabled2 )"
+		16="fill( x1 - 2, y0, x1 - 1, y0 + 1, buttonborderdisabled2 )"
+		17="fill( x0 + 1, y1 - 1, x0 + 2, y1, buttonborderdisabled2 )"
+		18="fill( x1 - 2, y1 - 1, x1 - 1, y1, buttonborderdisabled2 )"
+		}
+	}    
+
+
+	// used in friends tooltip and friends list for overriding regular styles with custom colors
+	friends_offline
+	{
+		textcolor="Friends.OfflineColor"
+	}
+	friends_online
+	{
+		textcolor="Friends.OnlineColor"
+	}
+	friends_ingame
+	{
+		textcolor="Friends.InGameColor"
+	}
+	friends_ignored
+	{
+		textcolor="Friends.IgnoredColor"
+	}
+
+	TabPageCloseButton
+	{
+		padding-right=16
+	}
+	}
+}

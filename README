@@ -1,0 +1,7 @@
+Steam Skin Manager NG ... a tool for changing Steam appearance
+
+Compile and run, just cd to this directory and type:
+# make run64 ... on 64 bit devices
+# make run32 ... on 32 bit devices
+
+or just to compile make build32/make build64 or make buildall

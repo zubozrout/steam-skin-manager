@@ -1,0 +1,19 @@
+"resource/layout/gamespage_mini.layout" {
+
+ 	layout
+ 	{
+		place { control="frame_captiongrip" margin=2 width=max height=38 }
+		place { control="MenuBar" margin-left=50 height=24 margin-top=2}
+
+	 	place { control="frame_close,frame_minimize" align=left margin-top=5 margin-left=10 spacing=-2 width=20 }
+
+		place { control="subnavgroup_library" align=top-center y=28 height=26 width=max margin-right=9 margin-left=9 }
+		
+		place { control="gameslist" align=left margin-left=10 margin-right=9 margin-top=56 margin-bottom=18 width=max height=max }
+		
+		place { control="library_search" width=80 }
+		place { control="label_search_icon,library_search" align=left y=33 height=17 spacing=1 x=13 }
+		
+		place { control="library_filters" align=right margin-left=10 margin-right=11 margin-top=31 height=22 spacing=1 }
+ 	}
+}
