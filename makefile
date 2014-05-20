@@ -20,8 +20,8 @@ $(BINARY_NAME).32: $(SRC_DIR)main.cpp
 	g++ -m32 $(FLAGS_S) $(SRC_DIR)main.cpp -o $(BINARY_NAME).32 $(FLAGS_E)
 
 clean:
-	$(RM) $(BINARY_NAME).64
-	$(RM) $(BINARY_NAME).32
+	rm -f $(BINARY_NAME).64
+	rm -f $(BINARY_NAME).32
 
 run64: $(BINARY_NAME).64
 	./$(BINARY_NAME).64
