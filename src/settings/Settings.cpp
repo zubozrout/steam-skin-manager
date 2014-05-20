@@ -29,6 +29,7 @@ Settings::Settings()
 	Parse("settings.conf", !gui);
 	
 	home_path = "/home/" + string(getenv("USER"));
+	// Path for Steam Skin Manager config file:
 	local_path = home_path + "/" + Key("user_path");
 	config = local_path + "config.cfg";
 	last_access = local_path + "last_access";

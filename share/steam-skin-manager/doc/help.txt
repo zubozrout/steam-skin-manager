@@ -1,0 +1,11 @@
+--help (-h), will show this screen
+--timestamp (-t), will tell you when was the last time you launched this tool
+--verson (-v), will display installed SSM version
+
+--apply-theme FOLDER_PATH, will config Steam to use theme from a defined folder
+--revert-theme, will revert Steam to use the default Steam theme
+--generate-launcher, this will create a local .desktop launcher for SSM.
+
+--run-with-decorations, will launch Steam with system window borders
+--run, will launch Steam without system window borders
+--no-gui, will launch Steam Skin Manager with no gui

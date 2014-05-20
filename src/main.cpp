@@ -8,8 +8,8 @@ bool gui = true;
 
 #include "cli/Category.cpp"
 #include "cli/WelcomeScreen.cpp"
-#include "cli/HelpScreen.cpp"
 #include "settings/Settings.cpp"
+#include "cli/HelpScreen.cpp"
 #include "steam/Steam.cpp"
 #include "gui/MainWindow.cpp"
 
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		{
 			if(argv[i] == string("--help") || argv[i] == string("-h"))
 			{
-				Help help;
+				Help help(settings);
 				help.SetTitle(settings.GetApplicationName() + "- HELP SCREEN");
 				cout << help;
 				show_home = false;
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 			}
 			else if(argv[i] == string("--version")  || argv[i] == string("-v"))
 			{
-				cout << settings.GetSoftwareVersion();
+				cout << settings.GetSoftwareVersion() << endl;
 				show_home = false;
 			}
 			else if(argv[i] == string("--run-with-decorations"))
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 	{
 		if(!gui)
 		{
-			Help help;
+			Help help(settings);
 			help.SetTitle(settings.GetApplicationName() + "- HELP SCREEN");
 			cout << help;
 		}
