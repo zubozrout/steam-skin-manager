@@ -38,6 +38,11 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-new</property>
   </object>
+  <object class="GtkImage" id="logo">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-execute</property>
+  </object>
   <object class="GtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="window_position">center</property>
@@ -68,7 +73,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">This will create a Steam Skin Manager launcher in the applications menu.</property>
-                        <property name="image">image1</property>
                         <property name="use_stock">False</property>
                       </object>
                     </child>
@@ -128,9 +132,9 @@
                 <property name="tooltip_text" translatable="yes">Launch Steam Client</property>
                 <property name="margin_left">10</property>
                 <property name="margin_right">10</property>
-                <property name="label" translatable="yes">Start Steam</property>
+                <property name="label" translatable="yes">Steam</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-execute</property>
+                <property name="icon_widget">logo</property>
               </object>
               <packing>
                 <property name="expand">False</property>

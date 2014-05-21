@@ -11,6 +11,7 @@ builder->get_widget("toolbar_launchsteam", launch_steam_from_toolbar);
 builder->get_widget("notification_label", notify);
 builder->get_widget("prev_tip", prev_tip);
 builder->get_widget("next_tip", next_tip);
+builder->get_widget("logo", logo);
 
 // Main Window
 builder->get_widget("header", header);

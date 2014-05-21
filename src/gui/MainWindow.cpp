@@ -34,10 +34,13 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	sc->add_class("primary-toolbar");
 	// Toolbar buttons
 	launch_steam_from_toolbar->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::LaunchSteam));
+	
 	lastrun->set_text(("You last ran this application at " + settings.GetFileContent(settings.GetLocalPath() + "last_access") + "You are currently using " + settings.GetCurrentTheme() + " theme.").c_str());
 	
 	// Combobox settings
 	ListAvaialbleThemes(settings.GetPath("theme"));
+	ListAvaialbleThemes(settings.Key("old_theme_path")); /* Steam Skin Manager (3.x) and older backward compatibility */
+	
 	// Apply theme button
 	apply->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::ApplyTheme));
 	
@@ -45,8 +48,14 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	comboboxthemes->signal_changed().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), true));
 	file_chooser->signal_file_set().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), false));
 	
-	header->set_markup("Welcome to " + settings.GetApplicationName() + " " + settings.GetSoftwareVersion());
+	header->set_markup("Hello " + settings.GetFullUserName() + ", Welcome to " + settings.GetApplicationName());
 	header->override_font(Pango::FontDescription("18px"));
+	
+	// Launch Steam button icon 
+	Glib::RefPtr<Gdk::Pixbuf> pix = Gdk::Pixbuf::create_from_file(settings.get_working_path() + "/share/steam-skin-manager/images/logo.svg");
+	int iconW, iconH;
+	Gtk::IconSize::lookup(launch_steam_from_toolbar->get_icon_size(), iconW, iconH);
+	logo->set(pix->scale_simple(iconW + 5, iconH + 5, Gdk::INTERP_BILINEAR));
 	
 	// Load WebView
 	WebView web(builder, settings);
@@ -72,13 +81,13 @@ void MainWindow::LaunchAboutWindow()
 void MainWindow::ApplyTheme()
 {
 	SpinnerStart();
-	string local_skin_path;
+	string selected_skin;
 	bool status_code;
 	
 	if(file_chooser->get_filename() == "")
 	{
-		local_skin_path = comboboxthemes->get_active_text();
-		if(local_skin_path == "Stock")
+		selected_skin = comboboxthemes->get_active_text();
+		if(selected_skin == "Stock")
 		{
 			if(settings.RevertSkin())
 			{
@@ -92,32 +101,35 @@ void MainWindow::ApplyTheme()
 				cerr << "Can't revert to the default due to a missing execution shell script." << endl;
 			}
 		}
+		else {
+			selected_skin = bundledSkins[comboboxthemes->get_active_row_number()];
+		}
 	}
 	else
-		local_skin_path = file_chooser->get_filename();
+		selected_skin = file_chooser->get_filename();
 	
 	if(file_chooser->get_filename() == "")
 	{
 		if(use_decorations->get_active())
-			local_skin_path += "/no-buttons"; // no-buttons are skins relying on native window decorations
+			selected_skin += "/no-buttons"; // no-buttons are skins relying on native window decorations
 		else
-			local_skin_path += "/with-buttons";
+			selected_skin += "/with-buttons";
 		
-		status_code = settings.SetInstalledSkin(local_skin_path);
+		status_code = settings.SetInstalledSkin(selected_skin);
 	}
 	else {
-		status_code = settings.SetSkin(local_skin_path);
+		status_code = settings.SetSkin(selected_skin);
 	}
 	
     if(status_code != -1 && status_code != 127)
     {
-        notify->set_markup("Theme was successfully applied.");
-        notify->override_color(Gdk::RGBA("#0a0"));
+        notify->set_markup("<b>Theme was applied.</b>");
+        notify->override_color(Gdk::RGBA("#3a3"));
 	}
     else
     {
-        notify->set_markup("Steam Skin Manager could not set the theme.");
-        notify->override_color(Gdk::RGBA("#a00"));
+        notify->set_markup("<b>Steam Skin Manager could not set the theme.</b>");
+        notify->override_color(Gdk::RGBA("#a33"));
 	}
 	
     SpinnerStop();
@@ -142,7 +154,7 @@ void MainWindow::PreviewTheme(bool preinstalled)
 			return;
 		}
 		else
-			skin_path = settings.GetPath("theme") + skin_name;
+			skin_path = bundledSkins[comboboxthemes->get_active_row_number()];
 	}
 	else
 		skin_path = file_chooser->get_filename();
@@ -205,16 +217,20 @@ void MainWindow::ListAvaialbleThemes(string path)
 {
 	vector<string> test = settings.GetListOfAvaialbleFolders(path);
 	string theme = settings.GetSystemTheme();
-	cout << "current theme is: " << theme << endl;
-	
+		
 	// Combobox
 	builder->get_widget("comboboxthemes", comboboxthemes);
 			
-	int i = 1;
-	comboboxthemes->insert(0, "Stock");
-	for(vector<string>::iterator it = test.begin(); it != test.end(); ++it)
-	{
+	int i = bundledSkins.size();
+	if(bundledSkins.empty() || bundledSkins.front() != "Stock") {	
+		comboboxthemes->insert(0, "Stock");
+		bundledSkins.push_back("Stock");
+		i++;
+	}
+	
+	for(vector<string>::iterator it = test.begin(); it != test.end(); ++it) {
 		comboboxthemes->insert(i, (*it));
+		bundledSkins.push_back(path + (*it));
 		
 		if(string(*it) == theme)
 			comboboxthemes->set_active(i);

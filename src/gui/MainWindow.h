@@ -6,6 +6,7 @@ class MainWindow {
 	private:
 		Settings & settings;
 		bool predefined_theme;
+		vector<string> bundledSkins;
 		
 		Gtk::Window* window;
 		
@@ -22,6 +23,7 @@ class MainWindow {
 		Gtk::FileChooserButton* file_chooser;
 		Gtk::Label* preview_description;
 		Gtk::Image* preview_image;
+		Gtk::Image* logo;
 		Gtk::Spinner* spinner;
 		
 		// Main menu

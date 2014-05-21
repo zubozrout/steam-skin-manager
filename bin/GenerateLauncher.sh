@@ -35,7 +35,7 @@ function create {
 	echo "Name=Steam Skin Manager" >> $output
 	echo "GenericName=Theme chooser" >> $output
 	echo "Comment=Easily change Steam's appearance" >> $output
-	echo "Icon=$ssmdir/share/steam-skin-manager/images/icon.png" >> $output
+	echo "Icon=$ssmdir/share/steam-skin-manager/images/logo.svg" >> $output
 	echo "Categories=Game;Settings;Utility;" >> $output
 	echo "" >> $output
 	echo "Path=$ssmdir" >> $output

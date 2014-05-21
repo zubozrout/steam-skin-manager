@@ -35,6 +35,8 @@ class Settings {
 		bool RevertSkin();
 		string GetCurrentTheme() const;
 		string get_working_path() const;
+		string GetUserName();
+		string GetFullUserName();
 		bool CreateLauncher();
 };
 

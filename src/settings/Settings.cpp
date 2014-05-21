@@ -16,19 +16,17 @@
 
 using namespace std;
 
-string Settings::TimePartCorrector(int stamp)
-{
+string Settings::TimePartCorrector(int stamp) {
 	if(stamp < 10)
 		return ("0" + to_string(stamp));
 	else
 		return to_string(stamp);
 }
 
-Settings::Settings()
-{
+Settings::Settings() {
 	Parse("settings.conf", !gui);
 	
-	home_path = "/home/" + string(getenv("USER"));
+	home_path = "/home/" + GetUserName();
 	// Path for Steam Skin Manager config file:
 	local_path = home_path + "/" + Key("user_path");
 	config = local_path + "config.cfg";
@@ -42,25 +40,20 @@ Settings::Settings()
 }
 
 // Source: http://stackoverflow.com/questions/6892754/creating-a-simple-configuration-file-and-parser-in-c
-void Settings::Parse(string file_path, bool console)
-{
+void Settings::Parse(string file_path, bool console) {
 	if(console) {
 		cout << "Parsing " << file_path << endl;
 	}
 	
 	ifstream file(file_path.c_str());
 	string id, eq, val, line;
-	while(getline(file, line))
-	{
+	while(getline(file, line)) {
 		istringstream iss(line);
-		if(iss >> id >> eq >> val)
-		{
-			if (id[0] == '#')
-			{
+		if(iss >> id >> eq >> val) {
+			if (id[0] == '#') {
 				continue;  // skip comments
 			}
-			if (eq != "=")
-			{
+			if (eq != "=") {
 				cerr << "[ERROR] " << "Mischmasch in the file." << endl;
 				continue;
 			}
@@ -78,39 +71,33 @@ void Settings::Parse(string file_path, bool console)
 	file.close();
 }
 
-string Settings::Key(string key) const
-{
+string Settings::Key(string key) const {
 	map<string, string>::const_iterator it = options.find(key);
-	if (it != options.end())
-	{
+	if (it != options.end()) {
 		return it->second;
 	}
-	else
-	{
-		throw runtime_error("Key not found");
+	else {
+		cout << "It looks like \"settings.conf\" file is missing. Please redownload Steam Skin Manager." << endl;
+		throw runtime_error("Key not found.");
 	}
 }
 
-int Settings::StringToInt(string value)
-{
+int Settings::StringToInt(string value) {
 	istringstream num_stream(value);
 	int i;
 	num_stream >> i;
 	return i;
 }
 
-string Settings::GetTip(bool up)
-{
+string Settings::GetTip(bool up) {
 	int entries = StringToInt(Key("num_of_tips"));
 	
-	try
-	{
+	try {
 		options["tip" + to_string(entries + 1)] = CommandOutput("echo -n \"$(wget iubuntu.cz/Steam/variable_content/tip.php -q -O -)\"");
 		if(Key(string("tip") + to_string(entries + 1)) != "")
 			entries++;
 	}
-	catch(...)
-	{
+	catch(...) {
 		cerr << "Can't load remote tip from network." << endl;
 	}
 			
@@ -127,16 +114,16 @@ string Settings::GetTip(bool up)
 	return Key(string("tip") + to_string(current_tip));
 }
 
-string Settings::CommandOutput(string cmd) const
-{
+string Settings::CommandOutput(string cmd) const {
 	string data;
 	FILE * stream;
 	const int max_buffer = 256;
 	char buffer[max_buffer];
+	
+	cmd = "echo -n $(" + cmd + ")"; // Removes new line after a command
 
 	stream = popen(cmd.c_str(), "r");
-	if (stream)
-	{
+	if (stream) {
 		while (!feof(stream))
 		if (fgets(buffer, max_buffer, stream) != NULL) data.append(buffer);
 		int ret = pclose(stream)/256;
@@ -146,17 +133,13 @@ string Settings::CommandOutput(string cmd) const
 	return data;
 }
 
-string Settings::GetFileContent(string file) const
-{
+string Settings::GetFileContent(string file) const {
 	string lines = "";
-	try
-	{
+	try {
 		ifstream input(file.c_str());
 		
-		if (input.is_open())
-		{
-			for(string line; getline(input, line); )
-			{
+		if (input.is_open()) {
+			for(string line; getline(input, line); ) {
 				if(line != "")
 					lines += line + "\n";
 			}
@@ -165,35 +148,29 @@ string Settings::GetFileContent(string file) const
 		else
 			cerr << "Can't open " << file << " file." << endl;
 	}
-	catch(...)
-	{
+	catch(...) {
 		cerr << "An exception was thrown due to a problem reading a file" << endl;
 	}
 	return lines;
 }
 
-string Settings::GetSoftwareVersion() const
-{
+string Settings::GetSoftwareVersion() const {
 	return Key("version");
 }
 
-string Settings::GetApplicationName() const
-{
+string Settings::GetApplicationName() const {
 	return Key("app_name");
 }
 
-vector<string> Settings::GetListOfAvaialbleFolders(string folder) const
-{
+vector<string> Settings::GetListOfAvaialbleFolders(string folder) const {
 	vector<string> list;
 	
 	DIR *dir;
 	struct dirent *entry;
 
 	dir = opendir(folder.c_str());
-	if (dir != NULL)
-	{
-		while ((entry = readdir(dir)) != NULL)
-		{
+	if (dir != NULL) {
+		while ((entry = readdir(dir)) != NULL) {
 			if (entry->d_type == DT_DIR && (entry->d_name != string(".") && entry->d_name != string("..")))
 				list.push_back(entry->d_name);
 		}
@@ -202,13 +179,11 @@ vector<string> Settings::GetListOfAvaialbleFolders(string folder) const
 	return list;
 }
 
-string Settings::GetSystemTheme() const
-{
+string Settings::GetSystemTheme() const {
 	return system_theme;
 }
 
-string Settings::GetPath(string type) const
-{
+string Settings::GetPath(string type) const {
 	if(type == "theme")
 		return Key("themes_path");
 	
@@ -220,20 +195,16 @@ string Settings::GetLocalPath() const
 	return local_path;
 }
 
-string Settings::GetHomePath() const
-{
+string Settings::GetHomePath() const {
 	return home_path;
 }
 
-string Settings::GetSystemPath() const
-{
+string Settings::GetSystemPath() const {
 	return Key("data_path");
 }
 
-void Settings::UpdateAccessTimestamp()
-{
-	try
-	{
+void Settings::UpdateAccessTimestamp() {
+	try {
 		ofstream cfg;
 		cfg.open(last_access.c_str());
 		time_t t = time(0);
@@ -242,14 +213,12 @@ void Settings::UpdateAccessTimestamp()
 		cfg << TimePartCorrector(now->tm_hour) << ":" << TimePartCorrector(now->tm_min) << ":" << TimePartCorrector(now->tm_sec) << endl;
 		cfg.close();
 	}
-	catch (...)
-	{
+	catch (...) {
 		cerr << "Can't write to a file.";
 	}
 }
 
-bool Settings::SetSkin(string path)
-{
+bool Settings::SetSkin(string path) {
 	string local_command = Key("steamskinapplier") + " -i " + path;
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
@@ -258,9 +227,8 @@ bool Settings::SetSkin(string path)
 	return false;
 }
 
-bool Settings::SetInstalledSkin(string local_skin_path)
-{
-	string local_command = Key("steamskinapplier") + " -i " + get_working_path() + "/" + Key("themes_path") + local_skin_path;
+bool Settings::SetInstalledSkin(string local_skin_path) {
+	string local_command = Key("steamskinapplier") + " -i " + get_working_path() + "/" + local_skin_path;
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
 	if(status_code != -1 && status_code != 127  && status_code != 1)
@@ -268,8 +236,7 @@ bool Settings::SetInstalledSkin(string local_skin_path)
 	return false;
 }
 
-bool Settings::RevertSkin()
-{
+bool Settings::RevertSkin() {
 	string local_command = Key("steamskinapplier") + " -r";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
@@ -278,15 +245,25 @@ bool Settings::RevertSkin()
 	return false;
 }
 
-string Settings::GetCurrentTheme() const
-{	
+string Settings::GetCurrentTheme() const {	
 	return CommandOutput(Key("steamskinapplier") + " -g");
 }
 
-string Settings::get_working_path() const
-{
+string Settings::get_working_path() const {
    char temp[100];
    return (getcwd(temp, 100) ? string(temp) : string(""));
+}
+
+string Settings::GetUserName() {
+	return string(getenv("USER"));
+}
+
+string Settings::GetFullUserName() {
+	string name = CommandOutput("getent passwd " + GetUserName() + " | cut -d ':' -f 5 | cut -d ',' -f 1");
+	if(name != "") {
+		return name;
+	}
+	return GetUserName();
 }
 
 bool Settings::CreateLauncher() {
