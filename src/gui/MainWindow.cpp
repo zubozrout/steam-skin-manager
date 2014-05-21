@@ -38,7 +38,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	lastrun->set_text(("You last ran this application at " + settings.GetFileContent(settings.GetLocalPath() + "last_access") + "You are currently using " + settings.GetCurrentTheme() + " theme.").c_str());
 	
 	// Combobox settings
-	ListAvaialbleThemes(settings.GetPath("theme"));
+	ListAvaialbleThemes(settings.get_working_path() + "/" + settings.GetPath("theme"));
 	ListAvaialbleThemes(settings.Key("old_theme_path")); /* Steam Skin Manager (3.x) and older backward compatibility */
 	
 	// Apply theme button
@@ -115,7 +115,7 @@ void MainWindow::ApplyTheme()
 		else
 			selected_skin += "/with-buttons";
 		
-		status_code = settings.SetInstalledSkin(selected_skin);
+		status_code = settings.SetSkin(selected_skin);
 	}
 	else {
 		status_code = settings.SetSkin(selected_skin);
@@ -220,7 +220,7 @@ void MainWindow::ListAvaialbleThemes(string path)
 		
 	// Combobox
 	builder->get_widget("comboboxthemes", comboboxthemes);
-			
+				
 	int i = bundledSkins.size();
 	if(bundledSkins.empty() || bundledSkins.front() != "Stock") {	
 		comboboxthemes->insert(0, "Stock");
@@ -231,6 +231,7 @@ void MainWindow::ListAvaialbleThemes(string path)
 	for(vector<string>::iterator it = test.begin(); it != test.end(); ++it) {
 		comboboxthemes->insert(i, (*it));
 		bundledSkins.push_back(path + (*it));
+		cout << path + (*it) << endl;
 		
 		if(string(*it) == theme)
 			comboboxthemes->set_active(i);

@@ -167,13 +167,20 @@ vector<string> Settings::GetListOfAvaialbleFolders(string folder) const {
 	
 	DIR *dir;
 	struct dirent *entry;
-
-	dir = opendir(folder.c_str());
-	if (dir != NULL) {
-		while ((entry = readdir(dir)) != NULL) {
-			if (entry->d_type == DT_DIR && (entry->d_name != string(".") && entry->d_name != string("..")))
-				list.push_back(entry->d_name);
+	
+	cout << "Reading dir: " << folder << endl;
+	
+	try {
+		dir = opendir(folder.c_str());
+		if (dir != NULL) {
+			while ((entry = readdir(dir)) != NULL) {
+				if (entry->d_type == DT_DIR && (entry->d_name != string(".") && entry->d_name != string("..")))
+					list.push_back(entry->d_name);
+			}
 		}
+	}
+	catch(...) {
+		return list;
 	}
 	
 	return list;
