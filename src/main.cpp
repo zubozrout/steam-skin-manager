@@ -11,6 +11,7 @@ bool gui = true;
 #include "settings/Settings.cpp"
 #include "cli/HelpScreen.cpp"
 #include "steam/Steam.cpp"
+#include "steam/Skin.cpp"
 #include "gui/MainWindow.cpp"
 
 int main(int argc, char *argv[])

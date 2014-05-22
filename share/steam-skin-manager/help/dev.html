@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Steam Skin Manager - Help</title>
+		<link href="assets/styles.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="assets/javascript.js"></script>
+	</head>
+	
+	<body>
+		<div id="page">
+			<header>
+				<h1>Steam Skin Manager's Help - Developers</h1>
+			</header>
+			
+			<article>
+				<h2>Developers</h2>
+				<section>
+					<h3>Steam theming standard</h3>
+					<p><strong>Steam Skin Manager</strong> is trying to <strong>create a standard for packaging themes/skins</strong>. If you are a developer investigating the ways of presenting your theme(s) to the wider community, you may wish to simplify the installation process e.g. by making your own installer or using this tool.</p>
+				</section>
+				<section>
+					<h3>There are 2 ways getting your skin working with Steam Skin Manager</h3>
+					<ul>
+						<li>Prepare your skin so users can just extract the whole theme folder and point to it in the Steam Skin Manager custom file chooser dialog.</li>
+						<li><strong>Make a package or an installer</strong> that puts your theme to the "/usr/share/steam/skins" directory. * (recommended)</li>
+					</ul>
+					<p>* So called "Bundled skins", but with the New-Generation not truly bundled, must obey the following rules to be functional:</p>
+					<ol>
+						<li>Your folder's name placed in the directory is the Skin's name, that appears to the user.</li>
+						<li>There <strong>must be</strong> two folders inside your directory, "no-buttons" and "with-buttons".<br>"no-buttons" is the directory without window buttons (this modification is prepared for using native window border) whilst the other folder contains window buttons - maximize,minimize,close - and can be used on it's own with Steam. If you don't intend to create "no-buttons" version, omit it or create a symlink to it so it works no matter what user choose.</li>
+						<li><strong>Description in an optional</strong> file, only one per both theme variants, placed in the root directory of your theme. It must be called "description.txt" and can take advantage of some basic html tags, like - bold,italic,underline,link -. It is recommended to keep the description file shorter rather than long.</li>
+						<li><strong>Preview is another optional</strong> file and if used it must be called "preview.png". There is again only one file for both variants, located in the root directory of your theme. This should be a screenshot of Steam window with the applied theme. Recommended size is 500x277px, but it is not limited.</li>
+					</ol>
+				</section>
+			</article>
+			
+			<footer>
+				<a href="help.html">Home &#8962;</a>
+			</footer>
+		</div>
+	</body>
+
+</html>

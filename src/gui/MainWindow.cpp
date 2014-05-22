@@ -10,16 +10,13 @@
 
 using namespace std;
 
-MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): settings(linked_settings)
-{
+MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): settings(linked_settings) {
 	Gtk::Main kit(argc, argv);
 	
-	try
-	{
+	try {
 		builder = Gtk::Builder::create_from_file(settings.Key("ui_path"));
 	}  
-	catch (const Glib::FileError & ex)
-	{
+	catch (const Glib::FileError & ex)	{
 		std::cerr << ex.what() << std::endl;
 	}  
 	
@@ -45,8 +42,8 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	apply->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::ApplyTheme));
 	
 	// File chooser
-	comboboxthemes->signal_changed().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), true));
-	file_chooser->signal_file_set().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), false));
+	comboboxthemes->signal_changed().connect(sigc::mem_fun(*this, &MainWindow::PreviewTheme));
+	file_chooser->signal_file_set().connect(sigc::mem_fun(*this, &MainWindow::PreviewTheme));
 	
 	header->set_markup("Hello " + settings.GetFullUserName() + ", Welcome to " + settings.GetApplicationName());
 	header->override_font(Pango::FontDescription("18px"));
@@ -59,200 +56,170 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	
 	// Load WebView
 	WebView web(builder, settings);
-	// Manual Steam Settings Edit
-	//ManualEditor(builder, settings);
-	manualeditor = new ManualEditor(builder, settings);
+	// Manual Steam Settings Editor
+	manualeditor = new ManualEditor(builder, settings);	
 	
-	PreviewTheme(true);
+	// Create skin class
+	skin = new Skin(settings);	
+	// Define theme using user's input
+	PreviewTheme();
+	
     ShowTips();
     	
-	if(window)
-	{
+	if(window) {
 		window->set_title(settings.GetApplicationName().c_str());
 		Gtk::Main::run(*window);
 	}
 }
 
-void MainWindow::LaunchAboutWindow()
-{
+void MainWindow::LaunchAboutWindow() {
 	AboutWindow about(builder, settings);
 }
 
-void MainWindow::ApplyTheme()
-{
+void MainWindow::ApplyTheme() {
 	SpinnerStart();
-	string selected_skin;
-	bool status_code;
+	string skinpath;
 	
-	if(file_chooser->get_filename() == "")
-	{
-		selected_skin = comboboxthemes->get_active_text();
-		if(selected_skin == "Stock")
-		{
-			if(settings.RevertSkin())
-			{
-				notify->set_markup("Theme was successfully reverted.");
-				notify->override_color(Gdk::RGBA("#0a0"));
-			}
-			else
-			{
-				notify->set_markup("Steam Skin Manager could not revert the theme.");
-				notify->override_color(Gdk::RGBA("#a00"));
-				cerr << "Can't revert to the default due to a missing execution shell script." << endl;
-			}
+	if(skin->GetName() == defaultskin) {
+		skinpath = skin->GetPath(true);
+		if(settings.RevertSkin()) {
+			notify->set_markup("Theme was successfully reverted.");
+			notify->override_color(Gdk::RGBA("#0a0"));
 		}
 		else {
-			selected_skin = bundledSkins[comboboxthemes->get_active_row_number()];
+			notify->set_markup("Steam Skin Manager could not revert the theme.");
+			notify->override_color(Gdk::RGBA("#a00"));
+			cerr << "Can't revert to the default due to a missing execution shell script." << endl;
 		}
 	}
-	else
-		selected_skin = file_chooser->get_filename();
-	
-	if(file_chooser->get_filename() == "")
-	{
-		if(use_decorations->get_active())
-			selected_skin += "/no-buttons"; // no-buttons are skins relying on native window decorations
-		else
-			selected_skin += "/with-buttons";
+	else {	
+		bool status_code = settings.SetSkin(skin->GetPath(false, !use_decorations->get_active()));
 		
-		status_code = settings.SetSkin(selected_skin);
-	}
-	else {
-		status_code = settings.SetSkin(selected_skin);
-	}
-	
-    if(status_code != -1 && status_code != 127)
-    {
-        notify->set_markup("<b>Theme was applied.</b>");
-        notify->override_color(Gdk::RGBA("#3a3"));
-	}
-    else
-    {
-        notify->set_markup("<b>Steam Skin Manager could not set the theme.</b>");
-        notify->override_color(Gdk::RGBA("#a33"));
+		if(status_code != -1 && status_code != 127) {
+			notify->set_markup("<b>Theme was applied.</b>");
+			notify->override_color(Gdk::RGBA("#3a3"));
+		}
+		else {
+			notify->set_markup("<b>Steam Skin Manager could not set the theme.</b>");
+			notify->override_color(Gdk::RGBA("#a33"));
+		}
 	}
 	
     SpinnerStop();
 }
 
-void MainWindow::PreviewTheme(bool preinstalled)
-{
+void MainWindow::PreviewTheme() {
 	SpinnerStart();
 	string skin_name, skin_path;
 	
-	preview_description->set_line_wrap(true);
-	preview_image->override_background_color(Gdk::RGBA("#333"));
-	
-	if(preinstalled)
-	{
+	if(file_chooser->get_filename() == "") {
 		skin_name = comboboxthemes->get_active_text();
-		if(skin_name == "Stock")
-		{
-			skin_path = "stock";
-			SetPreviewImage(settings.GetSystemPath() + "/images/stock.png", "<i>The is the default and official Steam theme.</i>");
-			SpinnerStop();
-			return;
-		}
-		else
-			skin_path = bundledSkins[comboboxthemes->get_active_row_number()];
+		skin_path = bundledSkins[comboboxthemes->get_active_row_number()];
 	}
-	else
+	else {
 		skin_path = file_chooser->get_filename();
+		size_t found = skin_path.find_last_of("/\\");
+		skin_name = skin_path.substr(0, found);
+	}
 	
-	// Preview ... description
-	if(skin_name != "")
-		SetPreviewImage(skin_path + "/preview.png", settings.GetFileContent(skin_path + "/description.txt"));
-	else
-		SetPreviewImage(settings.GetSystemPath() + "/images/image_missing.png", "No description available for this theme.");
+	if(skin_name == defaultskin) {
+		skin->FillDefault(defaultskin);
+	}
+	else {
+		skin->Fill(skin_name, skin_path);
+	}
+	
+	if(skin->HasVariants()) {
+		use_decorations->set_sensitive(true);
+	}
+	else {
+		use_decorations->set_sensitive(false);
+		use_decorations->set_active(false);
+	}
+	
+	SetPreviewImage();
 	SpinnerStop();
 }
 
-void MainWindow::SetPreviewImage(string path, string description)
-{
-	Glib::RefPtr<Gdk::Pixbuf> tmp_image = Gdk::Pixbuf::create_from_file(path);
-	tmp_image = tmp_image->scale_simple(500, 277, Gdk::INTERP_BILINEAR);
-	preview_image->set(tmp_image);
+void MainWindow::SetPreviewImage() {
+	preview_description->set_line_wrap(true);
+	preview_image->override_background_color(Gdk::RGBA("#333"));
 	
-	if(description != "")
-	{
-		preview_description->set_markup(description);
+	try {
+		Glib::RefPtr<Gdk::Pixbuf> tmp_image = Gdk::Pixbuf::create_from_file(skin->GetImg());
+		tmp_image = tmp_image->scale_simple(500, 277, Gdk::INTERP_BILINEAR);
+		preview_image->set(tmp_image);
+	}
+	catch(...) {
+		cerr << "Couldn't load a preview image." << endl;
+	}
+	
+	if(skin->GetDescription() != "") {
+		preview_description->set_markup(skin->GetDescription());
 	}
 }
 
-void MainWindow::ShowTips()
-{
+void MainWindow::ShowTips() {
 	notify->set_markup(settings.GetTip(true));
 	
 	prev_tip->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::PreviousTip));
 	next_tip->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::NextTip));
 }
 
-void MainWindow::NextTip()
-{
+void MainWindow::NextTip() {
 	notify->set_markup(settings.GetTip(true));
 	notify->unset_color();
 }
 
-void MainWindow::PreviousTip()
-{
+void MainWindow::PreviousTip() {
 	notify->set_markup(settings.GetTip(false));
 	notify->unset_color();
 }
 
-void MainWindow::LaunchSteam()
-{
+void MainWindow::LaunchSteam() {
 	SpinnerStart();
 	cout << "Launching steam ..." << endl;
 	Steam steam(settings);
 	steam.Run(use_decorations->get_active());
+	// Todo: Stop spinner
 }
 
-MainWindow::~MainWindow()
-{
-	delete manualeditor;
-	cout << "Bye Bye " << getenv("USER") << " ..." << endl;
-}
-
-void MainWindow::ListAvaialbleThemes(string path)
-{
+void MainWindow::ListAvaialbleThemes(string path) {
 	vector<string> test = settings.GetListOfAvaialbleFolders(path);
 	string theme = settings.GetSystemTheme();
-		
-	// Combobox
-	builder->get_widget("comboboxthemes", comboboxthemes);
-				
+			
 	int i = bundledSkins.size();
-	if(bundledSkins.empty() || bundledSkins.front() != "Stock") {	
-		comboboxthemes->insert(0, "Stock");
-		bundledSkins.push_back("Stock");
+	if(bundledSkins.empty() || bundledSkins.front() != defaultskin) {	
+		comboboxthemes->insert(0, defaultskin);
+		bundledSkins.push_back(defaultskin);
 		i++;
 	}
 	
 	for(vector<string>::iterator it = test.begin(); it != test.end(); ++it) {
 		comboboxthemes->insert(i, (*it));
 		bundledSkins.push_back(path + (*it));
-		cout << path + (*it) << endl;
 		
 		if(string(*it) == theme)
 			comboboxthemes->set_active(i);
 		
 		i++;
 	}
-	
-	PreviewTheme(false);		
 }
 
-void MainWindow::SpinnerStart()
-{
+void MainWindow::SpinnerStart() {
 	spinner->start();
 }
 
-void MainWindow::SpinnerStop()
-{
+void MainWindow::SpinnerStop() {
 	spinner->stop();
 }
 
-void MainWindow::CreateLauncher()
-{
+void MainWindow::CreateLauncher() {
 	settings.CreateLauncher();
+}
+
+MainWindow::~MainWindow() {
+	delete manualeditor;
+	delete skin;
+	cout << "Bye Bye " << getenv("USER") << " ..." << endl;
 }

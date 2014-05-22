@@ -72,13 +72,18 @@ void Settings::Parse(string file_path, bool console) {
 }
 
 string Settings::Key(string key) const {
-	map<string, string>::const_iterator it = options.find(key);
-	if (it != options.end()) {
-		return it->second;
+	try {
+		map<string, string>::const_iterator it = options.find(key);
+		if (it != options.end()) {
+			return it->second;
+		}
+		else {
+			cout << "It looks like \"settings.conf\" file is missing. Please redownload Steam Skin Manager." << endl;
+			throw runtime_error("Key not found.");
+		}
 	}
-	else {
-		cout << "It looks like \"settings.conf\" file is missing. Please redownload Steam Skin Manager." << endl;
-		throw runtime_error("Key not found.");
+	catch(...) {
+		throw runtime_error("An exception occured during the " + key + " key-search.");
 	}
 }
 
@@ -164,23 +169,22 @@ string Settings::GetApplicationName() const {
 
 vector<string> Settings::GetListOfAvaialbleFolders(string folder) const {
 	vector<string> list;
-	
 	DIR *dir;
 	struct dirent *entry;
 	
-	cout << "Reading dir: " << folder << endl;
-	
-	try {
-		dir = opendir(folder.c_str());
-		if (dir != NULL) {
-			while ((entry = readdir(dir)) != NULL) {
-				if (entry->d_type == DT_DIR && (entry->d_name != string(".") && entry->d_name != string("..")))
-					list.push_back(entry->d_name);
+	if(folder != "") {
+		try {
+			dir = opendir(folder.c_str());
+			if (dir != NULL) {
+				while ((entry = readdir(dir)) != NULL) {
+					if (entry->d_type == DT_DIR && (entry->d_name != string(".") && entry->d_name != string("..")))
+						list.push_back(entry->d_name);
+				}
 			}
 		}
-	}
-	catch(...) {
-		return list;
+		catch(...) {
+			return list;
+		}
 	}
 	
 	return list;
@@ -207,7 +211,7 @@ string Settings::GetHomePath() const {
 }
 
 string Settings::GetSystemPath() const {
-	return Key("data_path");
+	return get_working_path() + "/" + Key("data_path");
 }
 
 void Settings::UpdateAccessTimestamp() {
@@ -226,7 +230,7 @@ void Settings::UpdateAccessTimestamp() {
 }
 
 bool Settings::SetSkin(string path) {
-	string local_command = Key("steamskinapplier") + " -i " + path;
+	string local_command = Key("steamskinapplier") + " -i \"" + path + "\"";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
     if(status_code != -1 && status_code != 127)
@@ -235,7 +239,7 @@ bool Settings::SetSkin(string path) {
 }
 
 bool Settings::SetInstalledSkin(string local_skin_path) {
-	string local_command = Key("steamskinapplier") + " -i " + get_working_path() + "/" + local_skin_path;
+	string local_command = Key("steamskinapplier") + " -i \"" + get_working_path() + "/" + local_skin_path + "\"";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
 	if(status_code != -1 && status_code != 127  && status_code != 1)

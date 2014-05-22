@@ -5,8 +5,11 @@
 class MainWindow {
 	private:
 		Settings & settings;
+		Skin* skin;
+		
 		bool predefined_theme;
 		vector<string> bundledSkins;
+		string defaultskin = "Default Skin";
 		
 		Gtk::Window* window;
 		
@@ -40,10 +43,10 @@ class MainWindow {
 		void ShowTips();
 		void LaunchSteam();
 		void ListAvaialbleThemes(string path);
-		void PreviewTheme(bool preinstalled);
+		void PreviewTheme();
 		void SpinnerStart();
 		void SpinnerStop();
-		void SetPreviewImage(string path, string descritption);
+		void SetPreviewImage();
 		void NextTip();
 		void PreviousTip();
 		void LaunchAboutWindow();

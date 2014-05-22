@@ -1,14 +1,24 @@
 <!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Steam Skin Manager Help - manual changes</title>
-</head>
-<body style="font-family:Ubuntu Light; font-weight:300;">
-<h3>Editing registry.vdf file manually</h3>
-<p>registry.vdf file contains Steam client settings. Some can only be changed here.</p>
 
-<h3>Basics</h3>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Steam Skin Manager - Help</title>
+		<link href="assets/styles.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="assets/javascript.js"></script>
+	</head>
+	
+	<body>
+		<div id="page">
+			<header>
+				<h1>Steam Skin Manager's Help - Bundled Skins</h1>
+			</header>
+			
+			<article>
+				<h3>Editing registry.vdf file manually</h3>
+				<p>registry.vdf file contains Steam client settings. Some can only be changed here.</p>
+
+				<h3>The basics</h3>
 <pre>
 "HKCU"
  {
@@ -21,8 +31,13 @@
           "SkinV4"	"MY_SKIN"
           "Language"	"MY_LANGUAGE"
 </pre>
-<p>e.g. to change interface language, replace "MY_LANGUAGE" with something like "english".<br>You can also change your skin here, but you must first put it into ~./steam/Steam/skins/MY_SKIN directory.</p>
+				<p>e.g. to change interface language, replace "MY_LANGUAGE" with something like "english".<br>You can also change your skin here, but you must first put it into ~./steam/Steam/skins/MY_SKIN directory.</p>
+			</article>
+			
+			<footer>
+				<a href="help.html">Home &#8962;</a>
+			</footer>
+		</div>
+	</body>
 
-<p><a href="./help.html">Go home</a></p>
-</body>
 </html>

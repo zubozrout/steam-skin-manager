@@ -19,6 +19,7 @@ builder->get_widget("lastrunlabel", lastrun);
 builder->get_widget("apply_button", apply);
 builder->get_widget("use_decorations", use_decorations);
 builder->get_widget("filechooserbutton", file_chooser);
+builder->get_widget("comboboxthemes", comboboxthemes);
 // Main Window - preview
 builder->get_widget("skindescriptionlabel", preview_description);
 builder->get_widget("skin_preview", preview_image);
