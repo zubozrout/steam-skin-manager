@@ -4,17 +4,18 @@
 class Settings {
 	private:
 		map<string, string> options;
-		string home_path;
-		string local_path;
-		string config;
-		string last_access;
+		string user_home;
 		string system_theme;
+		bool steam_installed = true;
+		future<void> *wget;
+		int entries = 0;
 		int current_tip = 0;
 		
 		string TimePartCorrector(int stamp);
 				
 	public:
 		Settings();
+		~Settings();
 		void Parse(string settings_file_path, bool console = false);
 		string Key(string key) const;
 		string CommandOutput(string cmd) const;

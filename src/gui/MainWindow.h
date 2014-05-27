@@ -4,8 +4,11 @@
 
 class MainWindow {
 	private:
+		Glib::RefPtr<Gtk::Application> kit;
 		Settings & settings;
 		Skin* skin;
+		future<void> *steamlaunch;
+		Glib::Mutex mutex;
 		
 		bool predefined_theme;
 		vector<string> bundledSkins;
@@ -16,11 +19,13 @@ class MainWindow {
 		Glib::RefPtr<Gtk::Builder> builder;
 		Gtk::Toolbar* toolbar;
 		Gtk::ToolButton* launch_steam_from_toolbar;
-		Gtk::Button* prev_tip;
-		Gtk::Button* next_tip;
+		Gtk::ToolButton* prev_tip;
+		Gtk::ToolButton* next_tip;
 		Gtk::Label* header;
 		Gtk::Label* lastrun;
 		Gtk::Label* notify;
+		Gtk::Label* skin_name_label;
+		Gtk::EventBox* preview_name_box;
 		Gtk::Button* apply;
 		Gtk::Switch* use_decorations;
 		Gtk::FileChooserButton* file_chooser;
@@ -30,8 +35,11 @@ class MainWindow {
 		Gtk::Spinner* spinner;
 		
 		// Main menu
+		Gtk::ImageMenuItem* menu_quit;
 		Gtk::ImageMenuItem* menu_about;
 		Gtk::ImageMenuItem* create_launcher;
+		Gtk::ImageMenuItem* menu_run_steam;
+		Gtk::ImageMenuItem* menu_run_steam_wb;
 		
 		// Theme chooser
 		Gtk::ComboBoxText* comboboxthemes;
@@ -41,16 +49,21 @@ class MainWindow {
 		
 		void ApplyTheme();
 		void ShowTips();
-		void LaunchSteam();
+		void LaunchSteam(bool decorations);
+		void SteamLauncherThread(bool decorations = true);
+		void SteamLauncher();
+		static void SteamFinished(gpointer object);
 		void ListAvaialbleThemes(string path);
-		void PreviewTheme();
+		void PreviewTheme(bool native = true);
 		void SpinnerStart();
 		void SpinnerStop();
+		void SetPreviewName();
 		void SetPreviewImage();
 		void NextTip();
 		void PreviousTip();
 		void LaunchAboutWindow();
 		void CreateLauncher();
+		void Quit();
 		
 	public:
 		MainWindow(int argc, char* argv[], Settings & linked_settings);

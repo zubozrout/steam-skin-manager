@@ -4,12 +4,10 @@
 class Steam {
 	private:
 		const Settings & settings;
-		
-		static void reap_child(int sig);
-		static void Done();
 
 	public:
 		Steam(const Settings & linked_settings);
+		~Steam();
 		void Run(bool native_decorations);
 };
 

@@ -22,6 +22,7 @@ void Skin::Fill(string nam, string pth) {
 	
 	name = nam;
 	path = pth;
+	variants = 100;
 	
 	CheckVariants(); // Check theme's duality
 	
@@ -47,8 +48,13 @@ bool Skin::CheckVariants() {
 	int i = test.size();
 	has_variants = false;
 	for(vector<string>::iterator it = test.begin(); it != test.end(); ++it) {
-		if((*it) == "no-buttons" || (*it) == "with-buttons") {
+		if((*it) == "no-buttons") {
 			has_variants = true;
+			variants+= 1;
+		}
+		else if((*it) == "with-buttons") {
+			has_variants = true;
+			variants += 10;
 		}
 		i++;
 	}
@@ -64,6 +70,10 @@ bool Skin::FileExist(string file)
 
 bool Skin::HasVariants() {
 	return has_variants;
+}
+
+int Skin::GetVariants() {
+	return variants;
 }
 
 string Skin::GetName() {

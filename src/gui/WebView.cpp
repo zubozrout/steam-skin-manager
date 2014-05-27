@@ -37,54 +37,11 @@ WebView::WebView(Glib::RefPtr<Gtk::Builder> &builder, const Settings & linked_se
 	g_object_ref_sink(G_OBJECT(webview));
 	gtk_container_add(GTK_CONTAINER(webview_help->gobj()), GTK_WIDGET(webview));
 	gtk_widget_show_all(GTK_WIDGET(webview));
-	
-	/* Register a callback that gets invoked each time that a page is finished downloading */
-    //g_signal_connect(webview, "load-finished", G_CALLBACK(load_finished_cb), NULL);
 
-    /* Register a callback that gets invoked each time that the load status changes */
-    //g_object_connect(webview, "signal::notify::load-status", G_CALLBACK(load_status_cb), NULL);
-    
 	g_signal_connect(webview, "load_finished", G_CALLBACK(load_finished_trampoline), this);
 	
 	HelpGoHome();
 }
-
-/*
-static void WebView::destroy_cb(GtkWidget* widget, gpointer data) {
-    gtk_main_quit();
-  }
-
-static void WebView::load_finished_cb(WebKitWebView *web_view, WebKitWebFrame *web_frame, gpointer data) {
-      printf("Finished downloading %s\n", webkit_web_view_get_uri(webview));
-  }
-
-  static void WebView::load_status_cb(GObject* object, GParamSpec* pspec, gpointer data) {
-      WebKitWebView *webview;
-      WebKitLoadStatus status;
-      const gchar *uri;
-
-      webview = WEBKIT_WEB_VIEW(object);
-      status = webkit_web_view_get_load_status(webview);
-      uri = webkit_web_view_get_uri(webview);
-
-      switch (status) {
-      case WEBKIT_LOAD_PROVISIONAL:
-          printf("Load provisional: %s\n", uri);
-          break;
-      case WEBKIT_LOAD_COMMITTED:
-          printf("Load commited: %s\n", uri);
-          break;
-      case WEBKIT_LOAD_FIRST_VISUALLY_NON_EMPTY_LAYOUT:
-          printf("Load first visually non empty layout: %s\n", uri);
-          break;
-      case WEBKIT_LOAD_FINISHED:
-          printf("Load finished: %s\n", uri);
-          break;
-      default:
-          g_assert_not_reached();
-      }
-  }
-*/
 
 void WebView::HelpGoHome()
 {
@@ -124,7 +81,6 @@ void WebView::HelpGo()
 
 void WebView::ShowUrl()
 {
-	//const char *title = webkit_web_view_get_title(webview);
 	const char *title = webkit_web_view_get_uri(webview);
 	if (title != NULL)
 		help_url_entry->set_text(title);

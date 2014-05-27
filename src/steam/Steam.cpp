@@ -7,47 +7,36 @@ using namespace std;
 
 Steam::Steam(const Settings & linked_settings): settings(linked_settings) {}
 
-void Steam::reap_child(int sig)
-{
-	int status;
-	waitpid(-1, &status, WNOHANG);
-	Done(); // child finished (Steam closed)
-}
-
-void Steam::Run(bool native_decorations)
-{
-	try
-	{
-		signal(SIGCHLD, reap_child);
-		int fork_rv = fork();
-		if (fork_rv == 0)
-		{
-			// [TODO]: Replace system with exec
+void Steam::Run(bool native_decorations) {
+	try {
+		int pid = fork();
+		if(pid == -1) {
+			cerr << "Failed to fork() and run Steam" << endl;
+		}
+		else if(pid > 0) {
+			int status;
+			waitpid(pid, &status, 0);
+			return;
+		}
+		else {
+			// pid == 0
 			if(native_decorations)
 				system(settings.Key("steamdecorator").c_str());
 			else
 				system("steam");
 			exit(0);
 		}
-		else if (fork_rv == -1)
-		{
-			cerr << "Failed to fork() and run Steam" << endl;
-		}
 	}
 	
-	catch (...)
-	{
+	catch (...) {
 		cerr << "An exception occurred. Can't run Steam." << endl;
 		return;
 	}
 }
 
-void Steam::Done()
-{
-	cout << "Steam was closed." << endl;
+Steam::~Steam() {
 	if(!gui) {
 		cout << "Exiting Steam Skin Manager" << endl;
 		exit(EXIT_SUCCESS);
 	}
-	// Need to find whether a class not yet defined has been instancied and send it a signal (use it's method)
 }

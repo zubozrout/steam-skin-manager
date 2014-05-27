@@ -11,31 +11,16 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <future>
 
 #include "Settings.h"
 
 using namespace std;
 
-string Settings::TimePartCorrector(int stamp) {
-	if(stamp < 10)
-		return ("0" + to_string(stamp));
-	else
-		return to_string(stamp);
-}
-
-Settings::Settings() {
+Settings::Settings(): wget(nullptr) {
 	Parse("settings.conf", !gui);
-	
-	home_path = "/home/" + GetUserName();
-	// Path for Steam Skin Manager config file:
-	local_path = home_path + "/" + Key("user_path");
-	config = local_path + "config.cfg";
-	last_access = local_path + "last_access";
-	
-	string command = "mkdir -p " + local_path;
-	system(command.c_str());
-	
-	// Program parameters
+	user_home = "/home/" + GetUserName();
+	system(("mkdir -p " + user_home + "/" + Key("ucfg_path")).c_str());
 	system_theme = CommandOutput(Key("system_theme"));
 }
 
@@ -95,15 +80,20 @@ int Settings::StringToInt(string value) {
 }
 
 string Settings::GetTip(bool up) {
-	int entries = StringToInt(Key("num_of_tips"));
-	
-	try {
-		options["tip" + to_string(entries + 1)] = CommandOutput("echo -n \"$(wget iubuntu.cz/Steam/variable_content/tip.php -q -O -)\"");
-		if(Key(string("tip") + to_string(entries + 1)) != "")
-			entries++;
-	}
-	catch(...) {
-		cerr << "Can't load remote tip from network." << endl;
+	if(entries == 0) {
+		entries = StringToInt(Key("num_of_tips"));
+		
+		try {
+			wget = new future<void>(async(launch::async, [&] {
+				options["tip" + to_string(entries + 1)] = CommandOutput("echo -n \"$(wget iubuntu.cz/Steam/variable_content/tip.php -q -O -)\"");
+				if(Key(string("tip") + to_string(entries + 1)) != "")
+					entries++;
+				return;
+			}));
+		}
+		catch(...) {
+			cerr << "Can't load remote tip from network." << endl;
+		}
 	}
 			
 	if(up)
@@ -126,14 +116,17 @@ string Settings::CommandOutput(string cmd) const {
 	char buffer[max_buffer];
 	
 	cmd = "echo -n $(" + cmd + ")"; // Removes new line after a command
-
+	
 	stream = popen(cmd.c_str(), "r");
-	if (stream) {
-		while (!feof(stream))
-		if (fgets(buffer, max_buffer, stream) != NULL) data.append(buffer);
+	if(stream) {
+		while(!feof(stream)) {
+			if(fgets(buffer, max_buffer, stream) != nullptr) {
+				data.append(buffer);
+			}
+		}
 		int ret = pclose(stream)/256;
 		if(ret != 0)
-			cerr << "Command could not be executed, error code: " << ret << endl; // error
+			cerr << "Command could not be executed, error code: " << ret << endl;
 	}
 	return data;
 }
@@ -203,21 +196,28 @@ string Settings::GetPath(string type) const {
 
 string Settings::GetLocalPath() const
 {
-	return local_path;
+	return user_home + "/" + Key("ucfg_path");
 }
 
 string Settings::GetHomePath() const {
-	return home_path;
+	return user_home;
 }
 
 string Settings::GetSystemPath() const {
 	return get_working_path() + "/" + Key("data_path");
 }
 
+string Settings::TimePartCorrector(int stamp) {
+	if(stamp < 10)
+		return ("0" + to_string(stamp));
+	else
+		return to_string(stamp);
+}
+
 void Settings::UpdateAccessTimestamp() {
 	try {
 		ofstream cfg;
-		cfg.open(last_access.c_str());
+		cfg.open((user_home + "/" + Key("ucfg_path")).c_str());
 		time_t t = time(0);
 		struct tm * now = localtime( & t );
 		cfg << now->tm_mday << "." << (now->tm_mon + 1) << "." << (now->tm_year + 1900) << "_";
@@ -282,4 +282,8 @@ bool Settings::CreateLauncher() {
 		return true;
 	}
 	return false;
+}
+
+Settings::~Settings() {
+	delete wget;
 }

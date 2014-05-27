@@ -12,7 +12,7 @@ AboutWindow::AboutWindow(Glib::RefPtr<Gtk::Builder> &builder, const Settings & l
 	
 	try
 	{
-		Glib::RefPtr<Gdk::Pixbuf> logo = Gdk::Pixbuf::create_from_file(settings.GetSystemPath() + "images/logo.png");
+		Glib::RefPtr<Gdk::Pixbuf> logo = Gdk::Pixbuf::create_from_file(settings.GetSystemPath() + "images/logo.svg");
 		window->set_logo(logo);
 	}
 	catch(...)

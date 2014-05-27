@@ -2,7 +2,10 @@ builder->get_widget("window", window);
 
 // Main Menu
 builder->get_widget("menu_about", menu_about);
-builder->get_widget("create_launcher", create_launcher);
+builder->get_widget("menu_quit", menu_quit);
+builder->get_widget("menu_create_launcher", create_launcher);
+builder->get_widget("menu_run_steam", menu_run_steam);
+builder->get_widget("menu_run_steam_wb", menu_run_steam_wb);
 
 // Toolbar
 builder->get_widget("toolbar", toolbar);
@@ -16,6 +19,8 @@ builder->get_widget("logo", logo);
 // Main Window
 builder->get_widget("header", header);
 builder->get_widget("lastrunlabel", lastrun);
+builder->get_widget("preview_name_box", preview_name_box);
+builder->get_widget("skin_name_label", skin_name_label);
 builder->get_widget("apply_button", apply);
 builder->get_widget("use_decorations", use_decorations);
 builder->get_widget("filechooserbutton", file_chooser);

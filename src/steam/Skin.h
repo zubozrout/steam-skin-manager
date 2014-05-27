@@ -10,6 +10,7 @@ class Skin {
 		string description;
 		string preview_image;
 		bool has_variants = false;
+		int variants = 100;
 		
 		bool FileExist(string file);
 		bool CheckVariants();
@@ -19,6 +20,7 @@ class Skin {
 		void FillDefault(string nam);
 		void Fill(string nam, string pth);
 		bool HasVariants();
+		int GetVariants();
 		string GetName();
 		string GetPath(bool plain = true, bool withButtons = true);
 		string GetDescription();
