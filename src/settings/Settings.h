@@ -18,6 +18,7 @@ class Settings {
 		~Settings();
 		void Parse(string settings_file_path, bool console = false);
 		string Key(string key) const;
+		void TrimLine(string & str) const;
 		string CommandOutput(string cmd) const;
 		string GetFileContent(string file) const;
         string GetSoftwareVersion() const;

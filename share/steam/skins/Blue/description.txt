@@ -1,0 +1,1 @@
+<i>This is a basic blue skin. It has the same layout as the Default skin.</i>

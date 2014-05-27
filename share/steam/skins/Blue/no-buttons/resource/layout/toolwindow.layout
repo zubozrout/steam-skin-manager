@@ -1,0 +1,7 @@
+"resource/layout/toolwindow.layout" {
+
+layout {
+        place { control="frame_close,frame_minimize,frame_maximize" align=left margin-top=5 margin-left=10 spacing=-2  width=0 height=0 }
+	place { control="ToolWindowSheet" x=8 y=2 height=max width=max margin-right=8 }
+}
+}

@@ -60,7 +60,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	PreviewTheme(); // Define theme using user's input
 	header->set_markup("Hello " + settings.GetFullUserName() + ", Welcome to " + settings.GetApplicationName());
 	header->override_font(Pango::FontDescription("18px"));
-	lastrun->set_text(("You last ran this application at " + settings.GetFileContent(settings.GetLocalPath() + "last_access") + "You are currently using " + settings.GetCurrentTheme() + " theme.").c_str());
+	lastrun->set_text(("You last ran this application at " + settings.GetFileContent(settings.GetLocalPath() + "last_access") + "\nYou are currently using " + settings.GetCurrentTheme() + " theme.").c_str());
     ShowTips();
 	
 	// Load other tabs
@@ -174,7 +174,7 @@ void MainWindow::SetPreviewName() {
 		}
 	}
 	skin_name_label->set_markup(namelabel);
-	skin_name_label->override_color(Gdk::RGBA("#eee"));
+	skin_name_label->override_color(Gdk::RGBA("#ddd"));
 	preview_name_box->override_background_color(Gdk::RGBA("#333"));
 }
 

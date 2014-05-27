@@ -85,7 +85,7 @@ string Settings::GetTip(bool up) {
 		
 		try {
 			wget = new future<void>(async(launch::async, [&] {
-				options["tip" + to_string(entries + 1)] = CommandOutput("echo -n \"$(wget iubuntu.cz/Steam/variable_content/tip.php -q -O -)\"");
+				options["tip" + to_string(entries + 1)] = CommandOutput("echo \"$(wget iubuntu.cz/Steam/variable_content/tip.php -q -O -)\"");
 				if(Key(string("tip") + to_string(entries + 1)) != "")
 					entries++;
 				return;
@@ -109,14 +109,18 @@ string Settings::GetTip(bool up) {
 	return Key(string("tip") + to_string(current_tip));
 }
 
+void Settings::TrimLine(string & str) const {
+	while(!str.empty() && str.back() == '\n') {
+		str.erase(str.length()-1);
+	}
+}
+
 string Settings::CommandOutput(string cmd) const {
 	string data;
 	FILE * stream;
 	const int max_buffer = 256;
 	char buffer[max_buffer];
-	
-	cmd = "echo -n $(" + cmd + ")"; // Removes new line after a command
-	
+		
 	stream = popen(cmd.c_str(), "r");
 	if(stream) {
 		while(!feof(stream)) {
@@ -128,6 +132,8 @@ string Settings::CommandOutput(string cmd) const {
 		if(ret != 0)
 			cerr << "Command could not be executed, error code: " << ret << endl;
 	}
+	
+	TrimLine(data);
 	return data;
 }
 
@@ -149,6 +155,8 @@ string Settings::GetFileContent(string file) const {
 	catch(...) {
 		cerr << "An exception was thrown due to a problem reading a file" << endl;
 	}
+	
+	TrimLine(lines);
 	return lines;
 }
 
