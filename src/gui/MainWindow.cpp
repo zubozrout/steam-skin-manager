@@ -46,15 +46,10 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	comboboxthemes->signal_changed().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), true));
 	file_chooser->signal_file_set().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), false));
 
-	
 	// Initialize Toolbar buttons
-	Glib::RefPtr<Gdk::Pixbuf> pix = Gdk::Pixbuf::create_from_file(settings.get_working_path() + "/share/steam-skin-manager/images/logo.svg");
-	int iconW, iconH;
-	Gtk::IconSize::lookup(launch_steam_from_toolbar->get_icon_size(), iconW, iconH);
-	logo->set(pix->scale_simple(iconW + 10, iconH + 10, Gdk::INTERP_BILINEAR));
-	launch_steam_from_toolbar->set_size_request(iconW + 40, -1);
-	prev_tip->set_size_request(iconW + 40, -1);
-	next_tip->set_size_request(iconW + 40, -1);
+	SetToolButtonImage(launch_steam_from_toolbar, settings.get_working_path() + "/share/steam-skin-manager/images/logo.svg");
+	SetToolButtonSize(prev_tip);
+	SetToolButtonSize(next_tip);
 	
 	skin = new Skin(settings); // Create skin class	
 	PreviewTheme(); // Define theme using user's input
@@ -74,6 +69,24 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	else {
 		throw runtime_error("Window not initialized");
 	}
+}
+
+void MainWindow::SetToolButtonSize(Gtk::ToolButton* button, int sizeX, int sizeY) {
+	if(sizeX < 0 && sizeY < 0) {
+		Gtk::IconSize::lookup(button->get_icon_size(), sizeX, sizeY);
+		button->set_size_request(sizeX + 40, -1);
+	}
+	else {
+		button->set_size_request(sizeX, sizeY);
+	}
+}
+
+void MainWindow::SetToolButtonImage(Gtk::ToolButton* button, string file) {
+	Glib::RefPtr<Gdk::Pixbuf> pix = Gdk::Pixbuf::create_from_file(file);
+	int iconW, iconH;
+	Gtk::IconSize::lookup(button->get_icon_size(), iconW, iconH);
+	logo->set(pix->scale_simple(iconW + 10, iconH + 10, Gdk::INTERP_BILINEAR));
+	SetToolButtonSize(button);
 }
 
 void MainWindow::LaunchAboutWindow() {
@@ -117,8 +130,11 @@ void MainWindow::PreviewTheme(bool native) {
 	string skin_name, skin_path;
 	
 	if(native || file_chooser->get_filename() == "") {
+		if(comboboxthemes->get_active_row_number() < 0) {
+			return;
+		}
 		skin_name = comboboxthemes->get_active_text();
-		skin_path = bundledSkins[comboboxthemes->get_active_row_number()];
+		skin_path = bundledSkins[comboboxthemes->get_active_row_number()]; // SegFault
 	}
 	else {
 		skin_path = file_chooser->get_filename();
@@ -221,6 +237,7 @@ void MainWindow::LaunchSteam(bool decorations) {
 void MainWindow::SteamLauncherThread(bool decorations) {
 	SpinnerStart();
 	launch_steam_from_toolbar->set_sensitive(false);
+	launch_steam_from_toolbar->set_opacity(0.4);
 	menu_run_steam->set_sensitive(false);
 	menu_run_steam_wb->set_sensitive(false);
 	steamlaunch = new future<void>(async(launch::async, [&] {
@@ -232,6 +249,7 @@ void MainWindow::SteamLauncherThread(bool decorations) {
 void MainWindow::SteamFinished(gpointer object) {
 	MainWindow *self = static_cast<MainWindow*>(object);
 	self->launch_steam_from_toolbar->set_sensitive(true);
+	self->launch_steam_from_toolbar->set_opacity(1);
 	self->menu_run_steam->set_sensitive(true);
 	self->menu_run_steam_wb->set_sensitive(true);
 	self->SpinnerStop();
@@ -245,11 +263,12 @@ void MainWindow::SteamLauncher() {
 void MainWindow::ListAvaialbleThemes(string path) {
 	vector<string> test = settings.GetListOfAvaialbleFolders(path);
 	string theme = settings.GetSystemTheme();
-			
+	
 	int i = bundledSkins.size();
 	if(bundledSkins.empty() || bundledSkins.front() != defaultskin) {	
 		comboboxthemes->insert(0, defaultskin);
 		bundledSkins.push_back(defaultskin);
+		comboboxthemes->set_active(i);
 		i++;
 	}
 	
@@ -259,7 +278,6 @@ void MainWindow::ListAvaialbleThemes(string path) {
 		
 		if(string(*it) == theme)
 			comboboxthemes->set_active(i);
-		
 		i++;
 	}
 }

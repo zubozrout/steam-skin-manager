@@ -8,7 +8,6 @@ class MainWindow {
 		Settings & settings;
 		Skin* skin;
 		future<void> *steamlaunch;
-		Glib::Mutex mutex;
 		
 		bool predefined_theme;
 		vector<string> bundledSkins;
@@ -63,6 +62,8 @@ class MainWindow {
 		void PreviousTip();
 		void LaunchAboutWindow();
 		void CreateLauncher();
+		void SetToolButtonSize(Gtk::ToolButton* button, int sizeX = -1, int sizeY = -1);
+		void SetToolButtonImage(Gtk::ToolButton* button, string file);
 		void Quit();
 		
 	public:
