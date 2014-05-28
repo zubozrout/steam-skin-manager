@@ -6,6 +6,7 @@ class Settings {
 		map<string, string> options;
 		string user_home;
 		string system_theme;
+		string local_config;
 		bool steam_installed = true;
 		future<void> *wget;
 		int entries = 0;
@@ -32,6 +33,7 @@ class Settings {
 		int StringToInt(string value);
 		string GetTip(bool up);
 		void UpdateAccessTimestamp();
+		string GetLastTime();
 		bool SetSkin(string path);
 		bool SetInstalledSkin(string local_skin_path);
 		bool RevertSkin();

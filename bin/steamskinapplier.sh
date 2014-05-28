@@ -77,11 +77,10 @@ function install_skin {
 	# Test removed. Now installs under all circumstancies.	
 
 	echo "Linking defined skin with Steam installation"
-
 	rm -f "$STEAMSKIN/$SKINNAME" 2> /dev/null
-
 	echo "New route: $STEAMSKIN/$SKINNAME"
-
+	
+	mkdir -p "$STEAMSKIN"
 	if ! ( ln -s "$SKINPATH" "$STEAMSKIN/$SKINNAME" ) ; then
 		echo "Can not create the link!"
 		zenity --warning --title "An error occured" --text "The installator couldn't connect your Steam installation with the theme. Please copy or link the directory manually:\n\n\"$SKINPATH\" >> \"$STEAMSKIN\"."

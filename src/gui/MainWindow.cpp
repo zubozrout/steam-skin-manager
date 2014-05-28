@@ -55,7 +55,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	PreviewTheme(); // Define theme using user's input
 	header->set_markup("Hello " + settings.GetFullUserName() + ", Welcome to " + settings.GetApplicationName());
 	header->override_font(Pango::FontDescription("18px"));
-	lastrun->set_text(("You last ran this application at " + settings.GetFileContent(settings.GetLocalPath() + "last_access") + "\nYou are currently using " + settings.GetCurrentTheme() + " theme.").c_str());
+	lastrun->set_text(("You last ran this application at " + settings.GetLastTime() + "\nYou are currently using " + settings.GetCurrentTheme() + " theme.").c_str());
     ShowTips();
 	
 	// Load other tabs
@@ -134,7 +134,7 @@ void MainWindow::PreviewTheme(bool native) {
 			return;
 		}
 		skin_name = comboboxthemes->get_active_text();
-		skin_path = bundledSkins[comboboxthemes->get_active_row_number()]; // SegFault
+		skin_path = bundledSkins[comboboxthemes->get_active_row_number()];
 	}
 	else {
 		skin_path = file_chooser->get_filename();

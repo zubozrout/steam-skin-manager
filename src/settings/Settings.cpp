@@ -20,8 +20,8 @@ using namespace std;
 Settings::Settings(): wget(nullptr) {
 	Parse("settings.conf", !gui);
 	user_home = "/home/" + GetUserName();
-	system(("mkdir -p " + user_home + "/" + Key("ucfg_path")).c_str());
 	system_theme = CommandOutput(Key("system_theme"));
+	local_config = user_home + "/" + Key("ucfg_path");
 }
 
 // Source: http://stackoverflow.com/questions/6892754/creating-a-simple-configuration-file-and-parser-in-c
@@ -223,9 +223,11 @@ string Settings::TimePartCorrector(int stamp) {
 }
 
 void Settings::UpdateAccessTimestamp() {
+	CommandOutput("mkdir -p \"" + local_config + "\"");
+	
 	try {
 		ofstream cfg;
-		cfg.open((user_home + "/" + Key("ucfg_path")).c_str());
+		cfg.open((local_config + "last_access").c_str());
 		time_t t = time(0);
 		struct tm * now = localtime( & t );
 		cfg << now->tm_mday << "." << (now->tm_mon + 1) << "." << (now->tm_year + 1900) << "_";
@@ -234,6 +236,16 @@ void Settings::UpdateAccessTimestamp() {
 	}
 	catch (...) {
 		cerr << "Can't write to a file.";
+	}
+}
+
+string Settings::GetLastTime() {
+	ifstream f(local_config + "last_access");
+	if(f) {
+		return GetFileContent(local_config + "last_access");
+	}
+	else {
+		return "never";
 	}
 }
 
