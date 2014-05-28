@@ -16,9 +16,11 @@ export STEAMWM_SET_FIXED_SIZE=1
 export STEAMWM_MANAGE_ERRORS=1
 
 self="$(readlink -f "$(which "$0")")"
+selfdir="$(dirname $0))"
+parentdir="$(dirname $selfdir)"
 
 #export LD_PRELOAD="/usr/lib32/steamwm.so"
-export LD_PRELOAD="$PWD/lib32/steamwm.so"
+export LD_PRELOAD="$parentdir/lib32/steamwm.so"
 exec steam "$@"
 
 

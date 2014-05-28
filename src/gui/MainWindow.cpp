@@ -16,7 +16,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	kit = Gtk::Application::create(argc, argv);
 	
 	try {
-		builder = Gtk::Builder::create_from_file(settings.Key("ui_path"));
+		builder = Gtk::Builder::create_from_file(settings.get_working_path() + settings.Key("ui_path"));
 	}  
 	catch (const Glib::FileError & ex)	{
 		std::cerr << ex.what() << std::endl;
@@ -39,7 +39,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	sc->add_class("primary-toolbar");
 	
 	// Combobox settings
-	ListAvaialbleThemes(settings.get_working_path() + "/" + settings.GetPath("theme"));
+	ListAvaialbleThemes(settings.get_working_path() + settings.GetPath("theme"));
 	ListAvaialbleThemes(settings.Key("old_theme_path")); /* Steam Skin Manager (3.x) and older backward compatibility */
 	
 	// State Change signals
@@ -47,7 +47,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	file_chooser->signal_file_set().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), false));
 
 	// Initialize Toolbar buttons
-	SetToolButtonImage(launch_steam_from_toolbar, settings.get_working_path() + "/share/steam-skin-manager/images/logo.svg");
+	SetToolButtonImage(launch_steam_from_toolbar, settings.get_working_path() + "share/steam-skin-manager/images/logo.svg");
 	SetToolButtonSize(prev_tip);
 	SetToolButtonSize(next_tip);
 	

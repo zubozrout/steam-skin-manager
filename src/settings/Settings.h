@@ -33,6 +33,7 @@ class Settings {
 		int StringToInt(string value);
 		string GetTip(bool up);
 		void UpdateAccessTimestamp();
+		bool FileExists(string filename) const;
 		string GetLastTime();
 		bool SetSkin(string path);
 		bool SetInstalledSkin(string local_skin_path);

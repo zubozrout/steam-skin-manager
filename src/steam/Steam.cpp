@@ -21,7 +21,7 @@ void Steam::Run(bool native_decorations) {
 		else {
 			// pid == 0
 			if(native_decorations)
-				system(settings.Key("steamdecorator").c_str());
+				system((settings.get_working_path() + settings.Key("steamdecorator")).c_str());
 			else
 				system("steam");
 			exit(0);

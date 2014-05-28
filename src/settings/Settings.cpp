@@ -18,7 +18,7 @@
 using namespace std;
 
 Settings::Settings(): wget(nullptr) {
-	Parse("settings.conf", !gui);
+	Parse(get_working_path() + "settings.conf", !gui);
 	user_home = "/home/" + GetUserName();
 	system_theme = CommandOutput(Key("system_theme"));
 	local_config = user_home + "/" + Key("ucfg_path");
@@ -39,7 +39,7 @@ void Settings::Parse(string file_path, bool console) {
 				continue;  // skip comments
 			}
 			if (eq != "=") {
-				cerr << "[ERROR] " << "Mischmasch in the file." << endl;
+				cerr << "[ERROR] " << "Mismatch in the file." << endl;
 				continue;
 			}
 			
@@ -212,7 +212,7 @@ string Settings::GetHomePath() const {
 }
 
 string Settings::GetSystemPath() const {
-	return get_working_path() + "/" + Key("data_path");
+	return get_working_path() + Key("data_path");
 }
 
 string Settings::TimePartCorrector(int stamp) {
@@ -239,18 +239,22 @@ void Settings::UpdateAccessTimestamp() {
 	}
 }
 
+bool Settings::FileExists(string filename) const {
+	ifstream f(filename);
+	return f;
+}
+
 string Settings::GetLastTime() {
-	ifstream f(local_config + "last_access");
-	if(f) {
+	if(FileExists(local_config + "last_access")) {
 		return GetFileContent(local_config + "last_access");
 	}
 	else {
-		return "never";
+		return "never ran before";
 	}
 }
 
 bool Settings::SetSkin(string path) {
-	string local_command = Key("steamskinapplier") + " -i \"" + path + "\"";
+	string local_command = get_working_path() + Key("steamskinapplier") + " -i \"" + path + "\"";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
     if(status_code != -1 && status_code != 127)
@@ -259,7 +263,7 @@ bool Settings::SetSkin(string path) {
 }
 
 bool Settings::SetInstalledSkin(string local_skin_path) {
-	string local_command = Key("steamskinapplier") + " -i \"" + get_working_path() + "/" + local_skin_path + "\"";
+	string local_command = get_working_path() + Key("steamskinapplier") + " -i \"" + get_working_path() + local_skin_path + "\"";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
 	if(status_code != -1 && status_code != 127  && status_code != 1)
@@ -268,7 +272,7 @@ bool Settings::SetInstalledSkin(string local_skin_path) {
 }
 
 bool Settings::RevertSkin() {
-	string local_command = Key("steamskinapplier") + " -r";
+	string local_command = get_working_path() + Key("steamskinapplier") + " -r";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
 	if(status_code != -1 && status_code != 127)
@@ -277,12 +281,21 @@ bool Settings::RevertSkin() {
 }
 
 string Settings::GetCurrentTheme() const {	
-	return CommandOutput(Key("steamskinapplier") + " -g");
+	return CommandOutput(get_working_path() + Key("steamskinapplier") + " -g");
 }
 
 string Settings::get_working_path() const {
-   char temp[100];
-   return (getcwd(temp, 100) ? string(temp) : string(""));
+	char temp[256];
+	readlink("/proc/self/exe", temp, 256);
+	
+	string bin_path = string(temp);
+	size_t found = bin_path.find_last_of("/\\");
+	bin_path = bin_path.substr(0, found + 1);
+	
+	cout << "Direcotry: " << bin_path << endl;
+	return bin_path;
+	
+	/* 	return(getcwd(temp, 256) ? (string(temp) + "/") : string("")); */
 }
 
 string Settings::GetUserName() {
@@ -298,7 +311,7 @@ string Settings::GetFullUserName() {
 }
 
 bool Settings::CreateLauncher() {
-	if(system((get_working_path() + "/bin/GenerateLauncher.sh").c_str())) {
+	if(system((get_working_path() + "bin/GenerateLauncher.sh").c_str())) {
 		return true;
 	}
 	return false;
