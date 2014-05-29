@@ -54,7 +54,7 @@ steam.styles
     ButtonBorderFocusSubtle="128 122 117 255"
     
     Text="160 160 160 255"
-    Text2="30 30 30 255"
+    Text2="80 80 80 255"
     TextDisabled="102 99 96 255"
     TextHover="220 220 220 255"
     TextSelected="120 120 120 255"
@@ -66,7 +66,7 @@ steam.styles
     TextGlowSelectedSm="60 60 60 255"
     
     NavLabel="50 50 50 255"
-    Label="60 60 60 255"
+    Label="130 130 130 255"
     Label2="50 50 50 255"
     LabelDisabled="50 50 50 255"
     LabelFocus="60 60 60 255"
@@ -1645,8 +1645,8 @@ steam.styles
       render_bg {
 
         // background gradient        
-        0="gradient( x0+1, y0+1, x1-1, y0 + 432, dialogbg, almostblack )"
-        1="fill( x0+1, y0+ 432, x1-1, y1 - 1, white )"
+        0="gradient( x0+1, y0+1, x1-1, y0 + 432, dialogbg, offwhite )"
+        1="fill( x0+1, y0+ 432, x1-1, y1 - 1, offwhite)"
         2="gradient( x0+1, y0+1, x1-1, y0 + 31, BackgroundStartsubtle, none )"
         
         

@@ -11,6 +11,7 @@ steam.styles
 	ubuntuorangeselect="240 119 70 255"
 	black="0 0 0 255"
 	white=lightgrey
+	bgwhite="242 243 245 255"
 	extrawhite="255 255 255 255"
 	none="0 0 0 0"
 	buttontop="254 254 254 255"
@@ -81,8 +82,8 @@ steam.styles
 
 	label=darkgrey
 	label2=darkgrey
-	labeldisabled="100 100 100 255"
-	labelfocus="120 120 120 255"
+	labeldisabled="200 200 200 255"
+	labelfocus="180 180 180 255"
 
 	ubuntugreytitlefocus="75 74 69 255"
 
@@ -847,6 +848,16 @@ steam.styles
 		bgcolor="ubuntugrey"
 		render
 		{
+		0="fill( x0, y0 + 90, x0 + 1, y1, panel_line )" // left
+		1="fill( x1 - 1, y0 + 90, x1, y1, panel_line )" // right
+		2="fill( x0, y0, x1, y0 + 1, panel_line )" // top
+		3="fill( x0, y1 - 1, x1, y1, panel_line )" // bottom
+
+		4="fill( x0, y0, x0 + 1, y0 + 60, panel_line )" // left
+		5="fill( x1 - 1, y0, x1, y0 + 60, panel_line )" // right
+
+		6="gradient( x0, y0 + 60, x0 + 1, y0 + 90, panel_line, panel_line )" // left
+		7="gradient( x1 - 1, y0 + 60, x1, y0 + 90, panel_line, panel_line )" // right
 		}
 	} 
 
@@ -855,6 +866,16 @@ steam.styles
 		bgcolor="ubuntugrey"
 		render
 		{
+		0="fill( x0, y0 + 90, x0 + 1, y1, panel_line )" // left
+		1="fill( x1 - 1, y0 + 90, x1, y1, panel_line )" // right
+		2="fill( x0, y0, x1, y0 + 1, panel_line )" // top
+		3="fill( x0, y1 - 1, x1, y1, panel_line )" // bottom
+
+		4="fill( x0, y0, x0 + 1, y0 + 60, panel_line )" // left
+		5="fill( x1 - 1, y0, x1, y0 + 60, panel_line )" // right
+
+		6="gradient( x0, y0 + 60, x0 + 1, y0 + 90, panel_line, panel_line )" // left
+		7="gradient( x1 - 1, y0 + 60, x1, y0 + 90, panel_line, panel_line )" // right
 		}
 	}
 
@@ -1024,7 +1045,7 @@ steam.styles
 		textcolor="white"
 		render_bg
 		{
-		1="fill( x0, y0, x1, y1, ubuntugrey )"
+		1="image( x0, y0 - 1, x1, y1, graphics/clienttexture2 )"
 		}
 	}
 
@@ -1176,8 +1197,7 @@ steam.styles
 		render_bg {
 
 		// background gradient        
-		0="gradient( x0+1, y0+1, x1-1, y0 + 432, ubuntugrey, black )"
-		1="fill( x0+1, y0+ 432, x1-1, y1 - 1, black )"
+		1="fill( x0+1, y0+1, x1-1, y1 - 1, bgwhite )"
 		2="gradient( x0+1, y0+1, x1-1, y0 + 31, ubuntugrey, none )"
 
 
@@ -1715,15 +1735,15 @@ steam.styles
 	}
 
 	MainNav
-	{	
-		textcolor="label"
-		selectedtextcolor="lightgrey"
+    {
+		textcolor="Label"
+		selectedtextcolor="Text"
 		bgcolor="none"
 		font-family=basefont
 		font-size=21
-		font-weight=900
+		font-weight=700
 		font-style="uppercase"
-	}
+    }
 
 	Menu
 	{

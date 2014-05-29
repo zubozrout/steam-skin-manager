@@ -34,10 +34,6 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	apply->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::ApplyTheme));
 	use_decorations->property_active().signal_changed().connect(sigc::mem_fun(*this, &MainWindow::SetPreviewName));
 	
-	// Initialize Toolbar
-	Glib::RefPtr<Gtk::StyleContext> sc = toolbar->get_style_context();
-	sc->add_class("primary-toolbar");
-	
 	// Combobox settings
 	ListAvaialbleThemes(settings.get_working_path() + settings.GetPath("theme"));
 	ListAvaialbleThemes(settings.Key("old_theme_path")); /* Steam Skin Manager (3.x) and older backward compatibility */
@@ -63,6 +59,10 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	manualeditor = new ManualEditor(builder, settings);
 	
 	if(window) {
+		// SystemColors
+		Glib::RefPtr<Gtk::StyleContext> toolbarcontext = toolbar->get_style_context();
+		toolbarcontext->add_class("primary-toolbar");
+		
 		window->set_title(settings.GetApplicationName().c_str());
 		kit->run(*window);
 	}

@@ -34,7 +34,7 @@ steam.styles
 	textcolor = white
 	navlabel = white
 	TitleBar = ubuntugrey
-	clientbg = ubuntugrey
+	bg = ubuntugrey
 	darkclientbg = ubuntugrey
 	dialogbg = ubuntugrey
 	PropertySheetBG = ubuntugrey
@@ -452,7 +452,7 @@ steam.styles
 		inset="0 2 0 0"
 		render_bg
 		{
-		1="fill( x0, y0, x1, y1, none )" 
+		0="fill( x0, y0, x1, y1, none )"
 		}
 	}
 
@@ -848,16 +848,6 @@ steam.styles
 		bgcolor="ubuntugrey"
 		render
 		{
-		0="fill( x0, y0 + 90, x0 + 1, y1, lightgrey )" // left
-		1="fill( x1 - 1, y0 + 90, x1, y1, lightgrey )" // right
-		2="fill( x0, y0, x1, y0 + 1, darkgrey )" // top
-		3="fill( x0, y1 - 1, x1, y1, lightgrey )" // bottom
-
-		4="fill( x0, y0, x0 + 1, y0 + 60, darkgrey )" // left
-		5="fill( x1 - 1, y0, x1, y0 + 60, darkgrey )" // right
-
-		6="gradient( x0, y0 + 60, x0 + 1, y0 + 90, darkgrey, lightgrey )" // left
-		7="gradient( x1 - 1, y0 + 60, x1, y0 + 90, darkgrey, lightgrey )" // right
 		}
 	} 
 
@@ -866,170 +856,13 @@ steam.styles
 		bgcolor="ubuntugrey"
 		render
 		{
-		0="fill( x0, y0 + 90, x0 + 1, y1, lightgrey )" // left
-		1="fill( x1 - 1, y0 + 90, x1, y1, lightgrey )" // right
-		2="fill( x0, y0, x1, y0 + 1, darkgrey )" // top
-		3="fill( x0, y1 - 1, x1, y1, lightgrey )" // bottom
-
-		4="fill( x0, y0, x0 + 1, y0 + 60, darkgrey )" // left
-		5="fill( x1 - 1, y0, x1, y0 + 60, darkgrey )" // right
-
-		6="gradient( x0, y0 + 60, x0 + 1, y0 + 90, darkgrey, lightgrey )" // left
-		7="gradient( x1 - 1, y0 + 60, x1, y0 + 90, darkgrey, lightgrey )" // right
-		}
-	}
-
-	FrameMinimizeButton
-	{
-		padding=1
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/minimize_unfocused )"
-		}
-	}
-
-	FrameMinimizeButton:FrameFocus
-	{
-		padding=1
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_min )"
-		}
-	}
-
-	FrameMinimizeButton:hover
-	{  
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/minimize_unfocused_prelight )"
-		}
-	}
-
-	FrameMinimizeButton:FrameFocus:hover
-	{  
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_min_hover )"
-		}
-	}
-
-	FrameMinimizeButton:active
-	{  
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_min_hover )"
-		}
-	}
-
-	FrameMaximizeButton
-	{
-		padding=1
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/maximize_unfocused )"
-		}
-	}
-
-	FrameMaximizeButton:FrameFocus
-	{
-		padding=1
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_max )"
-		}
-	}
-
-	FrameMaximizeButton:hover
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/maximize_unfocused_prelight )"
-		}
-	}
-
-	FrameMaximizeButton:FrameFocus:hover
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_max_hover )"
-		}
-	}
-
-	FrameMaximizeButton:active
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_max_hover )"
-		}
-	}
-
-	FrameRestoreButton
-	{
-		padding=1
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/restore_unfocused )"
-		}
-	}
-
-	FrameRestoreButton:FrameFocus
-	{
-		padding=1
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_restore )"
-		}
-	}
-
-	FrameRestoreButton:hover
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/restore_unfocused_prelight )"
-		}
-	}
-
-	FrameRestoreButton:FrameFocus:hover
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_restore_hover )"
-		}
-	}
-
-	FrameRestoreButton:active
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_restore_hover )"
-		}
-	}
-
-	FrameCloseButton
-	{
-		padding=1
-		render_bg {
-		0="image( x0, y0, x1, y1, graphics/close_unfocused )"
-		}
-	}
-
-	FrameCloseButton:FrameFocus
-	{
-		padding=1
-		render_bg {
-		0="image( x0, y0, x1, y1, graphics/win_close )"
-		}
-	}
-
-	FrameCloseButton:hover
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/close_unfocused_prelight )"
-		}
-	}
-	FrameCloseButton:FrameFocus:hover
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_close_hover )"
-		}
-	}
-
-	FrameCloseButton:active
-	{
-		render_bg {
-		1="image( x0, y0, x1, y1, graphics/win_close_hover )"
 		}
 	}
 
 	FrameTitle
 	{
 		font-family=basefont
-		inset="55 0 0 1"
+		inset="7 0 0 1"
 		font-size=16
 		font-weight=700
 		textcolor="textdisabled"
@@ -1045,9 +878,10 @@ steam.styles
 		textcolor="white"
 		render_bg
 		{
-		1="image( x0, y0 - 1, x1, y1, graphics/clienttexture2 )"
+		1="fill( x0, y0, x1, y1, ubuntugrey )"
 		}
 	}
+
 
 	"CFriendsDialog SectionedListPanelInterior"
 	{
@@ -1196,8 +1030,7 @@ steam.styles
 		render_bg {
 
 		// background gradient        
-		0="gradient( x0+1, y0+1, x1-1, y0 + 432, ubuntugrey, black )"
-		1="fill( x0+1, y0+ 432, x1-1, y1 - 1, black )"
+		1="fill( x0+1, y0+1, x1-1, y1 - 1, black )"
 		2="gradient( x0+1, y0+1, x1-1, y0 + 31, ubuntugrey, none )"
 
 

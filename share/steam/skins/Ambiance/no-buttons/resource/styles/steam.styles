@@ -1030,8 +1030,7 @@ steam.styles
 		render_bg {
 
 		// background gradient        
-		0="gradient( x0+1, y0+1, x1-1, y0 + 432, ubuntugrey, black )"
-		1="fill( x0+1, y0+ 432, x1-1, y1 - 1, black )"
+		1="fill( x0+1, y0+1, x1-1, y1 - 1, black )"
 		2="gradient( x0+1, y0+1, x1-1, y0 + 31, ubuntugrey, none )"
 
 

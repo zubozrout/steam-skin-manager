@@ -22,5 +22,3 @@ parentdir="$(dirname $selfdir)"
 #export LD_PRELOAD="/usr/lib32/steamwm.so"
 export LD_PRELOAD="$parentdir/lib32/steamwm.so"
 exec steam "$@"
-
-
