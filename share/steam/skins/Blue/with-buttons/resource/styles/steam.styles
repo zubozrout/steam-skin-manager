@@ -60,10 +60,10 @@ steam.styles
     TextSelected="242 239 235 255"
     TextentrySelected="240 237 235 235" // color of any selected text
     TextSelectedBG="64 90 128 255" // background color of any selected text 
-    TextGlowHover="128 124 120 255"
-    TextGlowSelected="171 169 166 255"
-    TextGlowHoverSm="128 123 120 255"
-    TextGlowSelectedSm="145 142 140 255"
+    TextGlowHover="255 255 255 60"
+    TextGlowSelected="255 255 255 60"
+    TextGlowHoverSm="255 255 255 60"
+    TextGlowSelectedSm="255 255 255 60"
     
     NavLabel="158 153 149 255"
     Label="166 164 161 255"
@@ -4453,9 +4453,6 @@ steam.styles
 		{
 			// top area and graphic
 			0="image_tiled( x0, y0, x1, y0+275, graphics/dd_texture)"
-			1="fill( x0, y0+0, x0+1, y1, black )"
-			2="fill( x1-1, y0+0, x1, y1, black )"
-			2="fill( x0, y1-1, x1, y1, black )"
 		}
 	}
 
@@ -4481,7 +4478,7 @@ steam.styles
 	{
 		textcolor="none"
 		render {
-			0="fill( x0+6, y0, x1-6, y0+1, black )"
+			0="fill( x0+6, y0, x1-6, y0+1, grey )"
 			1="fill( x0+6, y0+1, x1-6, y0+2, SuperDivider )"
 		}
 	}

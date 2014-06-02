@@ -80,14 +80,12 @@ int Settings::StringToInt(string value) {
 }
 
 string Settings::GetTip(bool up) {
-	if(entries == 0) {
-		entries = StringToInt(Key("num_of_tips"));
-		
+	if(!tips.download) {		
 		try {
 			wget = new future<void>(async(launch::async, [&] {
-				options["tip" + to_string(entries + 1)] = CommandOutput("echo \"$(wget iubuntu.cz/Steam/variable_content/tip.php -q -O -)\"");
-				if(Key(string("tip") + to_string(entries + 1)) != "")
-					entries++;
+				tips.download = true;
+				tips.tip.push_back(CommandOutput("echo \"$(wget iubuntu.cz/Steam/variable_content/tip.php?lang=" + string(locale("").name()) + " -q -O -)\""));
+				tips.size++;	
 				return;
 			}));
 		}
@@ -95,18 +93,21 @@ string Settings::GetTip(bool up) {
 			cerr << "Can't load remote tip from network." << endl;
 		}
 	}
-			
-	if(up)
-		current_tip++;
-	else
-		current_tip--;
 	
-	if(current_tip > entries)
-		current_tip = 1;
-	if(current_tip < 1)
-		current_tip = entries;
-	
-	return Key(string("tip") + to_string(current_tip));
+	if(up) {
+		tips.current++;
+		if(tips.current > tips.size - 1) {
+			tips.current = 0;
+		}
+	}
+	else {
+		tips.current--;
+		if(tips.current > tips.size - 1) {
+			tips.current = tips.size - 1;
+		}
+	}
+		
+	return tips.tip[tips.current];
 }
 
 void Settings::TrimLine(string & str) const {
@@ -249,7 +250,7 @@ string Settings::GetLastTime() {
 		return GetFileContent(local_config + "last_access");
 	}
 	else {
-		return "never ran before";
+		return _("never ran before");
 	}
 }
 
@@ -292,7 +293,6 @@ string Settings::get_working_path() const {
 	size_t found = bin_path.find_last_of("/\\");
 	bin_path = bin_path.substr(0, found + 1);
 	
-	cout << "Direcotry: " << bin_path << endl;
 	return bin_path;
 	
 	/* 	return(getcwd(temp, 256) ? (string(temp) + "/") : string("")); */

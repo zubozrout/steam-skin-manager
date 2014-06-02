@@ -9,8 +9,18 @@ class Settings {
 		string local_config;
 		bool steam_installed = true;
 		future<void> *wget;
-		int entries = 0;
-		int current_tip = 0;
+		
+		struct Tips {
+			unsigned int size = 1;
+			unsigned int current = 0;
+			bool download = false;
+			vector<string> tip;
+			
+			Tips() {
+				tip.push_back(_("Visit Help section for more information"));
+			}
+		};
+		Tips tips;
 		
 		string TimePartCorrector(int stamp);
 				

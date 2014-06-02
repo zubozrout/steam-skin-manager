@@ -7,28 +7,29 @@ ManualEditor::ManualEditor(Glib::RefPtr<Gtk::Builder> &builder, const Settings &
 	// Editor
 	builder->get_widget("manual_text", manual_editor);
 	builder->get_widget("manual_save", manual_save);
-	builder->get_widget("manual_reload", manual_refresh);
+	builder->get_widget("manual_revert", manual_revert);
 	builder->get_widget("scale", scale);
 	
-	manual_save->signal_clicked().connect(sigc::mem_fun(*this, &ManualEditor::ManualSave));
-	manual_refresh->signal_clicked().connect(sigc::mem_fun(*this, &ManualEditor::ManualRefresh));
+	manual_save->signal_clicked().connect(sigc::mem_fun(*this, &ManualEditor::Save));
+	manual_revert->signal_clicked().connect(sigc::mem_fun(*this, &ManualEditor::Revert));
 	scale->signal_value_changed().connect(sigc::mem_fun(*this, &ManualEditor::Size));
 	
 	TextBuffer = Gtk::TextBuffer::create();
+	TextBuffer->signal_changed().connect(sigc::mem_fun(*this, &ManualEditor::Editing));
 	
 	manual_editor->override_font(Pango::FontDescription("monospace"));
-	//manual_editor->override_color(Gdk::RGBA("#fff"));
 	path = settings.GetHomePath() + "/.steam/registry.vdf";
-	ManualFirstLoad();
+	FirstLoad();
 	
 	// Scaling
 	scale->set_digits(0);
 	scale->set_range(6, 24);
 	scale->set_value(10);
+	scale->set_tooltip_markup(_("Scale font"));
 	Size();
 }
 
-void ManualEditor::ManualSave()
+void ManualEditor::Save()
 {
 	Glib::RefPtr<Gtk::TextBuffer> TextBuffer = Gtk::TextBuffer::create();
 	TextBuffer = manual_editor->get_buffer();
@@ -41,12 +42,12 @@ void ManualEditor::ManualSave()
 	out.close();
 }
 
-void ManualEditor::ManualFirstLoad()
+void ManualEditor::FirstLoad()
 {
 	try
 	{
 		backup = settings.GetFileContent(path);		
-		manual_refresh->set_sensitive(false);
+		manual_revert->set_sensitive(false);
 		
 		TextBuffer->set_text(backup); 
 		manual_editor->set_buffer(TextBuffer);
@@ -57,7 +58,12 @@ void ManualEditor::ManualFirstLoad()
 	}
 }
 
-void ManualEditor::ManualRefresh()
+void ManualEditor::Editing()
+{
+	manual_revert->set_sensitive(true);
+}
+
+void ManualEditor::Revert()
 {
 	try
 	{

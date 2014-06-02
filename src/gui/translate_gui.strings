@@ -1,0 +1,72 @@
+char headbuffer[1024];
+snprintf(headbuffer, sizeof(headbuffer)-1, _("Hello %s, Welcome to %s."), settings.GetFullUserName().c_str(), settings.GetApplicationName().c_str());
+header->set_markup(headbuffer);
+header->override_font(Pango::FontDescription("18px"));
+
+char lsbuffer[1024];
+snprintf(lsbuffer, sizeof(lsbuffer)-1, _("You last ran this application at %s\nYou are currently using %s theme."), settings.GetLastTime().c_str(), settings.GetCurrentTheme().c_str());
+lastrun->set_text(lsbuffer);
+launch_steam_from_toolbar->set_tooltip_text(_("Launch Steam considering window-decoraions switcher below"));
+defaultskin = _("Default Skin");
+
+file_chooser->set_title(_("Select a directory with an extracted Steam skin."));
+
+Gtk::Label* label_decorations;
+builder->get_widget("label_decorations", label_decorations);
+label_decorations->set_text(_("Use native window decorations:"));
+
+Gtk::Label* label_description;
+builder->get_widget("skindescriptionlabel", label_description);
+label_description->set_text(_("No description available for this theme."));
+
+Gtk::Label* label_bundled;
+builder->get_widget("default_theme_label", label_bundled);
+label_bundled->set_text(_("Pick one of the preinstalled themes:"));
+
+Gtk::Label* label_custom;
+builder->get_widget("selectfolderlabel", label_custom);
+label_custom->set_text(_("To apply your own theme, please select its folder:"));
+
+Gtk::Label* label_applyinfo;
+builder->get_widget("applyinfo", label_applyinfo);
+label_applyinfo->set_markup(_("<i>Apply currently selected theme</i>"));
+
+Gtk::Label* page_main;
+builder->get_widget("page1", page_main);
+page_main->set_text(_("Appearance"));
+
+Gtk::Label* page_manual;
+builder->get_widget("page2", page_manual);
+page_manual->set_text(_("Manual configuration"));
+
+Gtk::Label* page_help;
+builder->get_widget("page3", page_help);
+page_help->set_label(_("Help"));
+
+Gtk::MenuItem* filemenu;
+builder->get_widget("filemenu", filemenu);
+filemenu->set_label(_("File"));
+
+Gtk::MenuItem* helpmenu;
+builder->get_widget("helpmenu", helpmenu);
+helpmenu->set_label(_("Help"));
+
+Gtk::ImageMenuItem* quit_menu_item;
+builder->get_widget("menu_quit", quit_menu_item);
+quit_menu_item->set_label(_("Quit"));
+
+Gtk::ImageMenuItem* about_menu_item;
+builder->get_widget("menu_about", about_menu_item);
+about_menu_item->set_label(_("About"));
+
+Gtk::ImageMenuItem* launcher_menu_item;
+builder->get_widget("menu_create_launcher", launcher_menu_item);
+launcher_menu_item->set_label(_("Generate .desktop launcher"));
+
+Gtk::ImageMenuItem* run_menu_item;
+builder->get_widget("menu_run_steam", run_menu_item);
+run_menu_item->set_label(_("Run Steam"));
+
+Gtk::ImageMenuItem* run_wb_menu_item;
+builder->get_widget("menu_run_steam_wb", run_wb_menu_item);
+run_wb_menu_item->set_label(_("Run Steam with decorations"));

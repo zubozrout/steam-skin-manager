@@ -70,20 +70,20 @@ steam.styles
 
 	text=black
 	text2=darkgrey
-	textdisabled="175 167 159 255"
+	textdisabled="130 130 130 255"
 	texthover="extrawhite"
 	textselected="extrawhite"
 	textentryselected="extrawhite" // color of any selected text
 	textselectedBG="ubuntuorangeselect" // background color of any selected text 
-	textglowhover="20 20 20 20"
-	textglowselected="20 20 20 20"
-	textglowhoverSm="20 20 20 20"
-	textglowselectedSm="20 20 20 20"
+	textglowhover="30 30 30 0"
+	textglowselected="30 30 30 0"
+	textglowhoverSm="30 30 30 0"
+	textglowselectedSm="30 30 30 0"
 
 	label=darkgrey
 	label2=darkgrey
-	labeldisabled="200 200 200 255"
-	labelfocus="180 180 180 255"
+	labeldisabled="130 130 130 255"
+	labelfocus="50 50 50 255"
 
 	ubuntugreytitlefocus="75 74 69 255"
 
@@ -3788,5 +3788,48 @@ steam.styles
 	{
 		padding-right=16
 	}
+	
+	SuperNavMenu
+	{
+		padding-left=8
+		padding-right=8
+
+		render {}
+
+		render_bg
+		{
+			// top area and graphic
+			0="image_tiled( x0, y0, x1, y0+275, graphics/dd_texture)"
+		}
 	}
+
+	SuperNavMenuItem
+	{
+		padding=4
+		font-family=basefont
+		font-size=16
+		font-weight=400
+		bgcolor=none
+		textcolor="white"
+	}
+
+	SuperNavMenuItem:selected
+	{
+		textcolor="extrawhite"
+	}
+
+	SuperNavMenuItem:hover
+	{
+		textcolor="extrawhite"
+	}
+
+	"SuperNavMenuDivider"
+	{
+		textcolor="none"
+		render {
+			0="fill( x0+6, y0, x1-6, y0+1, grey )"
+			1="fill( x0+6, y0+1, x1-6, y0+2, divider )"
+		}
+	}
+  }
 }

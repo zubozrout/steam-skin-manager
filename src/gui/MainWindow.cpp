@@ -34,12 +34,15 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	apply->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::ApplyTheme));
 	use_decorations->property_active().signal_changed().connect(sigc::mem_fun(*this, &MainWindow::SetPreviewName));
 	
+	//Translatable init strings
+	#include "translate_gui.strings"
+	
 	// Combobox settings
 	ListAvaialbleThemes(settings.get_working_path() + settings.GetPath("theme"));
 	ListAvaialbleThemes(settings.Key("old_theme_path")); /* Steam Skin Manager (3.x) and older backward compatibility */
 	
 	// State Change signals
-	comboboxthemes->signal_changed().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), true));
+	comboboxsignal = comboboxthemes->signal_changed().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), true));
 	file_chooser->signal_file_set().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), false));
 
 	// Initialize Toolbar buttons
@@ -49,9 +52,6 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	
 	skin = new Skin(settings); // Create skin class	
 	PreviewTheme(); // Define theme using user's input
-	header->set_markup("Hello " + settings.GetFullUserName() + ", Welcome to " + settings.GetApplicationName());
-	header->override_font(Pango::FontDescription("18px"));
-	lastrun->set_text(("You last ran this application at " + settings.GetLastTime() + "\nYou are currently using " + settings.GetCurrentTheme() + " theme.").c_str());
     ShowTips();
 	
 	// Load other tabs
@@ -62,6 +62,8 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 		// SystemColors
 		Glib::RefPtr<Gtk::StyleContext> toolbarcontext = toolbar->get_style_context();
 		toolbarcontext->add_class("primary-toolbar");
+		Glib::RefPtr<Gtk::StyleContext> framecontext = frame->get_style_context();
+		framecontext->add_class("primary-toolbar");
 		
 		window->set_title(settings.GetApplicationName().c_str());
 		kit->run(*window);
@@ -100,11 +102,11 @@ void MainWindow::ApplyTheme() {
 	if(skin->GetName() == defaultskin) {
 		skinpath = skin->GetPath(true);
 		if(settings.RevertSkin()) {
-			notify->set_markup("Theme was successfully reverted.");
+			notify->set_markup(_("Theme was successfully reverted."));
 			notify->override_color(Gdk::RGBA("#0a0"));
 		}
 		else {
-			notify->set_markup("Steam Skin Manager could not revert the theme.");
+			notify->set_markup(_("Steam Skin Manager could not revert the theme."));
 			notify->override_color(Gdk::RGBA("#a00"));
 			cerr << "Can't revert to the default due to a missing execution shell script." << endl;
 		}
@@ -113,11 +115,11 @@ void MainWindow::ApplyTheme() {
 		bool status_code = settings.SetSkin(skin->GetPath(false, !use_decorations->get_active()));
 		
 		if(status_code != -1 && status_code != 127) {
-			notify->set_markup("<b>Theme was applied.</b>");
+			notify->set_markup(_("<b>Theme was applied.</b>"));
 			notify->override_color(Gdk::RGBA("#3a3"));
 		}
 		else {
-			notify->set_markup("<b>Steam Skin Manager could not set the theme.</b>");
+			notify->set_markup(_("<b>Steam Skin Manager could not set the theme.</b>"));
 			notify->override_color(Gdk::RGBA("#a33"));
 		}
 	}
@@ -130,6 +132,7 @@ void MainWindow::PreviewTheme(bool native) {
 	string skin_name, skin_path;
 	
 	if(native || file_chooser->get_filename() == "") {
+		file_chooser->unselect_all();
 		if(comboboxthemes->get_active_row_number() < 0) {
 			return;
 		}
@@ -137,6 +140,9 @@ void MainWindow::PreviewTheme(bool native) {
 		skin_path = bundledSkins[comboboxthemes->get_active_row_number()];
 	}
 	else {
+		comboboxsignal.block();
+		comboboxthemes->unset_active();
+		comboboxsignal.unblock();
 		skin_path = file_chooser->get_filename();
 		size_t found = skin_path.find_last_of("/\\");
 		skin_name = skin_path.substr(found + 1);
@@ -173,34 +179,32 @@ void MainWindow::PreviewTheme(bool native) {
 }
 
 void MainWindow::SetPreviewName() {
-	string namelabel = skin->GetName();
+	string namelabel = " " + skin->GetName();
 	if(namelabel.length() > 30) {
-		namelabel = "... ";
+		namelabel = " ... ";
 	}
 	else {
-		namelabel = "<b>Currently selected:</b> " + namelabel;
+		namelabel = _("<b>Currently selected:</b>") + namelabel;
 	}
 	if(skin->HasVariants()) {
 		namelabel += ", ";
 		if(use_decorations->get_active()) {
-			namelabel += "With decorations";
+			namelabel += _("With decorations");
 		}
 		else {
-			namelabel += "Without decorations";
+			namelabel += _("Without decorations");
 		}
 	}
 	skin_name_label->set_markup(namelabel);
-	skin_name_label->override_color(Gdk::RGBA("#ddd"));
-	preview_name_box->override_background_color(Gdk::RGBA("#333"));
+	preview_name_box->set_visible_window(false);
 }
 
 void MainWindow::SetPreviewImage() {
 	preview_description->set_line_wrap(true);
-	preview_image->override_background_color(Gdk::RGBA("#333"));
 	
 	try {
 		Glib::RefPtr<Gdk::Pixbuf> tmp_image = Gdk::Pixbuf::create_from_file(skin->GetImg());
-		tmp_image = tmp_image->scale_simple(500, 277, Gdk::INTERP_BILINEAR);
+		tmp_image = tmp_image->scale_simple(512, 314, Gdk::INTERP_BILINEAR);
 		preview_image->set(tmp_image);
 	}
 	catch(...) {
@@ -295,7 +299,7 @@ void MainWindow::CreateLauncher() {
 }
 
 void MainWindow::Quit() {
-	Gtk::Main::quit();
+	window->hide();
 }
 
 MainWindow::~MainWindow() {

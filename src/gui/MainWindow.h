@@ -27,11 +27,11 @@ class MainWindow {
 		Gtk::EventBox* preview_name_box;
 		Gtk::Button* apply;
 		Gtk::Switch* use_decorations;
-		Gtk::FileChooserButton* file_chooser;
 		Gtk::Label* preview_description;
 		Gtk::Image* preview_image;
 		Gtk::Image* logo;
 		Gtk::Spinner* spinner;
+		Gtk::Viewport* frame;
 		
 		// Main menu
 		Gtk::ImageMenuItem* menu_quit;
@@ -42,7 +42,9 @@ class MainWindow {
 		
 		// Theme chooser
 		Gtk::ComboBoxText* comboboxthemes;
-		
+		Gtk::FileChooserButton* file_chooser;
+		sigc::connection comboboxsignal;
+
 		// ManualEditor object instance
 		ManualEditor* manualeditor;
 		

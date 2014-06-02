@@ -1,0 +1,92 @@
+# [Czech Language for Steam Skin Manager]
+
+msgid "Hello %s, Welcome to %s."
+msgstr "%s, Vítejte v aplikaci %s"
+
+msgid "You last ran this application at %s\nYou are currently using %s theme."
+msgstr "Naposledy jste tuto aplikaci spustili %s\nNyní používáte téma %s."
+
+msgid "never ran before"
+msgstr "nikdy předtím"
+
+msgid "Use native window decorations:"
+msgstr "Aktivovat systémové dekorace oken:"
+
+msgid "<i>The is the default and official Steam theme.</i>"
+msgstr "<i>Oficiální vzhled z dílen Valve.</i>"
+
+msgid "Default Skin"
+msgstr "Výchozí vzhled"
+
+msgid "This theme has no description."
+msgstr "K tomuto vzhledu není dostupný žádný popis."
+
+msgid "Pick one of the preinstalled themes:"
+msgstr "Zvolte jeden z předinstalovaných vzhledů:"
+
+msgid "To apply your own theme, please select its folder:"
+msgstr "Vyberte adresář s vlastním či staženým vzhledem:"
+
+msgid "Select a directory with an extracted Steam skin."
+msgstr "Vyberte adresář s rozbaleným vzhledem pro Steam."
+
+msgid "<i>Apply currently selected theme</i>"
+msgstr "<i>Stisknutím tlačítka použít aktivujete vybraný vzhled</i>"
+
+msgid "Launch Steam considering window-decoraions switcher below"
+msgstr "Spustit Steam s ohledem na vypínač okenních dekorací níže"
+
+msgid "Appearance"
+msgstr "Vzhled"
+
+msgid "Manual configuration"
+msgstr "Manuální konfigurace"
+
+msgid "Help"
+msgstr "Nápověda"
+
+msgid "File"
+msgstr "Soubor"
+
+msgid "Quit"
+msgstr "Konec"
+
+msgid "About"
+msgstr "O aplikaci"
+
+msgid "Generate .desktop launcher"
+msgstr "Vytvořit zástupce v nabídce aplikací"
+
+msgid "Run Steam"
+msgstr "Spustit Steam"
+
+msgid "Run Steam with decorations"
+msgstr "Spustit Steam se systémovými dekoracemi oken"
+
+msgid "Theme was successfully reverted."
+msgstr "Výchozí téma bylo úspěšně obnoveno."
+
+msgid "Steam Skin Manager could not revert the theme."
+msgstr "Steam Skin Manager nemohl obnovit výchozí téma."
+
+msgid "<b>Theme was applied.</b>"
+msgstr "<b>Téma bylo nastaveno.</b>"
+
+msgid "<b>Steam Skin Manager could not set the theme.</b>"
+msgstr "<b>Steam Skin Manager nemohl nastavit zvolené téma.</b>"
+
+msgid "<b>Currently selected:</b>"
+msgstr "<b>Nyní je vybrána sestava:</b>"
+
+msgid "With decorations"
+msgstr "Se systémovými dekoracemi oken"
+
+msgid "Without decorations"
+msgstr "Bez systémových dekorací oken"
+
+msgid "Scale font"
+msgstr "Změnit velikost písma"
+
+# Toolbar info
+msgid "Visit Help section for more information"
+msgstr "Pro více informací navšťivte sekci s nápovědou"

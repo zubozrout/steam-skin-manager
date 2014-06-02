@@ -10,7 +10,7 @@ Skin::Skin(const Settings & linked_settings): settings(linked_settings) {}
 void Skin::FillDefault(string nam) {
 	name = nam;
 	path = "";
-	description = "<i>The is the default and official Steam theme.</i>";
+	description = _("<i>The is the default and official Steam theme.</i>");
 	preview_image =  settings.GetSystemPath() + "/images/stock.png";
 	has_variants = false;
 }
@@ -31,7 +31,7 @@ void Skin::Fill(string nam, string pth) {
 		description = settings.GetFileContent(desc_path);
 	}
 	else {
-		description = "This theme has no description.";
+		description = _("This theme has no description.");
 	}
 		
 	string img_path = path + "/preview.png";
@@ -88,7 +88,7 @@ string Skin::GetPath(bool plain, bool withButtons) {
 			}
 			return path + "/no-buttons";
 		}
-		cerr << "Theme can't have variants but not have related folders! Code ERROR!" << endl;
+		cerr << "Theme can have variants but not have related folders! Code ERROR!" << endl;
 	}
 	return path;
 }

@@ -6,7 +6,7 @@ steam.styles
     // it can also include just general settings controls can pull from for extra customization
   
     black="30 30 30 255"
-    almostBlack="60 60 60 255"
+    almostBlack="100 100 100 255"
     white="240 240 240 255"
     grey="246 246 250 255"
     none="0 0 0 0"
@@ -35,9 +35,9 @@ steam.styles
     basefont="Ubuntu" [$Linux]
     
     // new control colors
-    ButtonFace="105 102 99 200"
-    ButtonFace2="92 89 86 255" // for use in main client list panel column header, some button states
-    ButtonFace3="95 92 90 255" // button cornering pixels
+    ButtonFace="230 230 230 200"
+    ButtonFace2="220 220 220 255" // for use in main client list panel column header, some button states
+    ButtonFace3="200 200 200 255" // button cornering pixels
     ButtonFaceDisabled="none"
     ButtonFaceHover="105 102 99  240"   /// hover!
     ButtonFaceActive="105 102 99  240"  // not sure what this state is...
@@ -47,23 +47,23 @@ steam.styles
     ButtonBorder="112 109 105 255"
     ButtonBorderSubtle="82 79 77 255"
     ButtonBorderPage="128 124 120 255"
-    ButtonBorderDisabled="77 75 72 255"
-    ButtonBorderDisabled2="67 65 63 255"  //cornering pixels
+    ButtonBorderDisabled="220 220 220 255"
+    ButtonBorderDisabled2="210 210 210 255"  //cornering pixels
     ButtonBorderActive="140 135 129 255"
     ButtonBorderFocus="153 147 141 255"
     ButtonBorderFocusSubtle="128 122 117 255"
     
-    Text="160 160 160 255"
+    Text="100 100 100 255"
     Text2="80 80 80 255"
     TextDisabled="102 99 96 255"
     TextHover="220 220 220 255"
     TextSelected="120 120 120 255"
     TextentrySelected="120 120 120 235" // color of any selected text
     TextSelectedBG="64 90 128 255" // background color of any selected text 
-    TextGlowHover="40 40 40 255"
-    TextGlowSelected="100 100 100 255"
-    TextGlowHoverSm="30 30 30 255"
-    TextGlowSelectedSm="60 60 60 255"
+    TextGlowHover="0 0 0 60"
+    TextGlowSelected="0 0 0 60"
+    TextGlowHoverSm="0 0 0 60"
+    TextGlowSelectedSm="0 0 0 60"
     
     NavLabel="50 50 50 255"
     Label="130 130 130 255"
@@ -91,7 +91,7 @@ steam.styles
     Highlight1="204 185 88 255"    // installing hover color
     Highlight2="181 164 78 255" 	// installing color 
     Highlight3="173 69 71 255"    	// red for errors, blocked, etc.
-    Highlight5="77 103 140 255" 	// blue 
+    Highlight5="220 220 220 255" 	// blue 
     Highlight5a="83 117 166 255" 	// lighter version of highlight5
     Highlight5b="59 75 97 255" 	// as highlight5 but darker, for non-focused window borders
 
@@ -117,19 +117,19 @@ steam.styles
     GameDetailsGreen="126 166 75 255"
     GameDetailsRed="173 69 71 255"
 
-    PropertySheetBG="74 72 70 255"
+    PropertySheetBG="220 220 220 255"
     InteriorColor="64 62 60 255"
     
     DialogBorder="200 210 220 255" // border color around any dialog
     
-    FillBG1="64 62 60 255" //gradient colors
-    FillBG2="71 69 67 255"
+	FillBG1="200 200 200 255" //gradient colors
+    FillBG2="220 220 220 255"
     
-    MenuBG1="92 89 86 255" //gradient colors
-    MenuBG2="61 59 58 255"
+    MenuBG1="255 255 255 255" //gradient colors
+    MenuBG2="240 240 240 255"
     
-    Divider="107 104 101 255"
-    SuperDivider="61 61 61 255"
+    Divider="190 190 190 255"
+    SuperDivider="190 190 190 255"
     DarkImageBorder="47 48 43 255"
     DarkImageOverlay="0 0 0 80"
 
@@ -1647,8 +1647,7 @@ steam.styles
         // background gradient        
         0="gradient( x0+1, y0+1, x1-1, y0 + 432, dialogbg, offwhite )"
         1="fill( x0+1, y0+ 432, x1-1, y1 - 1, offwhite)"
-        2="gradient( x0+1, y0+1, x1-1, y0 + 31, BackgroundStartsubtle, none )"
-        
+        2="gradient( x0+1, y0+1, x1-1, y0 + 31, BackgroundStartsubtle, none )"        
         
         // lines around
         3="fill( x0, y0, x0 + 1, y1 - 2, ButtonBorderDisabled )"  //left
@@ -4453,9 +4452,6 @@ steam.styles
 		{
 			// top area and graphic
 			0="image_tiled( x0, y0, x1, y0+275, graphics/dd_texture)"
-			1="fill( x0, y0+0, x0+1, y1, black )"
-			2="fill( x1-1, y0+0, x1, y1, black )"
-			2="fill( x0, y1-1, x1, y1, black )"
 		}
 	}
 
@@ -4481,7 +4477,7 @@ steam.styles
 	{
 		textcolor="none"
 		render {
-			0="fill( x0+6, y0, x1-6, y0+1, black )"
+			0="fill( x0+6, y0, x1-6, y0+1, grey )"
 			1="fill( x0+6, y0+1, x1-6, y0+2, SuperDivider )"
 		}
 	}

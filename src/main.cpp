@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <glibmm/i18n.h>
 
 using namespace std;
 
@@ -15,8 +16,14 @@ bool gui = true;
 #include "gui/MainWindow.cpp"
 
 int main(int argc, char *argv[])
-{	
+{
+	locale::global(locale(""));
+	bindtextdomain("lang", "translations");
+	bind_textdomain_codeset("lang", "UTF-8");
+	textdomain("lang");
+	
 	Settings settings;
+	locale::global(locale::classic());
 	bool show_home = true;
 	
 	if(argc > 1)
@@ -25,6 +32,7 @@ int main(int argc, char *argv[])
 		{
 			if(argv[i] == string("--help") || argv[i] == string("-h"))
 			{
+				gui = false;
 				Help help(settings);
 				help.SetTitle(settings.GetApplicationName() + "- HELP SCREEN");
 				cout << help;
@@ -32,11 +40,13 @@ int main(int argc, char *argv[])
 			}
 			else if(argv[i] == string("--timestamp")  || argv[i] == string("-t"))
 			{
-				cout << "You last ran this application at " << settings.GetFileContent("last_access");
+				gui = false;
+				cout << "You last ran this application at " << settings.GetLastTime() << endl;
 				show_home = false;
 			}
 			else if(argv[i] == string("--version")  || argv[i] == string("-v"))
 			{
+				gui = false;
 				cout << settings.GetSoftwareVersion() << endl;
 				show_home = false;
 			}
