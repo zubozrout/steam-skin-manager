@@ -36,6 +36,9 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	
 	//Translatable init strings
 	#include "translate_gui.strings"
+	if(settings.Key("remove_launcher_generator") == "yes") {
+		create_launcher->hide();
+	}
 	
 	// Combobox settings
 	ListAvaialbleThemes(settings.get_working_path() + settings.GetPath("theme"));

@@ -258,7 +258,7 @@ bool Settings::SetSkin(string path) {
 	string local_command = get_working_path() + Key("steamskinapplier") + " -i \"" + path + "\"";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
-    if(status_code != -1 && status_code != 127)
+    if(status_code == 0)
 		return true;
 	return false;
 }
@@ -267,7 +267,7 @@ bool Settings::SetInstalledSkin(string local_skin_path) {
 	string local_command = get_working_path() + Key("steamskinapplier") + " -i \"" + get_working_path() + local_skin_path + "\"";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
-	if(status_code != -1 && status_code != 127  && status_code != 1)
+	if(status_code == 0)
 		return true;
 	return false;
 }
@@ -276,7 +276,7 @@ bool Settings::RevertSkin() {
 	string local_command = get_working_path() + Key("steamskinapplier") + " -r";
 	cout << "Executing: " << local_command << endl;
 	int status_code = system(local_command.c_str());
-	if(status_code != -1 && status_code != 127)
+	if(status_code == 0)
 		return true;
 	return false;
 }
@@ -311,9 +311,9 @@ string Settings::GetFullUserName() {
 }
 
 bool Settings::CreateLauncher() {
-	if(system((get_working_path() + "bin/GenerateLauncher.sh").c_str())) {
+	int status_code = system((get_working_path() + Key("launchergenerator")).c_str());
+	if(status_code == 0)
 		return true;
-	}
 	return false;
 }
 
