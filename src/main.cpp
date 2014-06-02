@@ -17,7 +17,13 @@ bool gui = true;
 
 int main(int argc, char *argv[])
 {
-	locale::global(locale(""));
+	try {
+		locale::global(locale(""));
+	}
+	catch (runtime_error) {
+		cerr << "Can't get locales, did you set them wrong?" << endl;
+	}
+	
 	bindtextdomain("lang", "translations");
 	bind_textdomain_codeset("lang", "UTF-8");
 	textdomain("lang");

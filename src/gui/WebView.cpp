@@ -57,7 +57,7 @@ void WebView::HelpGoHome()
 		cout << "Loading https url address." << endl;
 	}
 	else
-		uri = "file://" + settings.get_working_path() + "/" + settings.Key("data_path") + settings.Key("help_html");
+		uri = "file://" + settings.get_working_path() + settings.Key("data_path") + settings.Key("help_html");
 	
 	webkit_web_view_load_uri(WEBKIT_WEB_VIEW(webview), (uri).c_str());
 }
