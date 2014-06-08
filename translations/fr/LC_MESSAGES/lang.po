@@ -1,0 +1,93 @@
+# [Czech Language for Steam Skin Manager]
+
+msgid "Hello %s, Welcome to %s."
+msgstr "Bonjour %s, Bienvenue sur %s"
+
+msgid "You last ran this application at %s\nYou are currently using %s theme."
+msgstr "Vous avez utilisé cette application pour la dernière fois à %s\nVous utilisez présentement le thème %s."
+
+msgid "never ran before"
+msgstr "première utilisation"
+
+
+msgid "Use native window decorations:"
+msgstr "Utiliser les bordures de fenêtres natives du système:"
+
+msgid "<i>The is the default and official Steam theme.</i>" # This is the default and official Steam theme.
+msgstr "Ceci est le thème officiel de Steam."
+
+msgid "Default Skin"
+msgstr "Thème par défaut"
+
+msgid "This theme has no description."
+msgstr "Ce thème n'a aucune description."
+
+msgid "Pick one of the preinstalled themes:"
+msgstr "Choissisez l'un des thèmes pré-installés suivants:"
+
+msgid "To apply your own theme, please select its folder:"
+msgstr "Pour utiliser votre propre thème, veuillez choisir son emplacement:"
+
+msgid "Select a directory with an extracted Steam skin."
+msgstr "Choissisez un dossier où se trouve un thème pour Steam décompressé."
+
+msgid "<i>Apply currently selected theme</i>"
+msgstr "<i>Appliquer le thème présentement sélectionné</i>"
+
+msgid "Launch Steam considering window-decoraions switcher below"
+msgstr "Lancez Steam en prenant compte de l'état du button à glisser plus haut"
+
+msgid "Appearance"
+msgstr "Apparence"
+
+msgid "Manual configuration"
+msgstr "Configuration manuelle"
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "File"
+msgstr "Fichier"
+
+msgid "Quit"
+msgstr "Quitter"
+
+msgid "About"
+msgstr "À propos"
+
+msgid "Generate .desktop launcher"
+msgstr "Générer un raccourcis .desktop"
+
+msgid "Run Steam"
+msgstr "Démarrer Steam"
+
+msgid "Run Steam with decorations"
+msgstr "Démarrer Steam avec les bordures"
+
+msgid "Theme was successfully reverted."
+msgstr "Le thème a été réinitialisé avec succès."
+
+msgid "Steam Skin Manager could not revert the theme."
+msgstr "Steam Skin Manager ne peut pas réinitialisé le thème."
+
+msgid "<b>Theme was applied.</b>"
+msgstr "<b>Le thème a été appliqué.</b>"
+
+msgid "<b>Steam Skin Manager could not set the theme.</b>"
+msgstr "<b>Steam Skin Manager ne peut pas appliquer ce thème.</b>"
+
+msgid "<b>Currently selected:</b>"
+msgstr "<b>Sélectionné présentement:</b>"
+
+msgid "With decorations"
+msgstr "Avec bordures"
+
+msgid "Without decorations"
+msgstr "Sans bordures"
+
+msgid "Scale font"
+msgstr "Taille de police"
+
+# Toolbar info
+msgid "Visit Help section for more information"
+msgstr "Visitez la section Aide pour plus d'information"
