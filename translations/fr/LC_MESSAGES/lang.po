@@ -1,4 +1,4 @@
-# [Czech Language for Steam Skin Manager]
+# [French Language for Steam Skin Manager]
 
 msgid "Hello %s, Welcome to %s."
 msgstr "Bonjour %s, Bienvenue sur %s"
@@ -9,11 +9,10 @@ msgstr "Vous avez utilisé cette application pour la dernière fois à %s\nVous 
 msgid "never ran before"
 msgstr "première utilisation"
 
-
 msgid "Use native window decorations:"
 msgstr "Utiliser les bordures de fenêtres natives du système:"
 
-msgid "<i>The is the default and official Steam theme.</i>" # This is the default and official Steam theme.
+msgid "<i>The is the default and official Steam theme.</i>"
 msgstr "Ceci est le thème officiel de Steam."
 
 msgid "Default Skin"
