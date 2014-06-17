@@ -1,0 +1,8 @@
+#Steam Skin Manager
+
+Homepage: http://iubuntu.cz/Steam
+
+Download .deb or .aur package - links available at homepage.
+
+
+I use Qt Creator to develope and build this app. If you wish to make changes to the source, I really recommend you to use Qt Creator. However, you can of course edit and build it differently.
