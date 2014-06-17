@@ -14,6 +14,7 @@ class MainWindow {
 		string defaultskin = "Default Skin";
 		
 		Gtk::Window* window;
+		Gtk::Notebook* notebook;
 		
 		Glib::RefPtr<Gtk::Builder> builder;
 		Gtk::Toolbar* toolbar;
@@ -45,16 +46,18 @@ class MainWindow {
 		Gtk::FileChooserButton* file_chooser;
 		sigc::connection comboboxsignal;
 
-		// ManualEditor object instance
+		// ManualEditor and Reflection object instances
 		ManualEditor* manualeditor;
+		Reflection* reflection;
 		
+		void PageSwitched(Gtk::Widget *page, guint page_num);
 		void ApplyTheme();
 		void ShowTips();
 		void LaunchSteam(bool decorations);
 		void SteamLauncherThread(bool decorations = true);
 		void SteamLauncher();
 		static void SteamFinished(gpointer object);
-		void ListAvaialbleThemes(string path);
+		void ListAvaialbleThemes(string path, bool repeat = true);
 		void PreviewTheme(bool native = true);
 		void SpinnerStart();
 		void SpinnerStop();

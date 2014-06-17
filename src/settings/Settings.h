@@ -27,7 +27,7 @@ class Settings {
 	public:
 		Settings();
 		~Settings();
-		void Parse(string settings_file_path, bool console = false);
+		void Parse(string settings_file_path);
 		string Key(string key) const;
 		void TrimLine(string & str) const;
 		string CommandOutput(string cmd) const;

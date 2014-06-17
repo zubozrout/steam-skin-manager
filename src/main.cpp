@@ -5,8 +5,6 @@
 
 using namespace std;
 
-bool gui = true;
-
 #include "cli/Category.cpp"
 #include "cli/WelcomeScreen.cpp"
 #include "settings/Settings.cpp"
@@ -17,6 +15,9 @@ bool gui = true;
 
 int main(int argc, char *argv[])
 {
+	bool gui = true;
+	bool show_home = true;
+	
 	try {
 		locale::global(locale(""));
 	}
@@ -30,7 +31,6 @@ int main(int argc, char *argv[])
 	
 	Settings settings;
 	locale::global(locale::classic());
-	bool show_home = true;
 	
 	if(argc > 1)
 	{
@@ -92,6 +92,13 @@ int main(int argc, char *argv[])
 			{
 				cout << "Generating .desktop file." << endl;
 				settings.CreateLauncher();
+			}
+			else if(argv[i] == string("--list-installed-games"))
+			{
+				gui = false;
+				show_home = false;
+				cout << "Installed Steam Games:" << endl << endl;
+				cout << settings.CommandOutput(settings.get_working_path() + "bin/Games.sh") << endl << endl;
 			}
 		}
 	}

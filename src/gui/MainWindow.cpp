@@ -5,6 +5,7 @@
 
 #include "WebView.cpp"
 #include "ManualEditor.cpp"
+#include "Reflection.cpp"
 #include "AboutWindow.cpp"
 
 #include "MainWindow.h"
@@ -18,9 +19,9 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	try {
 		builder = Gtk::Builder::create_from_file(settings.get_working_path() + settings.Key("ui_path"));
 	}  
-	catch (const Glib::FileError & ex)	{
+	catch(const Glib::FileError &ex)	{
 		std::cerr << ex.what() << std::endl;
-	}  
+	}
 	
 	#include "MainWindowBuilder.connect"
 	
@@ -33,6 +34,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	launch_steam_from_toolbar->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::SteamLauncher));
 	apply->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::ApplyTheme));
 	use_decorations->property_active().signal_changed().connect(sigc::mem_fun(*this, &MainWindow::SetPreviewName));
+	notebook->signal_switch_page().connect(sigc::mem_fun(*this, &MainWindow::PageSwitched));
 	
 	//Translatable init strings
 	#include "translate_gui.strings"
@@ -43,6 +45,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	// Combobox settings
 	ListAvaialbleThemes(settings.get_working_path() + settings.GetPath("theme"));
 	ListAvaialbleThemes(settings.Key("old_theme_path")); /* Steam Skin Manager (3.x) and older backward compatibility */
+	ListAvaialbleThemes(settings.GetLocalPath() + "themes/"); /* Steam Skin Manager (4.3+) user's reflection themes */
 	
 	// State Change signals
 	comboboxsignal = comboboxthemes->signal_changed().connect(sigc::group(sigc::mem_fun(*this, &MainWindow::PreviewTheme), true));
@@ -60,6 +63,7 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	// Load other tabs
 	WebView web(builder, settings);
 	manualeditor = new ManualEditor(builder, settings);
+	reflection = nullptr;
 	
 	if(window) {
 		// SystemColors
@@ -73,6 +77,15 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	}
 	else {
 		throw runtime_error("Window not initialized");
+	}
+}
+
+void MainWindow::PageSwitched(Gtk::Widget *page, guint page_num) {
+	if(reflection == nullptr && page_num == 2) {
+		reflection = new Reflection(builder, settings);
+	}
+	if(page_num == 0) {
+		ListAvaialbleThemes(settings.GetLocalPath() + "themes/", false); /* Steam Skin Manager (4.3+) user's reflection themes */
 	}
 }
 
@@ -267,7 +280,7 @@ void MainWindow::SteamLauncher() {
 	SteamLauncherThread(use_decorations->get_active());
 }
 
-void MainWindow::ListAvaialbleThemes(string path) {
+void MainWindow::ListAvaialbleThemes(string path, bool repeat) {
 	vector<string> test = settings.GetListOfAvaialbleFolders(path);
 	string theme = settings.GetSystemTheme();
 	
@@ -280,6 +293,12 @@ void MainWindow::ListAvaialbleThemes(string path) {
 	}
 	
 	for(vector<string>::iterator it = test.begin(); it != test.end(); ++it) {
+		if(!repeat) {
+			if(find(bundledSkins.begin(), bundledSkins.end(), path + string(*it)) != bundledSkins.end()) {
+				continue;
+			}
+		}
+		
 		comboboxthemes->insert(i, (*it));
 		bundledSkins.push_back(path + (*it));
 		
@@ -309,5 +328,8 @@ MainWindow::~MainWindow() {
 	delete manualeditor;
 	delete skin;
 	delete steamlaunch;
+	if(reflection != nullptr) {
+		delete reflection;
+	}
 	cout << "Bye Bye " << getenv("USER") << " ..." << endl;
 }

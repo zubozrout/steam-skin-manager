@@ -8,11 +8,10 @@
 #	The tool and the skins are free to use, share and edit - under the terms of CC-BY license (Creative Commons).
 #
 #	Develper mode ...
-PREFIX=/home/zubozrout/Downloads/Devel/ssm4/
 
 # PREDEFINED PATHS:
 SKINPATH=$2
-LOCALFILES=$PREFIX/usr/share/steam/skins
+LOCALFILES=/usr/share/steam/skins
 STEAMSKIN=~/.steam/root/skins
 STEAMSETTINGS=~/.steam/registry.vdf
 

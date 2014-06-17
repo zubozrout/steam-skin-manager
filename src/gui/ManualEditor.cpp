@@ -8,10 +8,12 @@ ManualEditor::ManualEditor(Glib::RefPtr<Gtk::Builder> &builder, const Settings &
 	builder->get_widget("manual_text", manual_editor);
 	builder->get_widget("manual_save", manual_save);
 	builder->get_widget("manual_revert", manual_revert);
+	builder->get_widget("manual_reload", manual_reload);
 	builder->get_widget("scale", scale);
 	
 	manual_save->signal_clicked().connect(sigc::mem_fun(*this, &ManualEditor::Save));
 	manual_revert->signal_clicked().connect(sigc::mem_fun(*this, &ManualEditor::Revert));
+	manual_reload->signal_clicked().connect(sigc::mem_fun(*this, &ManualEditor::FirstLoad));
 	scale->signal_value_changed().connect(sigc::mem_fun(*this, &ManualEditor::Size));
 	
 	TextBuffer = Gtk::TextBuffer::create();
@@ -31,7 +33,7 @@ ManualEditor::ManualEditor(Glib::RefPtr<Gtk::Builder> &builder, const Settings &
 
 void ManualEditor::Save()
 {
-	Glib::RefPtr<Gtk::TextBuffer> TextBuffer = Gtk::TextBuffer::create();
+	//Glib::RefPtr<Gtk::TextBuffer> TextBuffer = Gtk::TextBuffer::create();
 	TextBuffer = manual_editor->get_buffer();
 	string manual_content = TextBuffer->get_text(true);
 	cout << "Saving registry.vdf to " + path + " ..." << endl;

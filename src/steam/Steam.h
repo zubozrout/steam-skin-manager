@@ -7,7 +7,6 @@ class Steam {
 
 	public:
 		Steam(const Settings & linked_settings);
-		~Steam();
 		void Run(bool native_decorations);
 };
 
