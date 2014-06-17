@@ -11,6 +11,7 @@ class ManualEditor {
 		Gtk::TextView* manual_editor;
 		Gtk::Button* manual_save;
 		Gtk::Button* manual_revert;
+		Gtk::Button* manual_reload;
 		Gtk::Scale* scale;
 		Glib::RefPtr<Gtk::TextBuffer> TextBuffer;
 		string backup;

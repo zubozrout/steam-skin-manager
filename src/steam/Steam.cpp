@@ -33,10 +33,3 @@ void Steam::Run(bool native_decorations) {
 		return;
 	}
 }
-
-Steam::~Steam() {
-	if(!gui) {
-		cout << "Exiting Steam Skin Manager" << endl;
-		exit(EXIT_SUCCESS);
-	}
-}

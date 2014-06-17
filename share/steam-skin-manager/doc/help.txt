@@ -1,6 +1,7 @@
 --help (-h), will show this screen
 --timestamp (-t), will tell you when was the last time you launched this tool
 --verson (-v), will display installed SSM version
+--list-installed-games, will list installed Steam games
 
 --apply-theme FOLDER_PATH, will config Steam to use theme from a defined folder
 --revert-theme, will revert Steam to use the default Steam theme

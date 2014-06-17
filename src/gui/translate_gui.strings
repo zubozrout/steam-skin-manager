@@ -39,8 +39,12 @@ Gtk::Label* page_manual;
 builder->get_widget("page2", page_manual);
 page_manual->set_text(_("Manual configuration"));
 
+Gtk::Label* page_reflection;
+builder->get_widget("page3", page_reflection);
+page_reflection->set_label(_("Your reflection"));
+
 Gtk::Label* page_help;
-builder->get_widget("page3", page_help);
+builder->get_widget("page4", page_help);
 page_help->set_label(_("Help"));
 
 Gtk::MenuItem* filemenu;

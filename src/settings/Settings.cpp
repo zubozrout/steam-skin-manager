@@ -18,18 +18,14 @@
 using namespace std;
 
 Settings::Settings(): wget(nullptr) {
-	Parse(get_working_path() + "settings.conf", !gui);
+	Parse(get_working_path() + "settings.conf");
 	user_home = "/home/" + GetUserName();
 	system_theme = CommandOutput(Key("system_theme"));
 	local_config = user_home + "/" + Key("ucfg_path");
 }
 
 // Source: http://stackoverflow.com/questions/6892754/creating-a-simple-configuration-file-and-parser-in-c
-void Settings::Parse(string file_path, bool console) {
-	if(console) {
-		cout << "Parsing " << file_path << endl;
-	}
-	
+void Settings::Parse(string file_path) {
 	ifstream file(file_path.c_str());
 	string id, eq, val, line;
 	while(getline(file, line)) {
@@ -47,9 +43,6 @@ void Settings::Parse(string file_path, bool console) {
 			while(iss.get(on_line))
 				val += on_line;
 			
-			if(console) {
-				cout << "[OK]   	" << id << " = " << val << endl;
-			}
 			options[id] = val;
 		}
 	}	
@@ -142,7 +135,6 @@ string Settings::GetFileContent(string file) const {
 	string lines = "";
 	try {
 		ifstream input(file.c_str());
-		
 		if (input.is_open()) {
 			for(string line; getline(input, line); ) {
 				if(line != "")
