@@ -64,6 +64,9 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 	WebView web(builder, settings);
 	manualeditor = new ManualEditor(builder, settings);
 	reflection = nullptr;
+	if(settings.Key("preview") != "true") {
+		notebook->remove_page(2);
+	}
 	
 	if(window) {
 		// SystemColors
@@ -73,6 +76,18 @@ MainWindow::MainWindow(int argc, char* argv[], Settings & linked_settings): sett
 		framecontext->add_class("primary-toolbar");
 		
 		window->set_title(settings.GetApplicationName().c_str());
+		
+		Glib::RefPtr<Gdk::Screen> screen = Gdk::Screen::get_default(); 
+		int height = screen->get_height();
+		int local_height, na;
+		int pluselement = 120;
+		main_box->get_preferred_height(na, local_height);
+		if(height < local_height + pluselement) {
+			window->set_default_size(500, height - 100);
+		}
+		else {
+			window->set_default_size(800, local_height + pluselement);
+		}
 		kit->run(*window);
 	}
 	else {

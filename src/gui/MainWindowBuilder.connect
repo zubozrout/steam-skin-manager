@@ -17,6 +17,7 @@ builder->get_widget("next_tip", next_tip);
 builder->get_widget("logo", logo);
 
 // Main Window
+builder->get_widget("main_box", main_box);
 builder->get_widget("header", header);
 builder->get_widget("lastrunlabel", lastrun);
 builder->get_widget("preview_name_box", preview_name_box);

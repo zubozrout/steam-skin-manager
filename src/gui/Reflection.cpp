@@ -111,7 +111,8 @@ void Reflection::FillTemplate() {
 	GetColor(color8, R, G, B);
 	Fill("\"$FOCUS\"", ConstructReplacement(R, G, B));
 	
-	Fill("\"$FONT\"", fontbutton->get_font_name());
+	Pango::FontDescription font(fontbutton->get_font_name());
+	Fill("\"$FONT\"", font.get_family());
 }
 
 void Reflection::Fill(string match, string replace) {

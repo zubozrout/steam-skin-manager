@@ -15,6 +15,7 @@ class MainWindow {
 		
 		Gtk::Window* window;
 		Gtk::Notebook* notebook;
+		Gtk::Box* main_box;
 		
 		Glib::RefPtr<Gtk::Builder> builder;
 		Gtk::Toolbar* toolbar;
