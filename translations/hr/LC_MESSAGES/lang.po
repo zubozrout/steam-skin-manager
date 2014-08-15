@@ -1,0 +1,95 @@
+# [Croatian Language for Steam Skin Manager]
+msgid "Hello %s, Welcome to %s."
+msgstr "Bok %s, Dobrodošli u %s."
+
+msgid ""
+"You last ran this application at %s\n"
+"You are currently using %s theme."
+msgstr ""
+"Posljednji puta ste koristili ovu aplikaciju %s\n"
+"Trenutno koristite %s temu."
+
+msgid "never ran before"
+msgstr "nikada prije"
+
+msgid "Use native window decorations:"
+msgstr "Koristi izvorne ukrase prozora:"
+
+msgid "<i>The is the default and official Steam theme.</i>"
+msgstr "<i>Ovo je uobičajena i službena Steam tema.</i>"
+
+msgid "Default Skin"
+msgstr "Uobičajena presvlaka"
+
+msgid "This theme has no description."
+msgstr "Ova tema nema opisa."
+
+msgid "Pick one of the preinstalled themes:"
+msgstr "Odaberite jednu od predinstaliranih tema:"
+
+msgid "To apply your own theme, please select its folder:"
+msgstr "Za odabir vlastite teme, odaberite svoju mapu:"
+
+msgid "Select a directory with an extracted Steam skin."
+msgstr "Odaberite direktorij s raspakiranom Steam presvlakom."
+
+msgid "<i>Apply currently selected theme</i>"
+msgstr "<i>Primijeni trenutno odabranu temu</i>"
+
+msgid "Launch Steam considering window-decoraions switcher below"
+msgstr "Pokreni Steam uzimajući u obzir prebacivača ukrasa prozora ispod"
+
+msgid "Appearance"
+msgstr "Izgled"
+
+msgid "Manual configuration"
+msgstr "Ručno podešavanje"
+
+msgid "Help"
+msgstr "Pomoć"
+
+msgid "File"
+msgstr "Datoteka"
+
+msgid "Quit"
+msgstr "Zatvori"
+
+msgid "About"
+msgstr "O programu"
+
+msgid "Generate .desktop launcher"
+msgstr "Stvori .desktop pokretač"
+
+msgid "Run Steam"
+msgstr "Pokreni Steam"
+
+msgid "Run Steam with decorations"
+msgstr "Pokreni Steam s ukrasima"
+
+msgid "Theme was successfully reverted."
+msgstr "Tema je uspješno vraćena."
+
+msgid "Steam Skin Manager could not revert the theme."
+msgstr "Steam upravitelj presvlakama ne može vratiti temu."
+
+msgid "<b>Theme was applied.</b>"
+msgstr "<b>Tema je uspješno primijenjena.</b>"
+
+msgid "<b>Steam Skin Manager could not set the theme.</b>"
+msgstr "<b>Steam upravitelj presvlakama ne može postaviti temu.</b>"
+
+msgid "<b>Currently selected:</b>"
+msgstr "<b>Trenutno odabrana tema:</b>"
+
+msgid "With decorations"
+msgstr "S ukrasima"
+
+msgid "Without decorations"
+msgstr "Bez ukrasa"
+
+msgid "Scale font"
+msgstr "Veličina slova"
+
+# Toolbar info
+msgid "Visit Help section for more information"
+msgstr "Posjetite odjeljak pomoći za više informacija"
